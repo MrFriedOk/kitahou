@@ -23,11 +23,13 @@ impl Player {
     }
 
     fn damage(&mut self) {
-
+        todo!()
     }
 
     fn move(&mut self) {
-        
+       match input {
+            
+        }
     }
 
     fn draw(&self) {
