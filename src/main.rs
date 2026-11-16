@@ -23,8 +23,13 @@ struct Player {
 }
 
 impl Game {
-    fn update(&mut self, dt: f32) {
+    fn new(player: Player) -> Self {
+        Self { player }
+    }
 
+    fn update(&mut self, dt: f32) {
+        self.player.move_input();
+        self.player.draw();
     }
 }
 
@@ -78,12 +83,12 @@ fn window_conf() -> Conf {
 async fn main() {
     //initialize all the things
     let mut player: Player = Player::new(3, START, STARTVEL, 10.0, false);
-    let mut game : Game = 
+    let mut game: Game = Game::new(player);
     loop {
         let dt: f32 = get_frame_time();
         clear_background(DARKGRAY);
 
-        
+        game.update(dt);
         //player.move_input();
         //player.draw();
 
