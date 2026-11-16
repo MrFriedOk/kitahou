@@ -7,9 +7,9 @@ const HC: f32 = SW / 2.0; //horizontal center
 const VC: f32 = SH / 2.0;
 
 const START: Vec2 = Vec2::new(HC, VC);
-const STARTVEL: Vec2 = Vec2::new(4., 4.);
+const STARTVEL: Vec2 = Vec2::new(40., 40.);
 
-const SLOWVEL: Vec2 = Vec2::new(2., 2.);
+const SLOWVEL: Vec2 = Vec2::new(20., 20.);
 
 struct Game {
     player: Player,
@@ -30,8 +30,8 @@ impl Game {
     }
 
     fn update(&mut self, dt: f32) {
-        self.player.move_input();
-        //self.player.slow_input();
+        self.player.move_input(dt);
+        self.player.slow_input(dt);
         self.player.draw();
     }
 }
@@ -45,7 +45,7 @@ impl Player {
         todo!()
     }
 
-    fn slow_input(&mut self) {
+    fn slow_input(&mut self, dt: f32) {
         if is_key_down(KeyCode::RightShift) {
             self.vel = SLOWVEL;
         }
@@ -56,18 +56,18 @@ impl Player {
         }
     }
 
-    fn move_input(&mut self) {
+    fn move_input(&mut self, dt: f32) {
         if is_key_down(KeyCode::Left) {
-            self.pos.x -= 1.0 * self.vel.x;
+            self.pos.x -= 1.0 * self.vel.x * dt;
         }
         if is_key_down(KeyCode::Right) {
-            self.pos.x += 1.0 * self.vel.x;
+            self.pos.x += 1.0 * self.vel.x * dt;
         }
         if is_key_down(KeyCode::Up) {
-            self.pos.y -= 1.0 * self.vel.y;
+            self.pos.y -= 1.0 * self.vel.y * dt;
         }
         if is_key_down(KeyCode::Down) {
-            self.pos.y += 1.0 * self.vel.y;
+            self.pos.y += 1.0 * self.vel.y * dt;
         }
     }
 
@@ -90,7 +90,7 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
     //initialize all the things
-    let player: Player = Player::new(3, START, STARTVEL, 10.0, false);
+    let player: Player = Player::new(3, START, STARTVEL, 10.0);
     let mut game: Game = Game::new(player);
     loop {
         let dt: f32 = get_frame_time();
