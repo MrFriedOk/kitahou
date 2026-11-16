@@ -19,7 +19,13 @@ enum BulletKind {
 struct Game {
     player: Player,
     bullets: Vec<Bullet>,
+    enemies: Vec<Enemy>,
     //bullets
+}
+
+struct Enemy {
+    pos: Vec2,
+    r: f32,
 }
 
 struct Bullet {
@@ -39,8 +45,12 @@ struct Player {
 }
 
 impl Game {
-    fn new(player: Player) -> Self {
-        Self { player, bullets }
+    fn new(player: Player, bullets: Vec<Bullet>, enemies: Vec<Enemy>) -> Self {
+        Self {
+            player,
+            bullets,
+            enemies,
+        }
     }
 
     fn update(&mut self, dt: f32) {
@@ -144,7 +154,9 @@ fn window_conf() -> Conf {
 async fn main() {
     //initialize all the things
     let player: Player = Player::new(3, START, 10.0, false);
-    let mut game: Game = Game::new(player);
+    let bullets: Vec<Bullet> = Vec::new();
+    let enemies: Vec<Enemy> = Vec::new();
+    let mut game: Game = Game::new(player, bullets, enemies);
     loop {
         let dt: f32 = get_frame_time();
         clear_background(DARKGRAY);
