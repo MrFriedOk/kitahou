@@ -30,15 +30,20 @@ impl Game {
     }
 
     fn update(&mut self, dt: f32) {
-        self.player.move_input(dt);
-        self.player.slow_input(dt);
-        self.player.draw();
+        self.player.update(dt);
     }
 }
 
 impl Player {
     fn new(hp: i8, pos: Vec2, vel: Vec2, r: f32) -> Self {
         Self { hp, pos, vel, r }
+    }
+
+    fn update(&mut self, dt: f32) {
+        self.move_input(dt);
+        self.slow_input(dt);
+
+        self.draw();
     }
 
     fn damage(&mut self) {
