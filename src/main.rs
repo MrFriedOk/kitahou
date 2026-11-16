@@ -6,6 +6,9 @@ const SW: f32 = 1440.0;
 const HC: f32 = SW / 2.0; //horizontal center
 const VC: f32 = SH / 2.0;
 
+const START: Vec2 = Vec2::new(HC, VC);
+const STARTVEL: Vec2 = Vec2::new(0., 0.);
+
 struct Player {
     hp: i8,
     pos: Vec2,
@@ -33,10 +36,12 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
     //initialize all the things
-    let mut player = Player::new(3, (SW, SH), (0, 0), 10.0);
+    let mut player = Player::new(3, START, STARTVEL, 10.0);
     loop {
         let dt: f32 = get_frame_time();
         clear_background(DARKGRAY);
+
+        draw_circle(player.pos.x, player.pos.y, player.r, WHITE);
 
         next_frame().await //should always be last
     }
