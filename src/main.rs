@@ -60,11 +60,16 @@ impl Player {
 
     fn read_dir(&mut self) -> Vec2 {
         let mut dir: Vec2 = Vec2::new(0., 0.);
-        let speed: f32 = if is_key_down(KeyCode::LeftShift) {
-            300.0
+        let mut speed: f32 = 600.;
+
+        if is_key_down(KeyCode::LeftShift) {
+            speed = 300.0;
+            self.r = 8.;
         } else {
-            600.0
-        };
+            self.r = 10.;
+            speed = 600.;
+        }
+
         if is_key_down(KeyCode::Up) {
             dir.y -= speed
         }
@@ -79,7 +84,7 @@ impl Player {
         }
 
         if self.pos.x > SW {
-            //dir.x = 0.;
+            //shut up clippy, i have a clamp!
             self.pos.x = SW;
         }
         if self.pos.x < 0. {
