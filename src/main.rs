@@ -9,6 +9,8 @@ const VC: f32 = SH / 2.0;
 const START: Vec2 = Vec2::new(HC, VC);
 const STARTVEL: Vec2 = Vec2::new(4., 4.);
 
+const SLOWVEL: Vec2 = Vec2::new(2., 2.);
+
 struct Game {
     player: Player,
     //bullets
@@ -29,20 +31,14 @@ impl Game {
 
     fn update(&mut self, dt: f32) {
         self.player.move_input();
-        self.player.slow_input();
+        //self.player.slow_input();
         self.player.draw();
     }
 }
 
 impl Player {
-    fn new(hp: i8, pos: Vec2, vel: Vec2, r: f32, slow: bool) -> Self {
-        Self {
-            hp,
-            pos,
-            vel,
-            r,
-            //slow,
-        }
+    fn new(hp: i8, pos: Vec2, vel: Vec2, r: f32) -> Self {
+        Self { hp, pos, vel, r }
     }
 
     fn damage(&mut self) {
@@ -51,7 +47,10 @@ impl Player {
 
     fn slow_input(&mut self) {
         if is_key_down(KeyCode::RightShift) {
-            (self.vel.x, self.vel.y) = (1.5, 1.5);
+            self.vel = SLOWVEL;
+        }
+        if is_key_down(KeyCode::LeftShift) {
+            self.vel = SLOWVEL;
         } else {
             self.vel = STARTVEL;
         }
@@ -91,7 +90,7 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
     //initialize all the things
-    let mut player: Player = Player::new(3, START, STARTVEL, 10.0, false);
+    let player: Player = Player::new(3, START, STARTVEL, 10.0, false);
     let mut game: Game = Game::new(player);
     loop {
         let dt: f32 = get_frame_time();
