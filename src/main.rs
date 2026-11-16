@@ -9,12 +9,23 @@ const VC: f32 = SH / 2.0;
 const START: Vec2 = Vec2::new(HC, VC);
 const STARTVEL: Vec2 = Vec2::new(5., 5.);
 
+struct Game {
+    player: Player,
+    //bullets
+}
+
 struct Player {
     hp: i8,
     pos: Vec2,
     vel: Vec2,
     r: f32,
     slow: bool,
+}
+
+impl Game {
+    fn update(&mut self, dt: f32) {
+
+    }
 }
 
 impl Player {
@@ -66,13 +77,15 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
     //initialize all the things
-    let mut player = Player::new(3, START, STARTVEL, 10.0, false);
+    let mut player: Player = Player::new(3, START, STARTVEL, 10.0, false);
+    let mut game : Game = 
     loop {
         let dt: f32 = get_frame_time();
         clear_background(DARKGRAY);
 
-        player.move_input();
-        player.draw();
+        
+        //player.move_input();
+        //player.draw();
 
         next_frame().await //should always be last
     }
