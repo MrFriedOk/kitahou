@@ -20,6 +20,7 @@ struct Player {
     pos: Vec2,
     r: f32,
     //slow: bool,
+    i_frame: bool,
 }
 
 impl Game {
@@ -33,8 +34,13 @@ impl Game {
 }
 
 impl Player {
-    fn new(hp: i8, pos: Vec2, r: f32) -> Self {
-        Self { hp, pos, r }
+    fn new(hp: i8, pos: Vec2, r: f32, i_frame: bool) -> Self {
+        Self {
+            hp,
+            pos,
+            r,
+            i_frame,
+        }
     }
 
     fn update(&mut self, dt: f32) {
@@ -46,7 +52,8 @@ impl Player {
     }
 
     fn damage(&mut self) {
-        todo!()
+        self.hp -= 1;
+        self.i_frame = true;
     }
 
     fn read_dir(&self) -> Vec2 {
@@ -91,7 +98,7 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
     //initialize all the things
-    let player: Player = Player::new(3, START, 10.0);
+    let player: Player = Player::new(3, START, 10.0, false);
     let mut game: Game = Game::new(player);
     loop {
         let dt: f32 = get_frame_time();
