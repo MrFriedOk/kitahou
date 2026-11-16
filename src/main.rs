@@ -59,9 +59,9 @@ impl Player {
     fn read_dir(&self) -> Vec2 {
         let mut dir: Vec2 = Vec2::new(0., 0.);
         let speed: f32 = if is_key_down(KeyCode::LeftShift) {
-            150.0
-        } else {
             300.0
+        } else {
+            600.0
         };
         if is_key_down(KeyCode::Up) {
             dir.y -= speed
@@ -74,6 +74,10 @@ impl Player {
         }
         if is_key_down(KeyCode::Right) {
             dir.x += speed
+        }
+
+        if self.pos.x > SW || self.pos.x == 0. {
+            dir.x = 0.
         }
 
         dir
