@@ -1,5 +1,16 @@
 use macroquad::prelude::*;
 
+mod bullet;
+mod config;
+mod enemy;
+mod game;
+mod player;
+
+use bullet::Bullet;
+use enemy::Enemy;
+use game::Game;
+use player::Player;
+
 const SH: f32 = 1080.0;
 const SW: f32 = 1440.0;
 
@@ -31,7 +42,7 @@ struct Enemy {
 struct Bullet {
     pos: Vec2,
     r: f32,
-    vel: f32,
+    vel: Vec2,
     kind: BulletKind,
 }
 
@@ -60,8 +71,8 @@ impl Game {
 }
 
 impl Bullet {
-    fn new(&self) -> Self {
-        todo!()
+    fn new(pos: f32, r: f32, vel: Vec2, kind: BulletKind) -> Self {
+        Self { pos, r, vel, kind }
     }
 
     fn update(&mut self, dt: f32) {}
