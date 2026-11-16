@@ -3,8 +3,8 @@ use macroquad::prelude::*;
 const SH: f32 = 1080.0;
 const SW: f32 = 1440.0;
 
-const HC: f32 = SW / 2; //horizontal center
-const VC: f32 = SH / 2
+const HC: f32 = SW / 2.0; //horizontal center
+const VC: f32 = SH / 2.0;
 
 struct Player {
     hp: i8,
@@ -14,9 +14,8 @@ struct Player {
 }
 
 impl Player {
-    fn new(&self) -> Player {
-        self.hp: i8 = 3;
-        self.pos: Vec2 = (HC,VC);
+    fn new(hp: i8, pos: Vec2, vel: Vec2, r: f32) -> Self {
+        Self { hp, pos, vel, r }
     }
 }
 
@@ -34,7 +33,7 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
     //initialize all the things
-    let mut player: Player = Player.new()
+    let mut player = Player::new(3, (SW, SH), (0, 0), 10.0);
     loop {
         let dt: f32 = get_frame_time();
         clear_background(DARKGRAY);
