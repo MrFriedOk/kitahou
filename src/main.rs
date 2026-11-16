@@ -6,10 +6,9 @@ const SW: f32 = 1440.0;
 const HC: f32 = SW / 2.0; //horizontal center
 const VC: f32 = SH / 2.0;
 
-const START: Vec2 = Vec2::new(HC, VC);
-const STARTVEL: Vec2 = Vec2::new(400., 400.);
+const STARTY: f32 = VC / 2.0;
 
-const SLOWVEL: Vec2 = Vec2::new(200., 200.);
+const START: Vec2 = Vec2::new(HC, STARTY);
 
 struct Game {
     player: Player,
@@ -19,7 +18,6 @@ struct Game {
 struct Player {
     hp: i8,
     pos: Vec2,
-    vel: Vec2,
     r: f32,
     //slow: bool,
 }
@@ -35,8 +33,8 @@ impl Game {
 }
 
 impl Player {
-    fn new(hp: i8, pos: Vec2, vel: Vec2, r: f32) -> Self {
-        Self { hp, pos, vel, r }
+    fn new(hp: i8, pos: Vec2, r: f32) -> Self {
+        Self { hp, pos, r }
     }
 
     fn update(&mut self, dt: f32) {
@@ -51,8 +49,25 @@ impl Player {
         todo!()
     }
 
-    fn read_dir() -> Vec2 {
+    fn read_dir(&self) -> Vec2 {
         let mut dir: Vec2 = Vec2::new(0., 0.);
+        let speed: f32 = if is_key_down(KeyCode::LeftShift) {
+            150.0
+        } else {
+            300.0
+        };
+        if is_key_down(KeyCode::Up) {
+            dir.y -= speed
+        }
+        if is_key_down(KeyCode::Down) {
+            dir.y += speed
+        }
+        if is_key_down(KeyCode::Left) {
+            dir.x -= speed
+        }
+        if is_key_down(KeyCode::Right) {
+            dir.x += speed
+        }
 
         dir
     }
@@ -76,7 +91,7 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
     //initialize all the things
-    let player: Player = Player::new(3, START, STARTVEL, 10.0);
+    let player: Player = Player::new(3, START, 10.0);
     let mut game: Game = Game::new(player);
     loop {
         let dt: f32 = get_frame_time();
