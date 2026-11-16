@@ -20,6 +20,12 @@ impl Player {
     fn new(hp: i8, pos: Vec2, vel: Vec2, r: f32) -> Self {
         Self { hp, pos, vel, r }
     }
+
+    fn damage(&mut self) {}
+
+    fn draw(&self) {
+        draw_circle(self.pos.x, self.pos.y, self.r, WHITE);
+    }
 }
 
 fn window_conf() -> Conf {
@@ -41,7 +47,7 @@ async fn main() {
         let dt: f32 = get_frame_time();
         clear_background(DARKGRAY);
 
-        draw_circle(player.pos.x, player.pos.y, player.r, WHITE);
+        player.draw();
 
         next_frame().await //should always be last
     }
