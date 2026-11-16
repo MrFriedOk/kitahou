@@ -7,7 +7,7 @@ const HC: f32 = SW / 2.0; //horizontal center
 const VC: f32 = SH / 2.0;
 
 const START: Vec2 = Vec2::new(HC, VC);
-const STARTVEL: Vec2 = Vec2::new(10., 10.);
+const STARTVEL: Vec2 = Vec2::new(5., 5.);
 
 struct Player {
     hp: i8,
@@ -34,7 +34,16 @@ impl Player {
 
     fn move_input(&mut self) {
         if is_key_down(KeyCode::Left) {
-            self.pos.x -= 1.0;
+            self.pos.x -= 1.0 * self.vel.x;
+        }
+        if is_key_down(KeyCode::Right) {
+            self.pos.x += 1.0 * self.vel.x;
+        }
+        if is_key_down(KeyCode::Up) {
+            self.pos.y -= 1.0 * self.vel.y;
+        }
+        if is_key_down(KeyCode::Down) {
+            self.pos.y += 1.0 * self.vel.y;
         }
     }
 
