@@ -32,8 +32,12 @@ struct Bullet {
 }
 
 impl Bullet {
-    fn new(pos: f32, r: f32, vel: Vec2, kind: BulletKind) -> Self {
-        todo!() //Self { pos, r, vel, kind }
+    fn new(pos: Vec2, r: f32, vel: Vec2, kind: BulletKind) -> Self {
+        Self { pos, r, vel, kind }
+    }
+
+    fn draw(&self) {
+        draw_circle(self.pos.x, self.pos.y, 5., WHITE)
     }
 
     fn update(&mut self, dt: f32) {}
