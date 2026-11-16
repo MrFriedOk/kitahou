@@ -1,15 +1,44 @@
-use macroquad::{
-    color::*,
-    shapes::{draw_circle, draw_line, draw_rectangle},
-    text::draw_text,
-    window::{clear_background, next_frame, screen_height, screen_width},
-};
+use macroquad::prelude::*;
 
-#[macroquad::main("Hi")]
+const SH: f32 = 1080.0;
+const SW: f32 = 1440.0;
+
+const HC: f32 = SW / 2; //horizontal center
+const VC: f32 = SH / 2
+
+struct Player {
+    hp: i8,
+    pos: Vec2,
+    vel: Vec2,
+    r: f32,
+}
+
+impl Player {
+    fn new(&self) -> Player {
+        self.hp: i8 = 3;
+        self.pos: Vec2 = (HC,VC);
+    }
+}
+
+fn window_conf() -> Conf {
+    Conf {
+        window_title: "kitahou".to_owned(),
+        window_width: SW as i32,
+        window_height: SH as i32,
+        window_resizable: false,
+        fullscreen: false,
+        ..Default::default()
+    }
+}
+
+#[macroquad::main(window_conf)]
 async fn main() {
+    //initialize all the things
+    let mut player: Player = Player.new()
     loop {
+        let dt: f32 = get_frame_time();
         clear_background(DARKGRAY);
 
-        next_frame().await
+        next_frame().await //should always be last
     }
 }
