@@ -48,6 +48,8 @@ impl Player {
 
         self.pos += dir * dt;
 
+        self.pos = self.pos.clamp(Vec2::ZERO, vec2(SW, SH));
+
         self.draw();
     }
 
@@ -56,7 +58,7 @@ impl Player {
         self.i_frame = true;
     }
 
-    fn read_dir(&self) -> Vec2 {
+    fn read_dir(&mut self) -> Vec2 {
         let mut dir: Vec2 = Vec2::new(0., 0.);
         let speed: f32 = if is_key_down(KeyCode::LeftShift) {
             300.0
@@ -76,8 +78,12 @@ impl Player {
             dir.x += speed
         }
 
-        if self.pos.x > SW || self.pos.x == 0. {
-            dir.x = 0.
+        if self.pos.x > SW {
+            //dir.x = 0.;
+            self.pos.x = SW;
+        }
+        if self.pos.x < 0. {
+            self.pos.x = 0.;
         }
 
         dir
