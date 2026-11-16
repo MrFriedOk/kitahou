@@ -7,7 +7,7 @@ const HC: f32 = SW / 2.0; //horizontal center
 const VC: f32 = SH / 2.0;
 
 const START: Vec2 = Vec2::new(HC, VC);
-const STARTVEL: Vec2 = Vec2::new(5., 5.);
+const STARTVEL: Vec2 = Vec2::new(4., 4.);
 
 struct Game {
     player: Player,
@@ -19,7 +19,7 @@ struct Player {
     pos: Vec2,
     vel: Vec2,
     r: f32,
-    slow: bool,
+    //slow: bool,
 }
 
 impl Game {
@@ -29,6 +29,7 @@ impl Game {
 
     fn update(&mut self, dt: f32) {
         self.player.move_input();
+        self.player.slow_input();
         self.player.draw();
     }
 }
@@ -40,12 +41,20 @@ impl Player {
             pos,
             vel,
             r,
-            slow,
+            //slow,
         }
     }
 
     fn damage(&mut self) {
         todo!()
+    }
+
+    fn slow_input(&mut self) {
+        if is_key_down(KeyCode::RightShift) {
+            (self.vel.x, self.vel.y) = (1.5, 1.5);
+        } else {
+            self.vel = STARTVEL;
+        }
     }
 
     fn move_input(&mut self) {
