@@ -18,6 +18,7 @@ enum BulletKind {
 
 struct Game {
     player: Player,
+    bullets: Vec<Bullet>,
     //bullets
 }
 
@@ -39,12 +40,21 @@ struct Player {
 
 impl Game {
     fn new(player: Player) -> Self {
-        Self { player }
+        Self { player, bullets }
     }
 
     fn update(&mut self, dt: f32) {
         self.player.update(dt);
+        //self.bullets.update(dt);
     }
+}
+
+impl Bullet {
+    fn new(&self) -> Self {
+        todo!()
+    }
+
+    fn update(&mut self, dt: f32) {}
 }
 
 impl Player {
