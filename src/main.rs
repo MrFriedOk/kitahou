@@ -40,8 +40,9 @@ impl Player {
     }
 
     fn update(&mut self, dt: f32) {
-        self.move_input(dt);
-        self.slow_input(dt);
+        let dir: Vec2 = self.read_dir();
+
+        self.pos += dir * dt;
 
         self.draw();
     }
@@ -50,30 +51,10 @@ impl Player {
         todo!()
     }
 
-    fn slow_input(&mut self, dt: f32) {
-        if is_key_down(KeyCode::RightShift) {
-            self.vel = SLOWVEL;
-        }
-        if is_key_down(KeyCode::LeftShift) {
-            self.vel = SLOWVEL;
-        } else {
-            self.vel = STARTVEL;
-        }
-    }
+    fn read_dir() -> Vec2 {
+        let mut dir: Vec2 = Vec2::new(0., 0.);
 
-    fn move_input(&mut self, dt: f32) {
-        if is_key_down(KeyCode::Left) {
-            self.pos.x -= 1.0 * (self.vel.x * dt);
-        }
-        if is_key_down(KeyCode::Right) {
-            self.pos.x += 1.0 * (self.vel.x * dt);
-        }
-        if is_key_down(KeyCode::Up) {
-            self.pos.y -= 1.0 * (self.vel.y * dt);
-        }
-        if is_key_down(KeyCode::Down) {
-            self.pos.y += 1.0 * (self.vel.y * dt);
-        }
+        dir
     }
 
     fn draw(&self) {
