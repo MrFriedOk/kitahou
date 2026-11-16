@@ -85,6 +85,13 @@ impl Player {
         if self.pos.x < 0. {
             self.pos.x = 0.;
         }
+        if self.pos.y > SH {
+            //dir.x = 0.;
+            self.pos.y = SH;
+        }
+        if self.pos.y < 0. {
+            self.pos.y = 0.;
+        }
 
         dir
     }
