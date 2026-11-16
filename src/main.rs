@@ -18,17 +18,23 @@ struct Player {
 }
 
 impl Player {
-    fn new(hp: i8, pos: Vec2, vel: Vec2, r: f32,slow: bool) -> Self {
-        Self { hp, pos, vel, r, slow }
+    fn new(hp: i8, pos: Vec2, vel: Vec2, r: f32, slow: bool) -> Self {
+        Self {
+            hp,
+            pos,
+            vel,
+            r,
+            slow,
+        }
     }
 
     fn damage(&mut self) {
         todo!()
     }
 
-    fn move(&mut self) {
-       match input {
-            
+    fn move_input(&mut self) {
+        if is_key_down(KeyCode::Left) {
+            self.pos.x -= 1.0;
         }
     }
 
@@ -51,11 +57,12 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
     //initialize all the things
-    let mut player = Player::new(3, START, STARTVEL, 10.0,false);
+    let mut player = Player::new(3, START, STARTVEL, 10.0, false);
     loop {
         let dt: f32 = get_frame_time();
         clear_background(DARKGRAY);
 
+        player.move_input();
         player.draw();
 
         next_frame().await //should always be last
