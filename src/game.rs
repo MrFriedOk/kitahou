@@ -1,13 +1,13 @@
-pub use macroquad::prelude::*;
+//pub use macroquad::{Bullet,Enemy,};
 
 //pub mod player;
 
 //pub use crate::bullet::Bullet;
-pub use crate::player::Player;
+//pub use crate::player::Player;
 
 pub use crate::*;
 
-pub use crate::config::*;
+//pub use crate::config::*;
 
 pub struct Game {
     player: Player,
