@@ -10,12 +10,26 @@ const STARTY: f32 = VC / 2.0;
 
 const START: Vec2 = Vec2::new(HC, STARTY);
 
+enum BulletKind {
+    Straight,
+    Accelerating { accel: f32 },
+    Homing { rate: f32 },
+}
+
 struct Game {
     player: Player,
     //bullets
 }
 
+struct Bullet {
+    pos: Vec2,
+    r: f32,
+    vel: f32,
+    kind: BulletKind,
+}
+
 struct Player {
+    //r = radius
     hp: i8,
     pos: Vec2,
     r: f32,
@@ -67,7 +81,6 @@ impl Player {
             self.r = 8.;
         } else {
             self.r = 10.;
-            speed = 600.;
         }
 
         if is_key_down(KeyCode::Up) {
