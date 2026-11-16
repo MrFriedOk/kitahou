@@ -7,9 +7,9 @@ const HC: f32 = SW / 2.0; //horizontal center
 const VC: f32 = SH / 2.0;
 
 const START: Vec2 = Vec2::new(HC, VC);
-const STARTVEL: Vec2 = Vec2::new(40., 40.);
+const STARTVEL: Vec2 = Vec2::new(400., 400.);
 
-const SLOWVEL: Vec2 = Vec2::new(20., 20.);
+const SLOWVEL: Vec2 = Vec2::new(200., 200.);
 
 struct Game {
     player: Player,
@@ -58,16 +58,16 @@ impl Player {
 
     fn move_input(&mut self, dt: f32) {
         if is_key_down(KeyCode::Left) {
-            self.pos.x -= 1.0 * self.vel.x * dt;
+            self.pos.x -= 1.0 * (self.vel.x * dt);
         }
         if is_key_down(KeyCode::Right) {
-            self.pos.x += 1.0 * self.vel.x * dt;
+            self.pos.x += 1.0 * (self.vel.x * dt);
         }
         if is_key_down(KeyCode::Up) {
-            self.pos.y -= 1.0 * self.vel.y * dt;
+            self.pos.y -= 1.0 * (self.vel.y * dt);
         }
         if is_key_down(KeyCode::Down) {
-            self.pos.y += 1.0 * self.vel.y * dt;
+            self.pos.y += 1.0 * (self.vel.y * dt);
         }
     }
 
