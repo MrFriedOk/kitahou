@@ -23,10 +23,7 @@ impl Pattern {
             let f: f32 = b as f32;
             let angle: f32 = f / self.count as f32 * std::f32::consts::TAU + f * self.spiral;
 
-            let dir: Vec2 = Vec2::from_angle(
-                (f * self.distance) * self.spread.cos() * f * self.spiral,
-                (f * self.distance) * self.spread.sin() * f * self.spiral,
-            );
+            let dir: Vec2 = Vec2::from_angle(angle) * self.distance;
             bullets.push(Bullet::new(pos, 5., dir, BulletKind::Straight, Vec2::ZERO))
         }
     }
