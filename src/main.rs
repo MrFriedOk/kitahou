@@ -29,9 +29,8 @@ async fn main() {
     //initialize all the things
     let player: Player = Player::new(3, START, 10.0, false);
     let bullets: Vec<Bullet> = Vec::new();
-    let mut enemies: Vec<Enemy> = Vec::new();
+    let enemies: Vec<Enemy> = Vec<Enemy::new(Vec2::new(500., 500.), 20., Vec2::new(10., 10.))>;
 
-    enemies.push(Enemy::new(Vec2::new(500., 500.), 20., Vec2::new(10., 10.)));
     let mut game: Game = Game::new(player, bullets, enemies);
 
     loop {
