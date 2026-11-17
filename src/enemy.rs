@@ -18,6 +18,8 @@ impl Enemy {
     }
 
     pub fn update(&mut self, dt: f32, player: Vec2) {
+        self.pos += Pattern::new().flower();
+
         self.draw();
     }
 

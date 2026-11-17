@@ -9,13 +9,18 @@ pub struct Pattern {
 }
 
 impl Pattern {
-    //pub fn new() -> Self {}
+    pub fn new(count: f32,r: f32,spread: f32,distance:f32,spiral:f32) -> Self {
+        Self {
+        count,
+        r,
+        spread,
+        distance,
+        spiral,
+    }
+    }
 
     pub fn flower(&mut self) -> Vec2 {
-        self.count = 12.;
-        self.spread = 1.;
-        self.distance = 1.;
-        self.spiral = 5.;
+        
 
         dir: Vec2::new()
     }
