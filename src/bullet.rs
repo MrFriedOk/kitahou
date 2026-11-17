@@ -25,7 +25,7 @@ impl Bullet {
         }
     }
 
-    pub fn move_bullet(&mut self,dt, target: Vec2) {
+    pub fn move_bullet(&mut self, dt: f32, target: Vec2) {
         self.pos *= self.vel * dt;
     }
 

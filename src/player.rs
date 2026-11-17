@@ -7,7 +7,7 @@ pub use crate::*;
 pub struct Player {
     //r = radius
     hp: i8,
-    pos: Vec2,
+    pub pos: Vec2,
     r: f32,
     //slow: bool,
     i_frame: bool,
