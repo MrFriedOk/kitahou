@@ -5,6 +5,7 @@
 //pub use crate::bullet::Bullet;
 //pub use crate::player::Player;
 
+use crate::bullet::BulletKind;
 pub use crate::*;
 
 //pub use crate::config::*;
@@ -30,6 +31,8 @@ impl Game {
 
         for enemy in &mut self.enemies {
             enemy.update(dt, self.player.pos);
+            self.bullets
+                .push(Pattern::new(12., 1., 1., 5.).flower(enemy.pos))
         }
 
         for bullet in &mut self.bullets {
