@@ -36,8 +36,14 @@ impl Bullet {
         Self { pos, r, vel, kind }
     }
 
+    fn move_bullet(&mut self) {
+        let dir: Vec2  = if self.kind == BulletKind::Straight {
+
+        }
+    }
+
     fn draw(&self) {
-        draw_circle(self.pos.x, self.pos.y, 5., WHITE)
+        draw_circle(self.pos.x, self.pos.y, 5., RED)
     }
 
     fn update(&mut self, dt: f32) {
