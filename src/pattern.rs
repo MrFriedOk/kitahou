@@ -27,6 +27,8 @@ impl Pattern {
                 (f * self.distance) * self.spread.cos() * f * self.spiral,
                 (f * self.distance) * self.spread.sin() * f * self.spiral,
             );
+            self.bullets
+                .push(Bullet::new(pos, 5., dir, BulletKind::Straight, Vec2::ZERO))
         }
     }
 }
