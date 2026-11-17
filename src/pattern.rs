@@ -19,11 +19,13 @@ impl Pattern {
     }
 
     pub fn flower(&self, pos: Vec2, bullets: &mut Vec<Bullet>) {
-        for b in 0..=self.count {
+        for b in 0..self.count {
             let f: f32 = b as f32;
             let angle: f32 = f / self.count as f32 * std::f32::consts::TAU + f * self.spiral;
 
-            let dir: Vec2 = Vec2::from_angle(angle) * self.distance;
+            let speed: f32 = self.distance * (angle).cos().abs();
+
+            let dir: Vec2 = Vec2::from_angle(angle) * speed;
             bullets.push(Bullet::new(pos, 5., dir, BulletKind::Straight, Vec2::ZERO))
         }
     }
