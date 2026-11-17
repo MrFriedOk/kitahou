@@ -26,7 +26,7 @@ impl Bullet {
     }
 
     pub fn move_bullet(&mut self, dt: f32, target: Vec2) {
-        self.pos += Vec2::new(10., 10.);
+        self.pos += self.vel;
     }
 
     pub fn draw(&self) {
