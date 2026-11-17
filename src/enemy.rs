@@ -28,7 +28,7 @@ impl Enemy {
             bullets.push(bullet::Bullet::new(
                 self.pos,
                 5.,
-                Vec2::from_angle(angle) * speed,
+                Vec2::new(speed.cos() * speed, speed.sin() * speed),
                 bullet::BulletKind::Straight,
                 self.player,
             ));
