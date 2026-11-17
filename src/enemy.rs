@@ -14,6 +14,13 @@ impl Enemy {
     pub fn update(&mut self, dt: f32) {
         self.draw();
     }
+
+    pub fn danmaku_ring(&self, bullets: &mut Vec<Bullet>, count: f32, speed: f32) {
+        for ring in 0..count {
+            let angle = ring as f32 / count as f32 * std::f32::consts::TAU;
+        }
+    }
+
     pub fn draw(&self) {
         draw_circle(self.pos.x, self.pos.y, self.r, RED);
     }
