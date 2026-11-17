@@ -36,5 +36,16 @@ impl Game {
         for bullet in &mut self.bullets {
             bullet.update(dt);
         }
+
+        self.collision_check();
+    }
+
+    fn collision_check(&mut self) {
+        for enemy in &self.enemies {
+            if enemy.pos.x - 20. >= self.player.pos.x {
+                self.player.hp -= 1;
+                self.player.col = RED;
+            }
+        }
     }
 }

@@ -1,7 +1,7 @@
 pub use crate::*;
 
 pub struct Enemy {
-    pos: Vec2,
+    pub pos: Vec2,
     r: f32,
     vel: Vec2,
     player: Vec2,

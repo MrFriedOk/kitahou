@@ -6,20 +6,22 @@ pub use crate::*;
 
 pub struct Player {
     //r = radius
-    hp: i8,
+    pub hp: i8,
     pub pos: Vec2,
     r: f32,
     //slow: bool,
     i_frame: bool,
+    pub col: Color,
 }
 
 impl Player {
-    pub fn new(hp: i8, pos: Vec2, r: f32, i_frame: bool) -> Self {
+    pub fn new(hp: i8, pos: Vec2, r: f32, i_frame: bool, col: Color) -> Self {
         Self {
             hp,
             pos,
             r,
             i_frame,
+            col,
         }
     }
 
