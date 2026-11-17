@@ -17,8 +17,10 @@ impl Enemy {
         }
     }
 
-    pub fn update(&mut self, dt: f32, player: Vec2) {
+    pub fn update(&mut self, dt: f32, player: Vec2, bullets: &mut Vec<Bullet>) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower();
+
+        Pattern::new(12, 10., 100., 5., 0.).flower(self.pos, bullets, dt);
 
         self.draw();
     }

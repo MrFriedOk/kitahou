@@ -9,9 +9,9 @@ pub enum BulletKind {
 
 #[derive(Clone)]
 pub struct Bullet {
-    pos: Vec2,
+    pub pos: Vec2,
     r: f32,
-    vel: Vec2,
+    pub vel: Vec2,
     kind: BulletKind,
     target: Vec2,
 }

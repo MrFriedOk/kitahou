@@ -30,11 +30,11 @@ impl Game {
         self.player.update(dt);
 
         for enemy in &mut self.enemies {
-            enemy.update(dt, self.player.pos);
-            //Pattern::new(12, 10., 100., 5., 0.).flower(enemy.pos, &mut self.bullets, dt);
+            enemy.update(dt, self.player.pos, &mut self.bullets);
         }
 
         for bullet in &mut self.bullets {
+            bullet.pos += bullet.vel;
             bullet.update(dt);
         }
 
