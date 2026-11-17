@@ -5,12 +5,14 @@ pub mod bullet;
 pub mod config;
 pub mod enemy;
 pub mod game;
+pub mod pattern;
 pub mod player;
 
 pub use crate::config::*;
 pub use bullet::Bullet;
 pub use enemy::Enemy;
 pub use game::Game;
+pub use pattern::Pattern;
 pub use player::Player;
 
 fn window_conf() -> Conf {
