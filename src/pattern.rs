@@ -18,16 +18,14 @@ impl Pattern {
         }
     }
 
-    pub fn flower(&self, pos: Vec2) -> Vec<Bullet> {
+    pub fn flower(&self, pos: Vec2, bullets: &mut Vec<Bullet>) {
         for b in 0..=self.count {
-            let mut out: Vec = Vec::new();
             let f: f32 = b as f32;
             let dir: Vec2 = Vec2::new(
                 (f * self.distance) * self.spread.cos() * f * self.spiral,
                 (f * self.distance) * self.spread.sin() * f * self.spiral,
             );
-            //bullets.push(Bullet::new(pos, 5., dir, BulletKind::Straight, Vec2::ZERO))
-            out
+            bullets.push(Bullet::new(pos, 5., dir, BulletKind::Straight, Vec2::ZERO))
         }
     }
 }

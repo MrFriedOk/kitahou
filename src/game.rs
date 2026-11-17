@@ -31,7 +31,7 @@ impl Game {
 
         for enemy in &mut self.enemies {
             enemy.update(dt, self.player.pos);
-            Pattern::new(12, 1., 1., 5.).flower(enemy.pos, &mut self.bullets)
+            Pattern::new(12, 1., 1., 5.).flower(enemy.pos, &mut self.bullets);
         }
 
         for bullet in &mut self.bullets {
