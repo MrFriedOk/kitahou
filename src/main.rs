@@ -7,46 +7,49 @@ pub mod config;
 pub mod game;
 pub mod player;
 
-//pub use bullet::Bullet;
-//pub use enemy::Enemy;
 pub use crate::config::*;
+pub use bullet::Bullet;
+pub use enemy::Enemy;
 pub use game::Game;
 pub use player::Player;
 
-enum BulletKind {
+pub enum BulletKind {
     Straight,
     Accelerating { accel: f32 },
     Homing { rate: f32 },
 }
 
-struct Enemy {
+pub struct Enemy {
     pos: Vec2,
     r: f32,
+    vel: Vec2,
 }
 
-struct Bullet {
+pub struct Bullet {
     pos: Vec2,
     r: f32,
     vel: Vec2,
     kind: BulletKind,
 }
 
+impl Enemy {
+    pub fn new(pos: Vec2, r: f32, vel: Vec2) -> Self {
+        Self { pos, r, vel }
+    }
+}
+
 impl Bullet {
-    fn new(pos: Vec2, r: f32, vel: Vec2, kind: BulletKind) -> Self {
+    pub fn new(pos: Vec2, r: f32, vel: Vec2, kind: BulletKind) -> Self {
         Self { pos, r, vel, kind }
     }
 
-    fn move_bullet(&mut self) {
-        let dir: Vec2  = if self.kind == BulletKind::Straight {
+    pub fn move_bullet(&mut self, target: Vec2) {}
 
-        }
-    }
-
-    fn draw(&self) {
+    pub fn draw(&self) {
         draw_circle(self.pos.x, self.pos.y, 5., RED)
     }
 
-    fn update(&mut self, dt: f32) {
+    pub fn update(&mut self, dt: f32) {
         self.draw();
     }
 }
@@ -67,8 +70,10 @@ async fn main() {
     //initialize all the things
     let player: Player = Player::new(3, START, 10.0, false);
     let bullets: Vec<Bullet> = Vec::new();
-    let enemies: Vec<Enemy> = Vec::new();
+    let mut enemies: Vec<Enemy> = Vec::new();
     let mut game: Game = Game::new(player, bullets, enemies);
+
+    enemies.push(Enemy::new(Vec2::new(500., 500.), 20., Vec2::new(10., 10.)));
     loop {
         let dt: f32 = get_frame_time();
         clear_background(DARKGRAY);
