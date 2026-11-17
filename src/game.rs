@@ -28,15 +28,13 @@ impl Game {
     pub fn update(&mut self, dt: f32) {
         self.player.update(dt);
 
-        let mut bullet: Bullet = Bullet::new(
-            Vec2::new(0., 0.),
-            5.,
-            Vec2::new(10., 10.),
-            BulletKind::Straight,
-        );
+        let mut bullet: Bullet =
+            Bullet::new(Vec2::ZERO, 5., Vec2::new(10., 10.), BulletKind::Straight);
 
         self.bullets.push(bullet);
 
-        self.bullets.update(dt);
+        for bullet in &mut self.bullets {
+            bullet.update(dt);
+        }
     }
 }
