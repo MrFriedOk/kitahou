@@ -32,7 +32,7 @@ impl Game {
             Vec2::new(SW, SH),
             5.,
             Vec2::new(10., 10.),
-            BulletKind::Straight,
+            bullet::BulletKind::Straight,
         );
 
         self.bullets.push(bullet);
