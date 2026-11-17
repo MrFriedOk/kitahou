@@ -15,9 +15,16 @@ impl Enemy {
         self.draw();
     }
 
-    pub fn danmaku_ring(&self, bullets: &mut Vec<Bullet>, count: f32, speed: f32) {
-        for ring in 0..count {
+    pub fn danmaku_ring(&self, bullets: &mut Vec<Bullet>, count: i32, speed: f32) {
+        for ring in 0..=count {
             let angle = ring as f32 / count as f32 * std::f32::consts::TAU;
+
+            bullets.push(bullet::Bullet::new(
+                self.pos,
+                self.r,
+                self.vel,
+                bullet::BulletKind::Straight,
+            ))
         }
     }
 
