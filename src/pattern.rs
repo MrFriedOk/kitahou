@@ -20,6 +20,10 @@ impl Pattern {
         }
     }
 
+    pub fn circle(&mut self, enemy_pos: Vec2, bullets: &mut Vec<Bullet>, dt: f32) {
+        todo!()
+    }
+
     pub fn flower(&mut self, pos: Vec2, bullets: &mut Vec<Bullet>, dt: f32) {
         todo!()
     }
