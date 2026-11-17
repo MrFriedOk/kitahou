@@ -29,7 +29,7 @@ impl Game {
         self.player.update(dt);
 
         for enemy in &mut self.enemies {
-            enemy.update(dt);
+            enemy.update(dt, self.player.pos);
             enemy.danmaku_ring(&mut self.bullets, 20, 200.)
         }
 

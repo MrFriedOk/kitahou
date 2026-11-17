@@ -16,10 +16,16 @@ pub struct Bullet {
 
 impl Bullet {
     pub fn new(pos: Vec2, r: f32, vel: Vec2, kind: BulletKind, target: Vec2) -> Self {
-        Self { pos, r, vel, kind, target }
+        Self {
+            pos,
+            r,
+            vel,
+            kind,
+            target,
+        }
     }
 
-    pub fn move_bullet(&mut self, dt, target: Vec2) {
+    pub fn move_bullet(&mut self,dt, target: Vec2) {
         self.pos *= self.vel * dt;
     }
 
@@ -28,7 +34,7 @@ impl Bullet {
     }
 
     pub fn update(&mut self, dt: f32) {
-        self.move_bullet(dt,self.target);
+        self.move_bullet(dt, self.target);
 
         self.draw();
     }
