@@ -28,14 +28,9 @@ impl Game {
     pub fn update(&mut self, dt: f32) {
         self.player.update(dt);
 
-        let mut bullet: Bullet = Bullet::new(
-            Vec2::new(SW, SH),
-            5.,
-            Vec2::new(10., 10.),
-            bullet::BulletKind::Straight,
-        );
-
-        self.bullets.push(bullet);
+        for enemy in &mut self.enemies {
+            enemy.update(dt);
+        }
 
         for bullet in &mut self.bullets {
             bullet.update(dt);
