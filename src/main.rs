@@ -40,7 +40,9 @@ impl Bullet {
         draw_circle(self.pos.x, self.pos.y, 5., WHITE)
     }
 
-    fn update(&mut self, dt: f32) {}
+    fn update(&mut self, dt: f32) {
+        self.draw();
+    }
 }
 
 fn window_conf() -> Conf {
