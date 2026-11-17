@@ -21,10 +21,10 @@ impl Enemy {
 
             bullets.push(bullet::Bullet::new(
                 self.pos,
-                self.r,
-                self.vel,
+                5.,
+                Vec2::from_angle(angle) * speed,
                 bullet::BulletKind::Straight,
-            ))
+            ));
         }
     }
 

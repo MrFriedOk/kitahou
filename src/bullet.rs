@@ -11,20 +11,25 @@ pub struct Bullet {
     r: f32,
     vel: Vec2,
     kind: BulletKind,
+    target: Vec2,
 }
 
 impl Bullet {
-    pub fn new(pos: Vec2, r: f32, vel: Vec2, kind: BulletKind) -> Self {
-        Self { pos, r, vel, kind }
+    pub fn new(pos: Vec2, r: f32, vel: Vec2, kind: BulletKind, target: Vec2) -> Self {
+        Self { pos, r, vel, kind, target }
     }
 
-    pub fn move_bullet(&mut self, target: Vec2) {}
+    pub fn move_bullet(&mut self, dt, target: Vec2) {
+        self.pos *= self.vel * dt;
+    }
 
     pub fn draw(&self) {
         draw_circle(self.pos.x, self.pos.y, 5., RED)
     }
 
     pub fn update(&mut self, dt: f32) {
+        self.move_bullet(dt,self.target);
+
         self.draw();
     }
 }
