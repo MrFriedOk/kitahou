@@ -10,3 +10,5 @@ pub const VC: f32 = SH / 2.0;
 pub const STARTY: f32 = VC + (VC / 2.0);
 
 pub const START: Vec2 = Vec2::new(HC, STARTY);
+
+//pub const FLOWER: Vec = ()
