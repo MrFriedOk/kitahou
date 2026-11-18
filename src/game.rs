@@ -44,10 +44,11 @@ impl Game {
 
     fn collision_check(&mut self) {
         for enemy in &self.enemies {
-            if !self.player.i_frame
-                && enemy.pos.x == self.player.pos.x
-                && enemy.pos.y == self.player.pos.y
-            {
+            let enemy_hitbox = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
+            let player_hitbox: Circle =
+                Circle::new(self.player.pos.x, self.player.pos.y, self.player.r);
+            let hit: bool = enemy_hitbox.overlaps(&player_hitbox);
+            if !self.player.i_frame && hit {
                 self.player.hp -= 1;
                 self.player.i_frame = true;
                 self.player.col = RED;

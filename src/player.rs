@@ -8,7 +8,7 @@ pub struct Player {
     //r = radius
     pub hp: i8,
     pub pos: Vec2,
-    r: f32,
+    pub r: f32,
     //slow: bool,
     pub i_frame: bool,
     pub col: Color,
@@ -45,7 +45,7 @@ impl Player {
         let mut speed: f32 = 600.;
 
         if is_key_down(KeyCode::LeftShift) {
-            speed = 200.0;
+            speed = 300.0;
             self.r = 8.;
         } else {
             self.r = 10.;
