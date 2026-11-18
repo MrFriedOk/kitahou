@@ -31,7 +31,7 @@ impl Pattern {
             bullets.push(Bullet::new(
                 Vec2::new(enemy_pos.x + angle.cos(), enemy_pos.y + angle.sin()),
                 5.,
-                Vec2::new(enemy_pos.x, enemy_pos.y),
+                Vec2::new(angle.cos(), angle.sin()),
                 BulletKind::Straight,
                 Vec2::ZERO,
             ))
