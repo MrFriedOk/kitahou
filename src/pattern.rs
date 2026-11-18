@@ -28,7 +28,7 @@ impl Pattern {
 
             bullets.push(Bullet::new(
                 enemy_pos,
-                5.,
+                10.,
                 Vec2::new(angle.cos(), angle.sin()),
                 BulletKind::Straight,
                 Vec2::ZERO,

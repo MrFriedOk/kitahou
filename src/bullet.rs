@@ -32,7 +32,7 @@ impl Bullet {
     }
 
     pub fn draw(&self) {
-        draw_circle(self.pos.x, self.pos.y, 5., RED)
+        draw_circle(self.pos.x, self.pos.y, self.r, RED)
     }
 
     pub fn update(&mut self, dt: f32) {
