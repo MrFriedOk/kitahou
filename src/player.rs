@@ -45,7 +45,7 @@ impl Player {
         let mut speed: f32 = 600.;
 
         if is_key_down(KeyCode::LeftShift) {
-            speed = 300.0;
+            speed = 200.0;
             self.r = 8.;
         } else {
             self.r = 10.;
