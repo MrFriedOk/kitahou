@@ -44,10 +44,7 @@ impl Bullet {
     }
 
     pub fn out_of_bounds(&self) -> bool {
-        if self.pos.x > SW || self.pos.x < 0. || self.pos.y > SH || self.pos.y < 0. {
-            true
-        } else {
-            false
-        }
+        let p: f32 = 10.;
+        self.pos.x > SW + p || self.pos.x < 0. - p || self.pos.y > SH + p || self.pos.y < 0. - p
     }
 }
