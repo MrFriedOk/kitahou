@@ -55,10 +55,11 @@ impl Game {
             }
         }
         for bullet in &self.bullets {
-            if !self.player.i_frame
-                && bullet.pos.x == self.player.pos.x
-                && bullet.pos.y == self.player.pos.y
-            {
+            let bullet_hitbox = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
+            let player_hitbox: Circle =
+                Circle::new(self.player.pos.x, self.player.pos.y, self.player.r);
+            let hit: bool = bullet_hitbox.overlaps(&player_hitbox);
+            if !self.player.i_frame && hit {
                 self.player.hp -= 1;
                 self.player.i_frame = true;
                 self.player.col = RED;
