@@ -26,12 +26,12 @@ impl Pattern {
         //'checkerboard'?
         for c in 0..self.count {
             let i: f32 = c as f32;
-            let angle: f32 = self.rotation + i * std::f32::consts::TAU / self.count as f32;
+            let angle: f32 = rotation + i * std::f32::consts::TAU / self.count as f32;
 
             bullets.push(Bullet::new(
                 Vec2::new(enemy_pos.x + angle.cos(), enemy_pos.y + angle.sin()),
                 5.,
-                Vec2::new(10., 10.),
+                Vec2::new(enemy_pos.x, enemy_pos.y),
                 BulletKind::Straight,
                 Vec2::ZERO,
             ))
