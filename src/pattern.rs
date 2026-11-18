@@ -25,9 +25,9 @@ impl Pattern {
         for c in 0..self.count {
             let i: f32 = c as f32;
             let rotate: f32 = if rotation {
-                self.count as f32 / 3.14
+                self.count as f32 / std::f32::consts::PI
             } else {
-                self.count as f32 / 6.28
+                self.count as f32 / std::f32::consts::TAU
             };
             let angle: f32 = rotate + i * std::f32::consts::TAU / self.count as f32;
 
