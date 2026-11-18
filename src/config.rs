@@ -4,6 +4,8 @@ pub use crate::*;
 pub const SH: f32 = 1080.0;
 pub const SW: f32 = 1440.0;
 
+//pub const P
+
 pub const HC: f32 = SW / 2.0; //horizontal center
 pub const VC: f32 = SH / 2.0;
 

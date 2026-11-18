@@ -64,21 +64,6 @@ impl Player {
             dir.x += speed
         }
 
-        if self.pos.x > SW {
-            //shut up clippy, i have a clamp!
-            self.pos.x = SW;
-        }
-        if self.pos.x < 0. {
-            self.pos.x = 0.;
-        }
-        if self.pos.y > SH {
-            //dir.x = 0.;
-            self.pos.y = SH;
-        }
-        if self.pos.y < 0. {
-            self.pos.y = 0.;
-        }
-
         dir
     }
 
