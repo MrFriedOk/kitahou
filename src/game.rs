@@ -46,8 +46,8 @@ impl Game {
     fn collision_check(&mut self) {
         for enemy in &self.enemies {
             if !self.player.i_frame
-                && enemy.pos.x - enemy.r >= self.player.pos.x
-                && enemy.pos.y - enemy.r >= self.player.pos.y
+                && enemy.pos.x >= self.player.pos.x
+                && enemy.pos.y >= self.player.pos.y
             {
                 self.player.hp -= 1;
                 self.player.i_frame = true;
@@ -56,8 +56,8 @@ impl Game {
         }
         for bullet in &self.bullets {
             if !self.player.i_frame
-                && bullet.pos.x - bullet.r >= self.player.pos.x
-                && bullet.pos.y - bullet.r >= self.player.pos.y
+                && bullet.pos.x >= self.player.pos.x
+                && bullet.pos.y >= self.player.pos.y
             {
                 self.player.hp -= 1;
                 self.player.i_frame = true;
