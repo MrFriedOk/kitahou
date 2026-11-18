@@ -27,6 +27,7 @@ impl Game {
     }
 
     pub fn update(&mut self, dt: f32) {
+        self.collision_check();
         self.player.update(dt);
 
         for enemy in &mut self.enemies {
@@ -39,15 +40,13 @@ impl Game {
         }
 
         self.out_of_bounds();
-
-        self.collision_check();
     }
 
     fn collision_check(&mut self) {
         for enemy in &self.enemies {
             if !self.player.i_frame
-                && enemy.pos.x >= self.player.pos.x
-                && enemy.pos.y >= self.player.pos.y
+                && enemy.pos.x == self.player.pos.x
+                && enemy.pos.y == self.player.pos.y
             {
                 self.player.hp -= 1;
                 self.player.i_frame = true;
@@ -56,8 +55,8 @@ impl Game {
         }
         for bullet in &self.bullets {
             if !self.player.i_frame
-                && bullet.pos.x >= self.player.pos.x
-                && bullet.pos.y >= self.player.pos.y
+                && bullet.pos.x == self.player.pos.x
+                && bullet.pos.y == self.player.pos.y
             {
                 self.player.hp -= 1;
                 self.player.i_frame = true;
