@@ -14,6 +14,7 @@ pub struct Bullet {
     pub vel: Vec2,
     kind: BulletKind,
     target: Vec2,
+    pub avel: Vec2, //angular velocity, required to make things spinny
 }
 
 impl Bullet {
@@ -24,6 +25,7 @@ impl Bullet {
             vel,
             kind,
             target,
+            avel: Vec2::ZERO,
         }
     }
 
