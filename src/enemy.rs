@@ -22,14 +22,15 @@ impl Enemy {
     pub fn update(&mut self, dt: f32, player: Vec2, bullets: &mut Vec<Bullet>) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower();
 
-        if self.cooldown <= 0. {
-            Pattern::new(12, 10., 100., 5.).circle(self.pos, bullets, dt, 0.);
+        if self.cooldown <= 0. || self.cooldown == 1. {
+            Pattern::new(12, 10., 100., 5.).circle(
+                self.pos,
+                bullets,
+                dt,
+                if self.cooldown >= 1. { 0. } else { 0.5 },
+            );
 
-            self.cooldown += 1.
-        }
-        if self.cooldown <= 1. {
-            Pattern::new(12, 10., 100., 5.).circle(self.pos, bullets, dt, 5.);
-            self.cooldown += 1.;
+            self.cooldown += 2.
         } else {
             self.cooldown -= 0.01;
         }
