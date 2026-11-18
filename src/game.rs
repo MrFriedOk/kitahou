@@ -38,20 +38,21 @@ impl Game {
             bullet.update(dt);
         }
 
-        //self.out_of_bounds();
+        self.out_of_bounds();
 
         self.collision_check();
     }
 
     fn collision_check(&mut self) {
         for enemy in &self.enemies {
-            if enemy.pos.x - 20. >= self.player.pos.x {
+            if !self.player.i_frame && enemy.pos.x - 20. >= self.player.pos.x {
                 self.player.hp -= 1;
+                self.player.i_frame = true;
                 self.player.col = RED;
             }
         }
     }
     fn out_of_bounds(&mut self) {
-        self.bullets.retain(|b| *b);
+        self.bullets.retain(|b| b.pos.x >= 1000.);
     }
 }

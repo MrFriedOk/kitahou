@@ -10,7 +10,7 @@ pub struct Player {
     pub pos: Vec2,
     r: f32,
     //slow: bool,
-    i_frame: bool,
+    pub i_frame: bool,
     pub col: Color,
 }
 
@@ -83,6 +83,6 @@ impl Player {
     }
 
     pub fn draw(&self) {
-        draw_circle(self.pos.x, self.pos.y, self.r, WHITE);
+        draw_circle(self.pos.x, self.pos.y, self.r, self.col);
     }
 }
