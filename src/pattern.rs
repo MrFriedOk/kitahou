@@ -24,7 +24,8 @@ impl Pattern {
         //'checkerboard'?
         for c in 0..self.count {
             let i: f32 = c as f32;
-            let angle: f32 = i * std::f32::consts::TAU / self.count as f32;
+            let rotate: f32 = if rotation { 0. } else { 8. };
+            let angle: f32 = rotate + i * std::f32::consts::TAU / self.count as f32;
 
             bullets.push(Bullet::new(
                 enemy_pos,

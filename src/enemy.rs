@@ -34,7 +34,7 @@ impl Enemy {
         } else {
             self.cooldown -= 0.02;
         }
-        println!("{}", self.cooldown);
+        println!("{}", self.rotate);
         self.draw();
     }
 
