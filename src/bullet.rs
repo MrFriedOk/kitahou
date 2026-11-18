@@ -1,13 +1,11 @@
 pub use crate::*;
 
-#[derive(Clone)]
 pub enum BulletKind {
     Straight,
     Accelerating { accel: f32 },
     Homing { rate: f32 },
 }
 
-#[derive(Clone)]
 pub struct Bullet {
     pub pos: Vec2,
     pub r: f32,
