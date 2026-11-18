@@ -38,7 +38,7 @@ async fn main() {
         20.,
         Vec2::new(10., 10.),
         player.pos,
-        0,
+        0.,
     ));
     let mut game: Game = Game::new(player, bullets, enemies);
 
