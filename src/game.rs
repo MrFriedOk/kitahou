@@ -52,6 +52,6 @@ impl Game {
         }
     }
     fn out_of_bounds(&mut self) {
-        self.bullets.retain(|b| b.pos.x);
+        self.bullets.retain(|b| *b);
     }
 }
