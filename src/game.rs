@@ -52,10 +52,6 @@ impl Game {
         }
     }
     fn out_of_bounds(&mut self) {
-        for bullet in self.bullets {
-            if bullet.pos.x < 20. {
-                self.bullets.retain(bullet);
-            }
-        }
+        self.bullets.retain(|b| b.pos.x);
     }
 }
