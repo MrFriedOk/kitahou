@@ -42,4 +42,12 @@ impl Bullet {
 
         self.draw();
     }
+
+    pub fn out_of_bounds(&self) -> bool {
+        if self.pos.x > SW || self.pos.x < 0. || self.pos.y > SH || self.pos.y < 0. {
+            true
+        } else {
+            false
+        }
+    }
 }
