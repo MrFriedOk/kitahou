@@ -27,12 +27,7 @@ impl Enemy {
         //let rotate: bool = if self.cooldown <= 0.5 { true } else { false };
 
         if self.cooldown <= 0. {
-            Pattern::new(10, 0., 0., 0.).circle(
-                self.pos,
-                bullets,
-                dt,
-                if self.rotate { 0. } else { 0.5 },
-            );
+            Pattern::new(10, 0., 0., 0.).circle(self.pos, bullets, dt, self.rotate);
 
             self.cooldown += 1.;
             self.rotate = !self.rotate;
