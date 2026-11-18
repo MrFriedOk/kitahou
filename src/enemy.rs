@@ -5,11 +5,11 @@ pub struct Enemy {
     r: f32,
     vel: Vec2,
     player: Vec2,
-    cooldown: i32,
+    cooldown: f32,
 }
 
 impl Enemy {
-    pub fn new(pos: Vec2, r: f32, vel: Vec2, player: Vec2, cooldown: i32) -> Self {
+    pub fn new(pos: Vec2, r: f32, vel: Vec2, player: Vec2, cooldown: f32) -> Self {
         Self {
             pos,
             r,
@@ -22,8 +22,11 @@ impl Enemy {
     pub fn update(&mut self, dt: f32, player: Vec2, bullets: &mut Vec<Bullet>) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower();
 
-        Pattern::new(12, 10., 100., 5.).circle(self.pos, bullets, dt, 0.);
-
+        if self.cooldown > 0. {
+            Pattern::new(12, 10., 100., 5.).circle(self.pos, bullets, dt, 0.);
+            self.cooldown += 1.
+        }
+        self.cooldown -= 1. * dt;
         self.draw();
     }
 
