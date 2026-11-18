@@ -51,6 +51,13 @@ impl Game {
                 self.player.col = RED;
             }
         }
+        for bullet in &self.bullets {
+            if !self.player.i_frame && bullet.pos.x - 20. >= self.player.pos.x {
+                self.player.hp -= 1;
+                self.player.i_frame = true;
+                self.player.col = RED;
+            }
+        }
     }
     fn out_of_bounds(&mut self) {
         // self.bullets.retain(|b| b.pos.x <= SW) || b.pos.x <= 20.);
