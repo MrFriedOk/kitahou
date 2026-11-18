@@ -21,7 +21,9 @@ impl Pattern {
     }
 
     pub fn circle(&mut self, enemy_pos: Vec2, bullets: &mut Vec<Bullet>, dt: f32) {
-        todo!()
+        for c in 0..self.count {
+            let i: f32 = c as f32;
+        }
     }
 
     pub fn flower(&mut self, pos: Vec2, bullets: &mut Vec<Bullet>, dt: f32) {
