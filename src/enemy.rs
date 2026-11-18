@@ -24,7 +24,12 @@ impl Enemy {
 
         if self.cooldown <= 0. {
             Pattern::new(12, 10., 100., 5.).circle(self.pos, bullets, dt, 0.);
+
             self.cooldown += 1.
+        }
+        if self.cooldown <= 1. {
+            Pattern::new(12, 10., 100., 5.).circle(self.pos, bullets, dt, 5.);
+            self.cooldown += 1.;
         } else {
             self.cooldown -= 0.01;
         }
