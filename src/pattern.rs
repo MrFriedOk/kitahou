@@ -2,21 +2,19 @@ use crate::bullet::BulletKind;
 pub use crate::*;
 
 pub struct Pattern {
-    pub count: i32,
-    pub spread: f32,
-    pub distance: f32,
-    pub spiral: f32,
-    pub cooldown: f32,
+    count: i32,
+    spread: f32,
+    distance: f32,
+    spiral: f32,
 }
 
 impl Pattern {
-    pub fn new(count: i32, spread: f32, distance: f32, spiral: f32, cooldown: f32) -> Self {
+    pub fn new(count: i32, spread: f32, distance: f32, spiral: f32) -> Self {
         Self {
             count,
             spread,
             distance,
             spiral,
-            cooldown,
         }
     }
 
@@ -29,7 +27,7 @@ impl Pattern {
             let angle: f32 = rotation + i * std::f32::consts::TAU / self.count as f32;
 
             bullets.push(Bullet::new(
-                Vec2::new(enemy_pos.x + angle.cos(), enemy_pos.y + angle.sin()),
+                enemy_pos,
                 5.,
                 Vec2::new(angle.cos(), angle.sin()),
                 BulletKind::Straight,
