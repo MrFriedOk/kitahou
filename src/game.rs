@@ -36,8 +36,9 @@ impl Game {
         for bullet in &mut self.bullets {
             bullet.pos += bullet.vel;
             bullet.update(dt);
-            self.out_of_bounds(bullet)
         }
+
+        self.out_of_bounds();
 
         self.collision_check();
     }
@@ -50,6 +51,9 @@ impl Game {
             }
         }
     }
-
-    fn out_of_bounds(&self, bullet: &mut Bullet) {}
+    fn out_of_bounds(&mut self) {
+        for bullet in &self.bullets {
+            self.bullets.retain()
+        }
+    }
 }
