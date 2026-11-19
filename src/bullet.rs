@@ -47,9 +47,14 @@ impl Bullet {
     }
 
     pub fn bombed(&self, bomb: &Option<Bomb>) -> bool {
-        let bomb_hitbox: Circle = Circle::new(bomb.pos.x, bomb.pos.y, bomb.r);
-        let bullet_hitbox: Circle = Circle::new(self.pos.x, self.pos.y, self.r);
+        match &bomb {
+            Some(bomb) => {
+                let bomb_hitbox: Circle = Circle::new(bomb.pos.x, bomb.pos.y, bomb.r);
+                let bullet_hitbox: Circle = Circle::new(self.pos.x, self.pos.y, self.r);
 
-        bullet_hitbox.overlaps(&bomb_hitbox)
+                bullet_hitbox.overlaps(&bomb_hitbox)
+            }
+            None => false,
+        }
     }
 }
