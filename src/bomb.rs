@@ -1,7 +1,7 @@
 use crate::*;
 
 pub struct Bomb {
-    pos: Vec2,
+    pub pos: Vec2,
     pub r: f32,
 }
 
@@ -11,6 +11,12 @@ impl Bomb {
     }
 
     pub fn update(&mut self, tick: f32) {
-        self.r += 1. * tick;
+        self.r += 175. * tick;
+        self.draw()
+    }
+
+    fn draw(&self) {
+        // will not be needed unless debugging
+        //draw_circle(self.pos.x, self.pos.y, self.r)
     }
 }

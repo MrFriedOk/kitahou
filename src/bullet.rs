@@ -45,4 +45,11 @@ impl Bullet {
         let p: f32 = 10.;
         self.pos.x > SW + p || self.pos.x < 0. - p || self.pos.y > SH + p || self.pos.y < 0. - p
     }
+
+    pub fn bombed(&mut self, bomb: Bomb) -> bool {
+        let bomb_hitbox: Circle = Circle::new(bomb.pos.x, bomb.pos.y, bomb.r);
+        let bullet_hitbox: Circle = Circle::new(self.pos.x, self.pos.y, self.r);
+
+        bullet_hitbox.overlaps(&bomb_hitbox)
+    }
 }

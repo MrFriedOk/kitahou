@@ -86,11 +86,6 @@ impl Game {
                 self.player.i_frame = true;
                 self.player.col = RED;
             }
-            if self.bomb == Some<Bomb> {
-                let bomb_hitbox: Circle = Circle::new(self.bomb.pos.x,self.bomb.pos.y,self.bomb.r);
-                let hit: bool = bomb_hitbox.overlaps(&bullet_hitbox);
-
-            }
         }
     }
     fn out_of_bounds(&mut self) {
