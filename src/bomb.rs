@@ -10,5 +10,7 @@ impl Bomb {
         Self { pos, r: 0. }
     }
 
-    pub fn update(&mut self, tick: f32) {}
+    pub fn update(&mut self, tick: f32) {
+        self.r += 1. * tick;
+    }
 }
