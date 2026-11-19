@@ -15,6 +15,7 @@ pub struct Game {
     bullets: Vec<Bullet>,
     enemies: Vec<Enemy>,
     //bullets
+    bomb: Option<Bomb>,
 }
 
 impl Game {
@@ -23,6 +24,7 @@ impl Game {
             player,
             bullets,
             enemies,
+            bomb: None,
         }
     }
 
