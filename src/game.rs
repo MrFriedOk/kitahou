@@ -49,7 +49,10 @@ impl Game {
             // bomb in main?
             // use a bomb property in the Game object that CAN hold a Bomb, but wont always be :
             // Bomb like i was trying before.
-            match self.bomb {self.bomb = Some(Bomb::new(self.player.pos));}
+            match self.bomb {
+                Some(bomb) => bomb = Some(Bomb::new(self.player.pos)),
+                None => (),
+            };
         }
 
         for enemy in &mut self.enemies {
