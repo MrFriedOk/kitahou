@@ -48,16 +48,13 @@ async fn main() {
 
     loop {
         clear_background(DARKGRAY);
-        let dt: f32 = get_frame_time();
-
-        println!("hi{}", accumulator);
+        let dt: f32 = TICK; //f32 = get_frame_time();
 
         accumulator += dt;
-        while accumulator >= TICK {
-            game.update(TICK);
+        while accumulator >= dt {
+            game.update(dt);
 
-            accumulator -= TICK;
-            println!("{}", accumulator);
+            accumulator -= dt;
         }
 
         //clear_background(DARKGRAY);

@@ -27,16 +27,16 @@ impl Bullet {
         }
     }
 
-    pub fn move_bullet(&mut self, target: Vec2) {
-        self.pos += self.vel;
+    pub fn move_bullet(&mut self, tick: f32, target: Vec2) {
+        self.pos += self.vel * tick * 60.;
     }
 
     pub fn draw(&self) {
         draw_circle(self.pos.x, self.pos.y, self.r, RED)
     }
 
-    pub fn update(&mut self) {
-        self.move_bullet(self.target);
+    pub fn update(&mut self, tick: f32) {
+        self.move_bullet(tick, self.target);
 
         self.draw();
     }

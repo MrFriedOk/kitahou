@@ -31,12 +31,12 @@ impl Game {
         self.player.update();
 
         for enemy in &mut self.enemies {
-            enemy.update(self.player.pos, &mut self.bullets);
+            enemy.update(self.player.pos, tick, &mut self.bullets);
         }
 
         for bullet in &mut self.bullets {
-            bullet.pos += bullet.vel;
-            bullet.update();
+            bullet.pos += bullet.vel * tick;
+            bullet.update(tick);
         }
 
         self.out_of_bounds();
