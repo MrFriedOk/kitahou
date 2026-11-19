@@ -65,6 +65,10 @@ impl Game {
     }
 
     fn collision_check(&mut self) {
+        if self.bomb.is_some() {
+            let bomb: Bomb = self.bomb
+            if bomb.r >= 100 {}
+        }
         for enemy in &self.enemies {
             let enemy_hitbox = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
             let player_hitbox: Circle =
