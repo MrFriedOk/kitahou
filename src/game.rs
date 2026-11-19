@@ -28,7 +28,7 @@ impl Game {
 
     pub fn update(&mut self, tick: f32) {
         self.collision_check();
-        self.player.update();
+        self.player.update(tick);
 
         for enemy in &mut self.enemies {
             enemy.update(self.player.pos, tick, &mut self.bullets);
