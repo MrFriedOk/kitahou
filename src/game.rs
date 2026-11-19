@@ -28,15 +28,15 @@ impl Game {
 
     pub fn update(&mut self, dt: f32) {
         self.collision_check();
-        self.player.update(dt);
+        self.player.update();
 
         for enemy in &mut self.enemies {
-            enemy.update(dt, self.player.pos, &mut self.bullets);
+            enemy.update(self.player.pos, &mut self.bullets);
         }
 
         for bullet in &mut self.bullets {
             bullet.pos += bullet.vel;
-            bullet.update(dt);
+            bullet.update();
         }
 
         self.out_of_bounds();

@@ -18,7 +18,7 @@ impl Pattern {
         }
     }
 
-    pub fn circle(&self, enemy_pos: Vec2, bullets: &mut Vec<Bullet>, dt: f32, rotation: bool) {
+    pub fn circle(&self, enemy_pos: Vec2, bullets: &mut Vec<Bullet>, rotation: bool) {
         //note
         //for self, rotaton is how points "rotate" on a circle. this can be used to create a
         //'checkerboard'?

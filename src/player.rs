@@ -25,10 +25,10 @@ impl Player {
         }
     }
 
-    pub fn update(&mut self, dt: f32) {
+    pub fn update(&mut self) {
         let dir: Vec2 = self.read_dir();
 
-        self.pos += dir * dt;
+        self.pos += dir;
 
         self.pos = self.pos.clamp(Vec2::ZERO, vec2(SW, SH));
 
@@ -42,10 +42,10 @@ impl Player {
 
     pub fn read_dir(&mut self) -> Vec2 {
         let mut dir: Vec2 = Vec2::new(0., 0.);
-        let mut speed: f32 = 600.;
+        let mut speed: f32 = 9.;
 
         if is_key_down(KeyCode::LeftShift) {
-            speed = 300.0;
+            speed = 4.0;
             self.r = 8.;
         } else {
             self.r = 10.;

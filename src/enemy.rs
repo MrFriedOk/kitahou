@@ -21,13 +21,13 @@ impl Enemy {
         }
     }
 
-    pub fn update(&mut self, dt: f32, player: Vec2, bullets: &mut Vec<Bullet>) {
+    pub fn update(&mut self, player: Vec2, bullets: &mut Vec<Bullet>) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower();
 
         //let rotate: bool = if self.cooldown <= 0.5 { true } else { false };
 
         if self.cooldown <= 0. {
-            Pattern::new(10, 0., 0., 0.).circle(self.pos, bullets, dt, self.rotate);
+            Pattern::new(10, 0., 0., 0.).circle(self.pos, bullets, self.rotate);
 
             self.cooldown += 1.;
             self.rotate = !self.rotate;

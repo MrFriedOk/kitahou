@@ -53,6 +53,7 @@ async fn main() {
         accumulator += dt;
         while accumulator >= TICK {
             game.update(TICK);
+
             accumulator -= TICK;
         }
         //clear_background(DARKGRAY);
