@@ -49,7 +49,7 @@ impl Game {
             // bomb in main?
             // use a bomb property in the Game object that CAN hold a Bomb, but wont always be :
             // Bomb like i was trying before.
-            self.bomb = Some(Bomb::new(self.player.pos));
+            match self.bomb {self.bomb = Some(Bomb::new(self.player.pos));}
         }
 
         for enemy in &mut self.enemies {
@@ -65,9 +65,13 @@ impl Game {
     }
 
     fn collision_check(&mut self) {
-        if self.bomb.is_some() {
-            let bomb: Bomb = self.bomb
-            if bomb.r >= 100 {}
+        match self.bomb {
+            Some(ref bomb) => {
+                if bomb.r > SH {
+                    self.bomb = None
+                }
+            }
+            None => (),
         }
         for enemy in &self.enemies {
             let enemy_hitbox = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
