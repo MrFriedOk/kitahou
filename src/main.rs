@@ -15,6 +15,8 @@ pub use game::Game;
 pub use pattern::Pattern;
 pub use player::Player;
 
+const TICK: f32 = 1. / 60.;
+
 fn window_conf() -> Conf {
     Conf {
         window_title: "kitahou".to_owned(),
@@ -28,6 +30,7 @@ fn window_conf() -> Conf {
 
 #[macroquad::main(window_conf)]
 async fn main() {
+    let mut accumulator: f32 = 0.;
     //initialize all the things
     let player: Player = Player::new(3, START, 10.0, false, WHITE);
     let bullets: Vec<Bullet> = Vec::new();
@@ -45,9 +48,16 @@ async fn main() {
 
     loop {
         let dt: f32 = get_frame_time();
-        clear_background(DARKGRAY);
 
-        game.update(dt);
+        clear_background(DARKGRAY);
+        accumulator += dt;
+        while accumulator >= TICK {
+            game.update(TICK);
+            accumulator -= TICK;
+        }
+        //clear_background(DARKGRAY);
+
+        //game.update(dt);
         //player.move_input();
         //player.draw();
 
