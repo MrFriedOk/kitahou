@@ -89,6 +89,7 @@ impl Game {
         }
     }
     fn out_of_bounds(&mut self) {
-        self.bullets.retain(|b| !b.out_of_bounds());
+        self.bullets
+            .retain(|b| !b.out_of_bounds() && !b.bombed(&self.bomb));
     }
 }
