@@ -12,6 +12,7 @@ pub struct Player {
     //slow: bool,
     pub i_frame: bool,
     pub col: Color,
+    pub bomb: Bomb,
 }
 
 impl Player {
@@ -22,6 +23,7 @@ impl Player {
             r,
             i_frame,
             col,
+            bomb: Bomb,
         }
     }
 
@@ -63,6 +65,8 @@ impl Player {
         if is_key_down(KeyCode::Right) {
             dir.x += speed
         }
+
+        if is_key_down(KeyCode::X) {}
 
         dir
     }

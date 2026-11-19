@@ -1,6 +1,7 @@
 pub use macroquad::prelude::*;
 
 //pub mod bullet;
+pub mod bomb;
 pub mod bullet;
 pub mod config;
 pub mod enemy;
@@ -9,6 +10,7 @@ pub mod pattern;
 pub mod player;
 
 pub use crate::config::*;
+pub use bomb::Bomb;
 pub use bullet::Bullet;
 pub use enemy::Enemy;
 pub use game::Game;
