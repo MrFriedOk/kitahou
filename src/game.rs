@@ -15,14 +15,16 @@ pub struct Game {
     bullets: Vec<Bullet>,
     enemies: Vec<Enemy>,
     //bullets
+    bomb: Bomb,
 }
 
 impl Game {
-    pub fn new(player: Player, bullets: Vec<Bullet>, enemies: Vec<Enemy>) -> Self {
+    pub fn new(player: Player, bullets: Vec<Bullet>, enemies: Vec<Enemy>, bomb: Bomb) -> Self {
         Self {
             player,
             bullets,
             enemies,
+            bomb,
         }
     }
 

@@ -12,7 +12,7 @@ pub struct Player {
     //slow: bool,
     pub i_frame: bool,
     pub col: Color,
-    pub bomb: Bomb,
+    //pub bomb: Bomb,
 }
 
 impl Player {
@@ -23,7 +23,7 @@ impl Player {
             r,
             i_frame,
             col,
-            bomb: Bomb,
+            //bomb: Bomb::new(pos),
         }
     }
 
