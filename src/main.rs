@@ -47,15 +47,19 @@ async fn main() {
     let mut game: Game = Game::new(player, bullets, enemies);
 
     loop {
+        clear_background(DARKGRAY);
         let dt: f32 = get_frame_time();
 
-        clear_background(DARKGRAY);
+        println!("hi{}", accumulator);
+
         accumulator += dt;
         while accumulator >= TICK {
             game.update(TICK);
 
             accumulator -= TICK;
+            println!("{}", accumulator);
         }
+
         //clear_background(DARKGRAY);
 
         //game.update(dt);

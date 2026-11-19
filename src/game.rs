@@ -26,7 +26,7 @@ impl Game {
         }
     }
 
-    pub fn update(&mut self, dt: f32) {
+    pub fn update(&mut self, tick: f32) {
         self.collision_check();
         self.player.update();
 
