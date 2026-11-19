@@ -34,6 +34,12 @@ impl Game {
         self.collision_check();
         self.player.update(tick);
 
+        //now i need to do a match, check if (borrow bomb) bomb
+        match &mut self.bomb {
+            Some(bomb) => bomb.update(tick),
+            None => (),
+        }
+
         if is_key_down(KeyCode::X) {
             // this function should first check if the key z is down of course. Bomb shouldnt be
             // created in the main loop, but i have it as an argument.................. what to do.
@@ -41,6 +47,9 @@ impl Game {
             // made. do i store bomb in a vector? a bomb can be updated outside of this function. i
             // will try making a bomb variable, can i make a public function that just creates a new
             // bomb in main?
+            // use a bomb property in the Game object that CAN hold a Bomb, but wont always be :
+            // Bomb like i was trying before.
+            self.bomb = Some(Bomb::new(self.player.pos));
         }
 
         for enemy in &mut self.enemies {
