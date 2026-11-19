@@ -15,22 +15,31 @@ pub struct Game {
     bullets: Vec<Bullet>,
     enemies: Vec<Enemy>,
     //bullets
-    bomb: Bomb,
 }
 
 impl Game {
-    pub fn new(player: Player, bullets: Vec<Bullet>, enemies: Vec<Enemy>, bomb: Bomb) -> Self {
+    pub fn new(player: Player, bullets: Vec<Bullet>, enemies: Vec<Enemy>) -> Self {
         Self {
             player,
             bullets,
             enemies,
-            bomb,
         }
     }
 
     pub fn update(&mut self, tick: f32) {
+        //let mut bomb: Bomb = Bomb;
+
         self.collision_check();
         self.player.update(tick);
+
+        if is_key_down(KeyCode::X) {
+            // this function should first check if the key z is down of course. Bomb shouldnt be
+            // created in the main loop, but i have it as an argument.................. what to do.
+            // a new bomb should ONLY be made if z is down, and new bombs shouldn't be able to be
+            // made. do i store bomb in a vector? a bomb can be updated outside of this function. i
+            // will try making a bomb variable, can i make a public function that just creates a new
+            // bomb in main?
+        }
 
         for enemy in &mut self.enemies {
             enemy.update(self.player.pos, tick, &mut self.bullets);

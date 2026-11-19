@@ -66,8 +66,6 @@ impl Player {
             dir.x += speed
         }
 
-        if is_key_down(KeyCode::X) {}
-
         dir
     }
 
