@@ -37,7 +37,6 @@ impl Game {
     }
 
     pub fn update(&mut self) {
-        self.timer += TICK;
         //println!("{}", self.timer.round());
         //let mut bomb: Bomb = Bomb;
 
@@ -85,6 +84,8 @@ impl Game {
         self.out_of_bounds();
 
         self.draw();
+
+        self.timer += TICK;
     }
 
     fn collision_check(&mut self) {
