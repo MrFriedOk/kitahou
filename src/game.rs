@@ -124,27 +124,15 @@ impl Game {
         draw_rectangle(0., SH - BORDER, SW, BORDER, BLACK);
         draw_rectangle(SW - CONTENTFIELD, 0., CONTENTFIELD, SH, BLACK);
 
-        println!("{}{}", self.player.level, self.player.points);
-
         let r: f32 = 20.;
         let d: f32 = r * 2.;
-        for c in 0..=9 {
+        for c in 1..=9 {
             let filled: bool = self.player.level >= c;
 
             if filled {
-                draw_circle(
-                    (CONTENTFIELD * 2. + 20.) + c as f32 * d + 5.,
-                    SH - 100.,
-                    r,
-                    WHITE,
-                );
+                draw_circle(CONTENTFIELDHC + c as f32 * d + 5., SH - 100., r, WHITE);
             } else {
-                draw_circle(
-                    (CONTENTFIELD * 2. + 20.) + c as f32 * d + 5.,
-                    SH - 100.,
-                    r,
-                    GRAY,
-                );
+                draw_circle(CONTENTFIELDHC + c as f32 * d + 5., SH - 100., r, GRAY);
             }
         }
 
