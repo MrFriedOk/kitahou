@@ -19,6 +19,7 @@ pub struct Game {
     player_bullets: Vec<Bullet>,
     boss: Option<Enemy>,
     timer: f32,
+    wave: Option<Wave>,
 }
 
 impl Game {
@@ -31,6 +32,7 @@ impl Game {
             player_bullets: Vec::new(),
             boss: None,
             timer: 0.,
+            wave: Some(Wave),
         }
     }
 

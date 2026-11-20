@@ -11,6 +11,7 @@ pub mod enemy;
 pub mod game;
 pub mod pattern;
 pub mod player;
+pub mod wave;
 
 pub use crate::config::*;
 pub use bomb::Bomb;
@@ -19,6 +20,7 @@ pub use enemy::Enemy;
 pub use game::Game;
 pub use pattern::Pattern;
 pub use player::Player;
+pub use wave::Wave;
 
 const TICK: f32 = 1. / 60.;
 
