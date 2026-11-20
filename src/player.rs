@@ -35,8 +35,8 @@ impl Player {
         self.pos += dir;
 
         self.pos = self.pos.clamp(
-            vec2(BORDER * 2., 0. - BORDER),
-            vec2(SW - CONTENTFIELD, SH + BORDER),
+            vec2(BORDER * 2., 0. + BORDER),
+            vec2(SW - CONTENTFIELD, SH - BORDER),
         );
 
         self.cooldown = self.cooldown.clamp(0., 1.);
