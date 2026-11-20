@@ -37,7 +37,7 @@ impl Player {
         self.pos = self.pos.clamp(Vec2::ZERO, vec2(SW, SH));
 
         self.cooldown = self.cooldown.clamp(0., 1.);
-        self.cooldown -= 1. * (tick * 15.);
+        self.cooldown -= 1. * (tick * 6.);
 
         self.draw();
     }
@@ -49,7 +49,7 @@ impl Player {
 
     pub fn read_dir(&mut self, p_bullets: &mut Vec<Bullet>) -> Vec2 {
         let mut dir: Vec2 = Vec2::new(0., 0.);
-        let mut speed: f32 = 300.;
+        let mut speed: f32 = 220.;
 
         if is_key_down(KeyCode::LeftShift) {
             speed = 100.0;
@@ -75,7 +75,7 @@ impl Player {
             p_bullets.push(Bullet::new(
                 Vec2::new(self.pos.x + 10., self.pos.y),
                 7.,
-                Vec2::new(0., -10.),
+                Vec2::new(0., -7.),
                 bullet::BulletKind::Straight,
                 Vec2::ZERO,
                 GREEN,
@@ -83,7 +83,7 @@ impl Player {
             p_bullets.push(Bullet::new(
                 Vec2::new(self.pos.x - 10., self.pos.y),
                 7.,
-                Vec2::new(0., -10.),
+                Vec2::new(0., -7.),
                 bullet::BulletKind::Straight,
                 Vec2::ZERO,
                 GREEN,
