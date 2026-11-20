@@ -40,7 +40,7 @@ impl Game {
             None => (),
         }
 
-        if is_key_down(KeyCode::X) {
+        if is_key_down(KeyCode::X) && self.bomb.is_none() {
             // this function should first check if the key z is down of course. Bomb shouldnt be
             // created in the main loop, but i have it as an argument.................. what to do.
             // a new bomb should ONLY be made if z is down, and new bombs shouldn't be able to be
@@ -50,11 +50,7 @@ impl Game {
             // use a bomb property in the Game object that CAN hold a Bomb, but wont always be :
             // Bomb like i was trying before.
             // lets print bomb to see how options work
-            //self.bomb = Some(Bomb::new(self.player.pos));
-            match &self.bomb {
-                Some(bomb) => (), //self.bomb = Some(bomb::Bomb::new(self.player.pos)), //println!("{:?}", bomb), //bomb = Some(Bomb::new(self.player.pos)),
-                None => self.bomb = Some(Bomb::new(self.player.pos)), //println!("none"),
-            };
+            self.bomb = Some(Bomb::new(self.player.pos)) //println!("none"),
         }
 
         for enemy in &mut self.enemies {
