@@ -92,7 +92,7 @@ impl Game {
             if self.player.i_frame != 1. && hit {
                 self.player.hp -= 1;
                 self.player.i_frame = 1.;
-                self.player.col = RED;
+                //self.player.col = RED;
             }
             for p_bullet in &self.player_bullets {
                 let p_bullet_hitbox: Circle =
@@ -112,7 +112,7 @@ impl Game {
             if self.player.i_frame != 1. && hit {
                 self.player.hp -= 1;
                 self.player.i_frame = 1.;
-                self.player.col = RED;
+                //self.player.col = RED;
             }
         }
     }
