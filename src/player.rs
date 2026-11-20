@@ -15,7 +15,7 @@ pub struct Player {
     cooldown: f32,
     pub level: i8,
     pub points: i32,
-    //pub bomb: Bomb,
+    pub bombs: i8,
 }
 
 impl Player {
@@ -29,7 +29,7 @@ impl Player {
             cooldown: 0.,
             level: 1,
             points: 0,
-            //bomb: Bomb::new(pos),
+            bombs: 1,
         }
     }
 

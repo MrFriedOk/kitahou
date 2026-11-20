@@ -124,6 +124,11 @@ impl Game {
         draw_rectangle(0., SH - BORDER, SW, BORDER, BLACK);
         draw_rectangle(SW - CONTENTFIELD, 0., CONTENTFIELD, SH, BLACK);
 
+        self.draw_level();
+
+        draw_fps();
+    }
+    fn draw_level(&self) {
         let r: f32 = 20.;
         let d: f32 = (r * 2.) + 5.;
         let y: f32 = 250.;
@@ -136,7 +141,7 @@ impl Game {
                 draw_circle(CONTENTFIELDHC + (c as f32 * d) + (GRIDW * 2.5), y, r, GRAY);
             }
         }
-
-        draw_fps();
     }
+
+    fn draw_bomb(&self) {}
 }
