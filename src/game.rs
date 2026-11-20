@@ -34,7 +34,7 @@ impl Game {
         //let mut bomb: Bomb = Bomb;
 
         self.collision_check();
-        self.player.update(tick);
+        self.player.update(tick, &mut self.player_bullets);
 
         //now i need to do a match, check if (borrow bomb) bomb
         match &mut self.bomb {
@@ -83,7 +83,7 @@ impl Game {
             }
             None => (),
         }
-        for enemy in self.enemies {
+        for enemy in &mut self.enemies {
             let enemy_hitbox = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
 
             let hit: bool = enemy_hitbox.overlaps(&player_hitbox);
@@ -98,9 +98,7 @@ impl Game {
                 let hit: bool = p_bullet_hitbox.overlaps(&enemy_hitbox);
 
                 //self.enemies.retain(|enemy|)
-                if hit {
-                    self.enemies.swap_remove(self.enemies[enemy]);
-                }
+                //self.enemies.retain(|e|)
             }
         }
         for bullet in &self.bullets {

@@ -12,6 +12,7 @@ pub struct Player {
     //slow: bool,
     pub i_frame: bool,
     pub col: Color,
+    cooldown: f32,
     //pub bomb: Bomb,
 }
 
@@ -23,16 +24,21 @@ impl Player {
             r,
             i_frame,
             col,
+            cooldown: 0.,
             //bomb: Bomb::new(pos),
         }
     }
 
-    pub fn update(&mut self, tick: f32) {
-        let dir: Vec2 = self.read_dir();
+    pub fn update(&mut self, tick: f32, p_bullets: &mut Vec<Bullet>) {
+        let dir: Vec2 = self.read_dir(p_bullets);
 
         self.pos += dir * tick;
 
         self.pos = self.pos.clamp(Vec2::ZERO, vec2(SW, SH));
+
+        self.cooldown -= 1. * tick;
+
+        println!("{}", self.cooldown);
 
         self.draw();
     }
@@ -42,7 +48,7 @@ impl Player {
         self.i_frame = true;
     }
 
-    pub fn read_dir(&mut self) -> Vec2 {
+    pub fn read_dir(&mut self, p_bullets: &mut Vec<Bullet>) -> Vec2 {
         let mut dir: Vec2 = Vec2::new(0., 0.);
         let mut speed: f32 = 300.;
 
@@ -64,6 +70,16 @@ impl Player {
         }
         if is_key_down(KeyCode::Right) {
             dir.x += speed
+        }
+
+        if is_key_down(KeyCode::Z) && self.cooldown == 0. {
+            p_bullets.push(Bullet::new(
+                self.pos,
+                self.r,
+                Vec2::new(10., 10.),
+                bullet::BulletKind::Straight,
+                Vec2::ZERO,
+            ))
         }
 
         dir
