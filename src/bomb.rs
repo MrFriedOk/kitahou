@@ -11,7 +11,7 @@ impl Bomb {
     }
 
     pub fn update(&mut self) {
-        self.r += 175.;
+        self.r += 10.;
         self.draw()
     }
 
