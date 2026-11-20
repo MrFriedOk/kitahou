@@ -127,16 +127,17 @@ impl Game {
         for c in 0..=9 {
             let filled: bool = self.player.level >= c;
             let r: f32 = 20.;
+            let d: f32 = r * 2.;
             if filled {
                 draw_circle(
-                    (CONTENTFIELD * 2. + 20.) + c as f32 * r * 2.,
+                    (CONTENTFIELD * 2. + 20.) + c as f32 * d + 5.,
                     SH - 100.,
                     r,
                     WHITE,
                 );
             } else {
                 draw_circle(
-                    (CONTENTFIELD * 2. + 20.) + c as f32 * r * 2.,
+                    (CONTENTFIELD * 2. + 20.) + c as f32 * d + 5.,
                     SH - 100.,
                     r,
                     GRAY,
