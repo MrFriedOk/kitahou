@@ -14,7 +14,7 @@ pub struct Player {
     pub col: Color,
     cooldown: f32,
     pub level: i8,
-    pub points: i16,
+    pub points: i32,
     //pub bomb: Bomb,
 }
 
@@ -135,7 +135,8 @@ impl Player {
         }
         if self.points >= 10000 {
             self.level = 2
-        } else {
+        }
+        if self.points >= 50000 {
             self.level = 3
         }
     }
