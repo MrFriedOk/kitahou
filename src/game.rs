@@ -16,6 +16,7 @@ pub struct Game {
     enemies: Vec<Enemy>,
     //bullets
     bomb: Option<Bomb>,
+    player_bullets: Vec<Bullet>,
 }
 
 impl Game {
@@ -25,6 +26,7 @@ impl Game {
             bullets,
             enemies,
             bomb: None,
+            player_bullets: Vec::new(),
         }
     }
 
@@ -60,6 +62,11 @@ impl Game {
         for bullet in &mut self.bullets {
             bullet.pos += bullet.vel * tick;
             bullet.update(tick);
+        }
+
+        for p_bullet in &mut self.player_bullets {
+            p_bullet.pos += p_bullet.vel * tick;
+            p_bullet.update(tick)
         }
 
         self.out_of_bounds();
@@ -100,5 +107,6 @@ impl Game {
     fn out_of_bounds(&mut self) {
         self.bullets
             .retain(|b| !b.out_of_bounds() && !b.bombed(&self.bomb));
+        self.player_bullets.retain(|b| !b.out_of_bounds());
     }
 }
