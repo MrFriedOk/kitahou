@@ -126,23 +126,14 @@ impl Game {
 
         let r: f32 = 20.;
         let d: f32 = (r * 2.) + 5.;
+        let y: f32 = 250.;
         for c in 1..=9 {
             let filled: bool = self.player.level >= c;
 
             if filled {
-                draw_circle(
-                    CONTENTFIELDHC + (c as f32 * d) + (BORDER * 2.),
-                    SH - 100.,
-                    r,
-                    WHITE,
-                );
+                draw_circle(CONTENTFIELDHC + (c as f32 * d) + (GRIDW * 2.5), y, r, WHITE);
             } else {
-                draw_circle(
-                    CONTENTFIELDHC + (c as f32 * d) + (BORDER * 2.),
-                    SH - 100.,
-                    r,
-                    GRAY,
-                );
+                draw_circle(CONTENTFIELDHC + (c as f32 * d) + (GRIDW * 2.5), y, r, GRAY);
             }
         }
 
