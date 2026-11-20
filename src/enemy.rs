@@ -4,18 +4,16 @@ pub struct Enemy {
     pub pos: Vec2,
     pub r: f32,
     pub vel: Vec2,
-    player: Vec2,
     pub cooldown: f32,
     rotate: bool,
 }
 
 impl Enemy {
-    pub fn new(pos: Vec2, r: f32, vel: Vec2, player: Vec2, cooldown: f32, rotate: bool) -> Self {
+    pub fn new(pos: Vec2, r: f32, vel: Vec2, cooldown: f32, rotate: bool) -> Self {
         Self {
             pos,
             r,
             vel,
-            player,
             cooldown,
             rotate,
         }

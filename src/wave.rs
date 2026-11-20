@@ -1,8 +1,1 @@
-pub struct Wave {}
-
-impl Wave {
-    fn new() -> Self {
-        Self {}
-    }
-    fn update(&mut self, timer: f32) {}
-}
+pub fn wave_1(timer: f32) {}

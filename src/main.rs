@@ -20,7 +20,6 @@ pub use enemy::Enemy;
 pub use game::Game;
 pub use pattern::Pattern;
 pub use player::Player;
-pub use wave::Wave;
 
 const TICK: f32 = 1. / 60.;
 
@@ -41,7 +40,7 @@ async fn main() {
     //initialize all the things
     let player: Player = Player::new(START);
     let bullets: Vec<Bullet> = Vec::new();
-    let mut enemies: Vec<Enemy> = Vec::new();
+    let enemies: Vec<Enemy> = Vec::new();
     let mut next_tick = Instant::now();
     let duration = Duration::from_secs_f32(TICK); //f32 = get_frame_time();
 

@@ -19,7 +19,7 @@ pub struct Game {
     player_bullets: Vec<Bullet>,
     boss: Option<Enemy>,
     timer: f32,
-    wave: Option<Wave>,
+    //wave: Option<Wave>,
 }
 
 impl Game {
@@ -32,7 +32,7 @@ impl Game {
             player_bullets: Vec::new(),
             boss: None,
             timer: 0.,
-            wave: Some(Wave),
+            //wave: Some(Wave),
         }
     }
 
@@ -40,6 +40,10 @@ impl Game {
         self.timer += TICK;
         //println!("{}", self.timer.round());
         //let mut bomb: Bomb = Bomb;
+
+        if self.timer < 300. && self.boss.is_none() {
+            wave::wave_1(self.timer)
+        }
 
         self.collision_check();
         self.player.update(&mut self.player_bullets);
