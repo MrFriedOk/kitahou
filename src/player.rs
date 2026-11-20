@@ -58,10 +58,11 @@ impl Player {
         self.cooldown = self.cooldown.clamp(0., 1.);
         if self.cooldown != 0. {
             let interval: f32 = {
-                if self.level == 1 {
-                    0.40
+                match self.level {
+                    1 => 0.40,
+                    2 => 0.60,
+                    3 => 0.90,
                 }
-                if self.level == 2 { 0.60 } else { 0.99 }
             };
             self.cooldown -= interval;
         }
