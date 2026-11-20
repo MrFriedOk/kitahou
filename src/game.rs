@@ -126,6 +126,8 @@ impl Game {
         draw_rectangle(SW - CONTENTFIELD, 0., CONTENTFIELD, SH, BLACK);
 
         self.draw_level();
+        self.draw_bomb();
+        self.draw_hp();
 
         draw_fps();
     }
@@ -137,12 +139,44 @@ impl Game {
             let filled: bool = self.player.level >= c;
 
             if filled {
-                draw_circle(CONTENTFIELDHC + (c as f32 * d) + (GRIDW * 2.5), y, r, WHITE);
+                draw_circle(
+                    CONTENTFIELDHC + (c as f32 * d) + (GRIDW * 2.5),
+                    y,
+                    r,
+                    YELLOW,
+                );
             } else {
                 draw_circle(CONTENTFIELDHC + (c as f32 * d) + (GRIDW * 2.5), y, r, GRAY);
             }
         }
     }
 
-    fn draw_bomb(&self) {}
+    fn draw_bomb(&self) {
+        let r: f32 = 20.;
+        let d: f32 = (r * 2.) + 5.;
+        let y: f32 = 450.;
+        for c in 1..=9 {
+            let filled: bool = self.player.bombs >= c;
+
+            if filled {
+                draw_circle(CONTENTFIELDHC + (c as f32 * d) + (GRIDW * 2.5), y, r, RED);
+            } else {
+                draw_circle(CONTENTFIELDHC + (c as f32 * d) + (GRIDW * 2.5), y, r, GRAY);
+            }
+        }
+    }
+    fn draw_hp(&self) {
+        let r: f32 = 20.;
+        let d: f32 = (r * 2.) + 5.;
+        let y: f32 = 650.;
+        for c in 1..=9 {
+            let filled: bool = self.player.hp >= c;
+
+            if filled {
+                draw_circle(CONTENTFIELDHC + (c as f32 * d) + (GRIDW * 2.5), y, r, GREEN);
+            } else {
+                draw_circle(CONTENTFIELDHC + (c as f32 * d) + (GRIDW * 2.5), y, r, GRAY);
+            }
+        }
+    }
 }

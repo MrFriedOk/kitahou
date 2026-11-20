@@ -1,3 +1,5 @@
+#![windows_subsystem = "windows"] //hide terminal i think, idk i dont use windows
+
 pub use macroquad::prelude::*;
 use std::time::{Duration, Instant};
 
