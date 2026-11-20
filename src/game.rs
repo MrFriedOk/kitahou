@@ -41,7 +41,12 @@ impl Game {
         //let mut bomb: Bomb = Bomb;
 
         if self.timer < 300. && self.boss.is_none() {
-            wave::wave_1(self.timer)
+            wave::wave_1(
+                self.timer,
+                &mut self.enemies,
+                &mut self.bullets,
+                &mut self.boss,
+            )
         }
 
         self.collision_check();

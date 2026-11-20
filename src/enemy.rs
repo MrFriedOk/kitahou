@@ -20,7 +20,9 @@ impl Enemy {
     }
 
     pub fn update(&mut self, player: Vec2, bullets: &mut Vec<Bullet>) {
-        //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower();
+        //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower()
+
+        self.pos += self.vel;
 
         //let rotate: bool = if self.cooldown <= 0.5 { true } else { false };
 

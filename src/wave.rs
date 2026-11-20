@@ -6,5 +6,17 @@ pub fn wave_1(
     bullets: &mut Vec<Bullet>,
     boss: &mut Option<Enemy>,
 ) {
-    if time == 0. {}
+    if timer == 0. {
+        let enemy1: Enemy = Enemy::new(Vec2::new(BORDER, -10.), 15., Vec2::new(0., 2.), 0., false);
+        let enemy2: Enemy = Enemy::new(
+            Vec2::new(BORDER * 5., -10.),
+            15.,
+            Vec2::new(0., 2.),
+            0.,
+            false,
+        );
+
+        enemies.push(enemy1);
+        enemies.push(enemy2);
+    }
 }
