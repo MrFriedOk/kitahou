@@ -37,7 +37,10 @@ impl Player {
         self.pos = self.pos.clamp(Vec2::ZERO, vec2(SW, SH));
 
         self.cooldown = self.cooldown.clamp(0., 1.);
-        self.cooldown -= 1.;
+        if self.cooldown != 0. {
+            self.cooldown -= 0.9;
+        }
+        println!("{}", self.cooldown);
 
         self.draw();
     }
@@ -75,7 +78,7 @@ impl Player {
             p_bullets.push(Bullet::new(
                 Vec2::new(self.pos.x + 10., self.pos.y),
                 7.,
-                Vec2::new(0., -7. * TICK),
+                Vec2::new(0., -20. * TICK),
                 bullet::BulletKind::Straight,
                 Vec2::ZERO,
                 GREEN,
@@ -83,7 +86,7 @@ impl Player {
             p_bullets.push(Bullet::new(
                 Vec2::new(self.pos.x - 10., self.pos.y),
                 7.,
-                Vec2::new(0., -7. * TICK),
+                Vec2::new(0., -20. * TICK),
                 bullet::BulletKind::Straight,
                 Vec2::ZERO,
                 GREEN,
