@@ -30,7 +30,7 @@ impl Player {
     }
 
     pub fn update(&mut self, tick: f32, p_bullets: &mut Vec<Bullet>) {
-        let dir: Vec2 = self.read_dir(p_bullets, tick);
+        let dir: Vec2 = self.read_dir(p_bullets);
 
         self.pos += dir * tick;
 
@@ -47,7 +47,7 @@ impl Player {
         self.i_frame = true;
     }
 
-    pub fn read_dir(&mut self, p_bullets: &mut Vec<Bullet>, tick: f32) -> Vec2 {
+    pub fn read_dir(&mut self, p_bullets: &mut Vec<Bullet>) -> Vec2 {
         let mut dir: Vec2 = Vec2::new(0., 0.);
         let mut speed: f32 = 300.;
 
