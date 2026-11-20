@@ -26,4 +26,12 @@ pub fn wave_1(
         enemies.push(enemy1);
         enemies.push(enemy2);
     }
+    if timer > 5. {
+        for enemy in enemies {
+            enemy.attack(bullets);
+        }
+    }
+    if timer > 100. {
+        println!("what am i doing")
+    }
 }
