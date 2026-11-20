@@ -17,6 +17,7 @@ pub struct Game {
     //bullets
     bomb: Option<Bomb>,
     player_bullets: Vec<Bullet>,
+    boss: Option<Enemy>,
 }
 
 impl Game {
@@ -27,6 +28,7 @@ impl Game {
             enemies,
             bomb: None,
             player_bullets: Vec::new(),
+            boss: None,
         }
     }
 
@@ -128,6 +130,11 @@ impl Game {
         self.draw_level();
         self.draw_bomb();
         self.draw_hp();
+
+        if self.boss.is_none() {
+            let text = ("boss hp {}", self.boss.hp);
+            draw_text("boss hp, {}", CONTENTFIELDHC + 48., 100., 48., WHITE);
+        }
 
         draw_fps();
     }
