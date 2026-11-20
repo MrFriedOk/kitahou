@@ -83,7 +83,7 @@ impl Game {
             }
             None => (),
         }
-        for enemy in &mut self.enemies {
+        for enemy in self.enemies {
             let enemy_hitbox = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
 
             let hit: bool = enemy_hitbox.overlaps(&player_hitbox);
@@ -97,7 +97,10 @@ impl Game {
                     Circle::new(p_bullet.pos.x, p_bullet.pos.y, p_bullet.r);
                 let hit: bool = p_bullet_hitbox.overlaps(&enemy_hitbox);
 
-                enemy.swap_remove();
+                //self.enemies.retain(|enemy|)
+                if hit {
+                    self.enemies.swap_remove(self.enemies[enemy]);
+                }
             }
         }
         for bullet in &self.bullets {
