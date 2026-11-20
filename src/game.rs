@@ -123,7 +123,8 @@ impl Game {
     }
 
     fn draw(&self) {
-        draw_rectangle(0., 0., 500., SH, BLACK);
+        draw_rectangle(0., 0., BORDER * 2., SH, BLACK);
+        draw_rectangle(SW - CONTENTFIELD, 0., CONTENTFIELD, SH, BLACK);
         draw_fps();
     }
 }
