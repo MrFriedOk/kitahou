@@ -34,7 +34,8 @@ impl Player {
 
         self.pos += dir;
 
-        self.i_frame -= 0.1;
+        self.i_frame -= 0.01;
+
         self.i_frame = self.i_frame.clamp(0., 1.);
         if self.i_frame != 0. {
             self.col = RED;
