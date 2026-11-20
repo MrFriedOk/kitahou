@@ -29,15 +29,15 @@ impl Player {
         }
     }
 
-    pub fn update(&mut self, tick: f32, p_bullets: &mut Vec<Bullet>) {
+    pub fn update(&mut self, p_bullets: &mut Vec<Bullet>) {
         let dir: Vec2 = self.read_dir(p_bullets);
 
-        self.pos += dir * tick;
+        self.pos += dir;
 
         self.pos = self.pos.clamp(Vec2::ZERO, vec2(SW, SH));
 
         self.cooldown = self.cooldown.clamp(0., 1.);
-        self.cooldown -= 1. * (tick * 6.);
+        self.cooldown -= 1.;
 
         self.draw();
     }

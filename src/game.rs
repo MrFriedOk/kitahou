@@ -30,15 +30,15 @@ impl Game {
         }
     }
 
-    pub fn update(&mut self, tick: f32) {
+    pub fn update(&mut self) {
         //let mut bomb: Bomb = Bomb;
 
         self.collision_check();
-        self.player.update(tick, &mut self.player_bullets);
+        self.player.update(&mut self.player_bullets);
 
         //now i need to do a match, check if (borrow bomb) bomb
         match &mut self.bomb {
-            Some(bomb) => bomb.update(tick),
+            Some(bomb) => bomb.update(),
             None => (),
         }
 
@@ -56,17 +56,17 @@ impl Game {
         }
 
         for enemy in &mut self.enemies {
-            enemy.update(self.player.pos, tick, &mut self.bullets);
+            enemy.update(self.player.pos, &mut self.bullets);
         }
 
         for bullet in &mut self.bullets {
-            bullet.pos += bullet.vel * tick;
-            bullet.update(tick);
+            bullet.pos += bullet.vel;
+            bullet.update();
         }
 
         for p_bullet in &mut self.player_bullets {
-            p_bullet.pos += p_bullet.vel * tick;
-            p_bullet.update(tick)
+            p_bullet.pos += p_bullet.vel;
+            p_bullet.update()
         }
 
         self.out_of_bounds();

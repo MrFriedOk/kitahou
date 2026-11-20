@@ -1,5 +1,5 @@
 pub use macroquad::prelude::*;
-use std::time::{Duration,Instant}
+use std::time::{Duration, Instant};
 
 //pub mod bullet;
 pub mod bomb;
@@ -60,10 +60,8 @@ async fn main() {
 
         //    accumulator -= dt;
         //}
-        
 
         game.update();
-        
 
         next_tick += duration;
         let now = Instant::now();
@@ -72,7 +70,6 @@ async fn main() {
         } else {
             next_tick = now;
         }
-
 
         //clear_background(DARKGRAY);
 
