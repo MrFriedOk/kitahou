@@ -30,14 +30,15 @@ impl Player {
     }
 
     pub fn update(&mut self, tick: f32, p_bullets: &mut Vec<Bullet>) {
-        let dir: Vec2 = self.read_dir(p_bullets);
+        let dir: Vec2 = self.read_dir(p_bullets, tick);
 
         self.pos += dir * tick;
 
         self.pos = self.pos.clamp(Vec2::ZERO, vec2(SW, SH));
 
-        self.cooldown -= 1. * tick;
-
+        if self.cooldown != 0. {
+            self.cooldown -= 1. * tick;
+        }
         println!("{}", self.cooldown);
 
         self.draw();
@@ -48,7 +49,7 @@ impl Player {
         self.i_frame = true;
     }
 
-    pub fn read_dir(&mut self, p_bullets: &mut Vec<Bullet>) -> Vec2 {
+    pub fn read_dir(&mut self, p_bullets: &mut Vec<Bullet>, tick: f32) -> Vec2 {
         let mut dir: Vec2 = Vec2::new(0., 0.);
         let mut speed: f32 = 300.;
 
@@ -72,14 +73,15 @@ impl Player {
             dir.x += speed
         }
 
-        if is_key_down(KeyCode::Z) && self.cooldown == 0. {
+        if is_key_down(KeyCode::Z) && self.cooldown <= 0. {
             p_bullets.push(Bullet::new(
                 self.pos,
                 self.r,
-                Vec2::new(10., 10.),
+                Vec2::new(0., -10.),
                 bullet::BulletKind::Straight,
                 Vec2::ZERO,
-            ))
+            ));
+            self.cooldown += 1. //* tick
         }
 
         dir
