@@ -123,6 +123,16 @@ impl Game {
         draw_rectangle(0., 0., SH, BORDER, BLACK);
         draw_rectangle(0., SH - BORDER, SW, BORDER, BLACK);
         draw_rectangle(SW - CONTENTFIELD, 0., CONTENTFIELD, SH, BLACK);
+
+        for c in 0..=9 {
+            let filled: bool = self.player.level >= c;
+            if filled {
+                draw_circle();
+            } else {
+                draw_circle()
+            }
+        }
+
         draw_fps();
     }
 }

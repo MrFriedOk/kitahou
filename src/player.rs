@@ -55,6 +55,7 @@ impl Player {
         );
 
         // bullet cooldown, make sure it's clamped. prob dont need -= 0.99 but whatever
+        self.level_check();
         let interval: f32 = {
             match self.level {
                 1 => 0.40,
