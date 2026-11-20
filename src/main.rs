@@ -43,14 +43,6 @@ async fn main() {
     let mut next_tick = Instant::now();
     let duration = Duration::from_secs_f32(TICK); //f32 = get_frame_time();
 
-    enemies.push(Enemy::new(
-        Vec2::new(500., 500.),
-        20.,
-        Vec2::new(10., 10.),
-        player.pos,
-        0.,
-        false,
-    ));
     let mut game: Game = Game::new(player, bullets, enemies);
 
     loop {

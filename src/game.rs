@@ -18,6 +18,7 @@ pub struct Game {
     bomb: Option<Bomb>,
     player_bullets: Vec<Bullet>,
     boss: Option<Enemy>,
+    timer: f32,
 }
 
 impl Game {
@@ -29,10 +30,13 @@ impl Game {
             bomb: None,
             player_bullets: Vec::new(),
             boss: None,
+            timer: 0.,
         }
     }
 
     pub fn update(&mut self) {
+        self.timer += TICK;
+        //println!("{}", self.timer.round());
         //let mut bomb: Bomb = Bomb;
 
         self.collision_check();
@@ -131,9 +135,9 @@ impl Game {
         self.draw_bomb();
         self.draw_hp();
 
-        if self.boss.is_none() {
-            let text = ("boss hp {}", self.boss.hp);
-            draw_text("boss hp, {}", CONTENTFIELDHC + 48., 100., 48., WHITE);
+        if self.boss.is_some() {
+            //let text: AsRef<str> = ("boss hp {}", 2);
+            //draw_text(text, CONTENTFIELDHC + 48., 100., 48., WHITE);
         }
 
         draw_fps();
