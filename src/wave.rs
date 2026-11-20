@@ -7,9 +7,16 @@ pub fn wave_1(
     boss: &mut Option<Enemy>,
 ) {
     if timer == 0. {
-        let enemy1: Enemy = Enemy::new(Vec2::new(BORDER, -10.), 15., Vec2::new(0., 2.), 0., false);
+        //initial
+        let enemy1: Enemy = Enemy::new(
+            Vec2::new(HC + 300., -10.),
+            15.,
+            Vec2::new(0., 2.),
+            0.,
+            false,
+        );
         let enemy2: Enemy = Enemy::new(
-            Vec2::new(BORDER * 5., -10.),
+            Vec2::new(HC - 300., -10.),
             15.,
             Vec2::new(0., 2.),
             0.,

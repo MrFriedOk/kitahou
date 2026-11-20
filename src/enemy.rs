@@ -19,13 +19,23 @@ impl Enemy {
         }
     }
 
-    pub fn update(&mut self, player: Vec2, bullets: &mut Vec<Bullet>) {
+    pub fn update(&mut self, player: Vec2) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower()
 
         self.pos += self.vel;
 
         //let rotate: bool = if self.cooldown <= 0.5 { true } else { false };
 
+        //self.attack()
+
+        self.draw();
+    }
+
+    pub fn draw(&self) {
+        draw_circle(self.pos.x, self.pos.y, self.r, RED);
+    }
+
+    pub fn attack(&mut self, bullets: &mut Vec<Bullet>) {
         if self.cooldown <= 0. {
             Pattern::new(10, 0., 0., 0.).circle(self.pos, bullets, self.rotate);
 
@@ -34,10 +44,5 @@ impl Enemy {
         } else {
             self.cooldown -= 0.02;
         }
-        self.draw();
-    }
-
-    pub fn draw(&self) {
-        draw_circle(self.pos.x, self.pos.y, self.r, RED);
     }
 }

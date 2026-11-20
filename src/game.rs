@@ -73,7 +73,7 @@ impl Game {
         }
 
         for enemy in &mut self.enemies {
-            enemy.update(self.player.pos, &mut self.bullets);
+            enemy.update(self.player.pos);
         }
 
         for bullet in &mut self.bullets {
