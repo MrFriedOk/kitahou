@@ -13,10 +13,10 @@ pub const CONTENTFIELD: f32 = GRIDW * 14.;
 
 pub const BORDER: f32 = GRIDH;
 
-pub const HC: f32 = SW / 2.0; //horizontal center
+pub const HC: f32 = (CONTENTFIELD); //horizontal center
 pub const VC: f32 = SH / 2.0;
 
-pub const STARTY: f32 = VC + (VC / 2.0);
+pub const STARTY: f32 = VC + (VC / 2.0) + BORDER * 2.;
 
 pub const START: Vec2 = Vec2::new(HC, STARTY);
 
