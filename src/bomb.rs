@@ -1,5 +1,5 @@
 use crate::*;
-
+#[derive(Debug)]
 pub struct Bomb {
     pub pos: Vec2,
     pub r: f32,
