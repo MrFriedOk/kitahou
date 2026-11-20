@@ -125,14 +125,24 @@ impl Game {
         draw_rectangle(SW - CONTENTFIELD, 0., CONTENTFIELD, SH, BLACK);
 
         let r: f32 = 20.;
-        let d: f32 = r * 2.;
+        let d: f32 = (r * 2.) + 5.;
         for c in 1..=9 {
             let filled: bool = self.player.level >= c;
 
             if filled {
-                draw_circle(CONTENTFIELDHC + c as f32 * d + 5., SH - 100., r, WHITE);
+                draw_circle(
+                    CONTENTFIELDHC + (c as f32 * d) + (BORDER * 2.),
+                    SH - 100.,
+                    r,
+                    WHITE,
+                );
             } else {
-                draw_circle(CONTENTFIELDHC + c as f32 * d + 5., SH - 100., r, GRAY);
+                draw_circle(
+                    CONTENTFIELDHC + (c as f32 * d) + (BORDER * 2.),
+                    SH - 100.,
+                    r,
+                    GRAY,
+                );
             }
         }
 
