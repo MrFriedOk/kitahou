@@ -17,13 +17,13 @@ pub struct Player {
 }
 
 impl Player {
-    pub fn new(hp: i8, pos: Vec2, r: f32, col: Color) -> Self {
+    pub fn new(pos: Vec2) -> Self {
         Self {
-            hp,
+            hp: 3,
             pos,
-            r,
+            r: 10.,
             i_frame: 0.,
-            col,
+            col: WHITE,
             cooldown: 0.,
             //bomb: Bomb::new(pos),
         }
