@@ -14,6 +14,7 @@ pub struct Player {
     pub col: Color,
     cooldown: f32,
     pub level: i8,
+    pub points: i16,
     //pub bomb: Bomb,
 }
 
@@ -27,6 +28,7 @@ impl Player {
             col: WHITE,
             cooldown: 0.,
             level: 1,
+            points: 0,
             //bomb: Bomb::new(pos),
         }
     }
@@ -65,6 +67,7 @@ impl Player {
     pub fn damage(&mut self) {
         self.hp -= 1;
         self.i_frame = 1.;
+        self.points = 0;
     }
 
     pub fn read_dir(&mut self, p_bullets: &mut Vec<Bullet>) -> Vec2 {
@@ -116,5 +119,16 @@ impl Player {
 
     pub fn draw(&self) {
         draw_circle(self.pos.x, self.pos.y, self.r, self.col);
+    }
+
+    fn level_check(&mut self) {
+        if self.points < 1000 {
+            self.level = 1
+        }
+        if self.points < 10000 {
+            self.level = 2
+        } else {
+            self.level = 3
+        }
     }
 }
