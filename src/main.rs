@@ -60,8 +60,19 @@ async fn main() {
 
         //    accumulator -= dt;
         //}
+        
 
-        game.update(next_tick);
+        game.update();
+        
+
+        next_tick += duration;
+        let now = Instant::now();
+        if next_tick > now {
+            spin_sleep::sleep(next_tick - now);
+        } else {
+            next_tick = now;
+        }
+
 
         //clear_background(DARKGRAY);
 
