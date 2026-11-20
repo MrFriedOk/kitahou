@@ -36,10 +36,8 @@ impl Player {
 
         self.pos = self.pos.clamp(Vec2::ZERO, vec2(SW, SH));
 
-        if self.cooldown != 0. {
-            self.cooldown -= 1. * tick;
-        }
-        println!("{}", self.cooldown);
+        self.cooldown = self.cooldown.clamp(0., 1.);
+        self.cooldown -= 1. * (tick * 15.);
 
         self.draw();
     }
@@ -75,8 +73,16 @@ impl Player {
 
         if is_key_down(KeyCode::Z) && self.cooldown <= 0. {
             p_bullets.push(Bullet::new(
-                self.pos,
-                self.r,
+                Vec2::new(self.pos.x + 10., self.pos.y),
+                7.,
+                Vec2::new(0., -10.),
+                bullet::BulletKind::Straight,
+                Vec2::ZERO,
+                GREEN,
+            ));
+            p_bullets.push(Bullet::new(
+                Vec2::new(self.pos.x - 10., self.pos.y),
+                7.,
                 Vec2::new(0., -10.),
                 bullet::BulletKind::Straight,
                 Vec2::ZERO,
