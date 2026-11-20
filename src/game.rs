@@ -95,6 +95,9 @@ impl Game {
             for p_bullet in &self.player_bullets {
                 let p_bullet_hitbox: Circle =
                     Circle::new(p_bullet.pos.x, p_bullet.pos.y, p_bullet.r);
+                //based on this bool or similar, i need to figure out how to get rid of an Enemy
+                //from the enemies Vec, or retain all that aren't colliding with enemy (which is
+                //Enemy in Vec<Enemy>)
                 let hit: bool = p_bullet_hitbox.overlaps(&enemy_hitbox);
 
                 //self.enemies.retain(|enemy|)
