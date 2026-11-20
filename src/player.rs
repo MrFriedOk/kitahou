@@ -49,10 +49,10 @@ impl Player {
 
     pub fn read_dir(&mut self, p_bullets: &mut Vec<Bullet>) -> Vec2 {
         let mut dir: Vec2 = Vec2::new(0., 0.);
-        let mut speed: f32 = 220.;
+        let mut speed: f32 = 11.;
 
         if is_key_down(KeyCode::LeftShift) {
-            speed = 100.0;
+            speed = 6.0;
             self.r = 8.;
         } else {
             self.r = 10.;
