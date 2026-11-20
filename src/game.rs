@@ -73,6 +73,8 @@ impl Game {
     }
 
     fn collision_check(&mut self) {
+        let player_hitbox: Circle =
+            Circle::new(self.player.pos.x, self.player.pos.y, self.player.r);
         match self.bomb {
             Some(ref bomb) => {
                 if bomb.r > SH {
@@ -83,8 +85,7 @@ impl Game {
         }
         for enemy in &self.enemies {
             let enemy_hitbox = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
-            let player_hitbox: Circle =
-                Circle::new(self.player.pos.x, self.player.pos.y, self.player.r);
+
             let hit: bool = enemy_hitbox.overlaps(&player_hitbox);
             if !self.player.i_frame && hit {
                 self.player.hp -= 1;
@@ -94,8 +95,6 @@ impl Game {
         }
         for bullet in &self.bullets {
             let bullet_hitbox = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
-            let player_hitbox: Circle =
-                Circle::new(self.player.pos.x, self.player.pos.y, self.player.r);
             let hit: bool = bullet_hitbox.overlaps(&player_hitbox);
             if !self.player.i_frame && hit {
                 self.player.hp -= 1;
