@@ -55,15 +55,16 @@ impl Player {
         );
 
         // bullet cooldown, make sure it's clamped. prob dont need -= 0.99 but whatever
+        let interval: f32 = {
+            match self.level {
+                1 => 0.40,
+                2 => 0.60,
+                3 => 0.90,
+                _ => 0.0, //this here because rust will complain if not
+            }
+        };
         self.cooldown = self.cooldown.clamp(0., 1.);
         if self.cooldown != 0. {
-            let interval: f32 = {
-                match self.level {
-                    1 => 0.40,
-                    2 => 0.60,
-                    3 => 0.90,
-                }
-            };
             self.cooldown -= interval;
         }
 
