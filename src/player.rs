@@ -13,6 +13,7 @@ pub struct Player {
     pub i_frame: f32,
     pub col: Color,
     cooldown: f32,
+    pub level: i8,
     //pub bomb: Bomb,
 }
 
@@ -25,6 +26,7 @@ impl Player {
             i_frame: 0.,
             col: WHITE,
             cooldown: 0.,
+            level: 1,
             //bomb: Bomb::new(pos),
         }
     }
@@ -34,24 +36,27 @@ impl Player {
 
         self.pos += dir;
 
+        //i_frame check, make sure it's clamped and decrease it every frame. also check it to assign
+        //color (temporary). next add a thing that ALWAYS brings the player back to the center Vec2(HC, STARTY)
         self.i_frame -= 0.01;
-
         self.i_frame = self.i_frame.clamp(0., 1.);
         if self.i_frame != 0. {
             self.col = RED;
         } else {
             self.col = WHITE;
         }
-        println!("{}", self.i_frame);
 
+        //clamp position (acts as out of bounds)
         self.pos = self.pos.clamp(
             vec2(BORDER * 2., 0. + BORDER),
             vec2(SW - CONTENTFIELD, SH - BORDER),
         );
 
+        // bullet cooldown, make sure it's clamped. prob dont need -= 0.99 but whatever
         self.cooldown = self.cooldown.clamp(0., 1.);
         if self.cooldown != 0. {
-            self.cooldown -= 0.99;
+            let interval: f32 = { if self.level == 1 { 0.40 } else { 0.99 } };
+            self.cooldown -= interval;
         }
 
         self.draw();
