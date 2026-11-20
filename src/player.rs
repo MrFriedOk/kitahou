@@ -75,7 +75,7 @@ impl Player {
             p_bullets.push(Bullet::new(
                 Vec2::new(self.pos.x + 10., self.pos.y),
                 7.,
-                Vec2::new(0., -7.),
+                Vec2::new(0., -7. * TICK),
                 bullet::BulletKind::Straight,
                 Vec2::ZERO,
                 GREEN,
@@ -83,7 +83,7 @@ impl Player {
             p_bullets.push(Bullet::new(
                 Vec2::new(self.pos.x - 10., self.pos.y),
                 7.,
-                Vec2::new(0., -7.),
+                Vec2::new(0., -7. * TICK),
                 bullet::BulletKind::Straight,
                 Vec2::ZERO,
                 GREEN,
