@@ -37,10 +37,9 @@ impl Game {
         self.player.update(tick, &mut self.player_bullets);
 
         //now i need to do a match, check if (borrow bomb) bomb
-        if let Some(ref bomb) = self.bomb
-            && bomb.r > SH
-        {
-            self.bomb = None
+        match &mut self.bomb {
+            Some(bomb) => bomb.update(tick),
+            None => (),
         }
 
         if is_key_down(KeyCode::X) && self.bomb.is_none() {
