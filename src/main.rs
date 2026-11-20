@@ -1,4 +1,5 @@
 pub use macroquad::prelude::*;
+use std::time::{Duration,Instant}
 
 //pub mod bullet;
 pub mod bomb;
@@ -32,11 +33,13 @@ fn window_conf() -> Conf {
 
 #[macroquad::main(window_conf)]
 async fn main() {
-    let mut accumulator: f32 = 0.;
+    //let mut accumulator: f32 = 0.;
     //initialize all the things
     let player: Player = Player::new(3, START, 10.0, false, WHITE);
     let bullets: Vec<Bullet> = Vec::new();
     let mut enemies: Vec<Enemy> = Vec::new();
+    let mut next_tick = Instant::now();
+    let duration = Duration::from_secs_f32(TICK); //f32 = get_frame_time();
 
     enemies.push(Enemy::new(
         Vec2::new(500., 500.),
@@ -50,14 +53,15 @@ async fn main() {
 
     loop {
         clear_background(DARKGRAY);
-        let dt: f32 = TICK; //f32 = get_frame_time();
 
-        accumulator += dt;
-        while accumulator >= dt {
-            game.update(dt);
+        //accumulator += dt;
+        //while accumulator >= dt {
+        //    game.update(dt);
 
-            accumulator -= dt;
-        }
+        //    accumulator -= dt;
+        //}
+
+        game.update(next_tick);
 
         //clear_background(DARKGRAY);
 

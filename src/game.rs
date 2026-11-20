@@ -70,6 +70,8 @@ impl Game {
         }
 
         self.out_of_bounds();
+
+        self.draw();
     }
 
     fn collision_check(&mut self) {
@@ -118,5 +120,9 @@ impl Game {
         self.bullets
             .retain(|b| !b.out_of_bounds() && !b.bombed(&self.bomb));
         self.player_bullets.retain(|b| !b.out_of_bounds());
+    }
+
+    fn draw(&self) {
+        draw_fps();
     }
 }
