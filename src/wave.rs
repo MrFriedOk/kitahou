@@ -26,8 +26,10 @@ pub fn wave_1(
         enemies.push(enemy1);
         enemies.push(enemy2);
     }
-    if timer > 5. {
+    if timer > 2. {
         for enemy in enemies {
+            //enemy.vel = Vec2::new(0., 0.);
+            enemy.state = enemy::State::Hovering;
             enemy.attack(bullets);
         }
     }

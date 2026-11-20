@@ -1,11 +1,17 @@
 pub use crate::*;
 
+pub enum State {
+    Hovering,
+    Moving,
+}
+
 pub struct Enemy {
     pub pos: Vec2,
     pub r: f32,
     pub vel: Vec2,
     pub cooldown: f32,
     rotate: bool,
+    pub state: State,
 }
 
 impl Enemy {
@@ -16,13 +22,17 @@ impl Enemy {
             vel,
             cooldown,
             rotate,
+            state: State::Moving,
         }
     }
 
     pub fn update(&mut self, player: Vec2) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower()
 
-        self.pos += self.vel;
+        match self.state {
+            State::Moving => self.pos += self.vel,
+            State::Hovering => (),
+        }
 
         //let rotate: bool = if self.cooldown <= 0.5 { true } else { false };
 
