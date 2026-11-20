@@ -35,6 +35,13 @@ impl Player {
         self.pos += dir;
 
         self.i_frame -= 0.1;
+        self.i_frame = self.i_frame.clamp(0., 1.);
+        if self.i_frame != 0. {
+            self.col = RED;
+        } else {
+            self.col = WHITE;
+        }
+        println!("{}", self.i_frame);
 
         self.pos = self.pos.clamp(
             vec2(BORDER * 2., 0. + BORDER),
