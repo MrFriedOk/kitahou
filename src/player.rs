@@ -133,7 +133,7 @@ impl Player {
         if self.points < 1000 {
             self.level = 1
         }
-        if self.points < 10000 {
+        if self.points >= 10000 {
             self.level = 2
         } else {
             self.level = 3

@@ -124,6 +124,8 @@ impl Game {
         draw_rectangle(0., SH - BORDER, SW, BORDER, BLACK);
         draw_rectangle(SW - CONTENTFIELD, 0., CONTENTFIELD, SH, BLACK);
 
+        println!("{}{}", self.player.level, self.player.points);
+
         let r: f32 = 20.;
         let d: f32 = r * 2.;
         for c in 0..=9 {
