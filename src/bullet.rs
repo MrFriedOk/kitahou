@@ -31,7 +31,7 @@ impl Bullet {
     }
 
     pub fn move_bullet(&mut self, target: Vec2) {
-        self.pos += self.vel * 60.;
+        self.pos += self.vel;
     }
 
     pub fn draw(&self) {
