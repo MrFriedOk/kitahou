@@ -80,6 +80,7 @@ impl Player {
                 Vec2::new(0., -10.),
                 bullet::BulletKind::Straight,
                 Vec2::ZERO,
+                GREEN,
             ));
             self.cooldown += 1. //* tick
         }

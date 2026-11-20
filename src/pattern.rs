@@ -37,6 +37,7 @@ impl Pattern {
                 Vec2::new(angle.cos(), angle.sin()),
                 BulletKind::Straight,
                 Vec2::ZERO,
+                RED,
             ))
         }
     }

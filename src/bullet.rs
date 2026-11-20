@@ -12,11 +12,13 @@ pub struct Bullet {
     pub vel: Vec2,
     kind: BulletKind,
     target: Vec2,
-    pub avel: Vec2, //angular velocity, required to make things spinny
+    pub avel: Vec2,
+    col: Color,
+    //angular velocity, required to make things spinny
 }
 
 impl Bullet {
-    pub fn new(pos: Vec2, r: f32, vel: Vec2, kind: BulletKind, target: Vec2) -> Self {
+    pub fn new(pos: Vec2, r: f32, vel: Vec2, kind: BulletKind, target: Vec2, col: Color) -> Self {
         Self {
             pos,
             r,
@@ -24,6 +26,7 @@ impl Bullet {
             kind,
             target,
             avel: Vec2::ZERO,
+            col,
         }
     }
 
@@ -32,7 +35,7 @@ impl Bullet {
     }
 
     pub fn draw(&self) {
-        draw_circle(self.pos.x, self.pos.y, self.r, RED)
+        draw_circle(self.pos.x, self.pos.y, self.r, self.col)
     }
 
     pub fn update(&mut self, tick: f32) {
