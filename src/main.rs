@@ -35,7 +35,7 @@ fn window_conf() -> Conf {
 async fn main() {
     //let mut accumulator: f32 = 0.;
     //initialize all the things
-    let player: Player = Player::new(3, START, 10.0, false, WHITE);
+    let player: Player = Player::new(3, START, 10.0, WHITE);
     let bullets: Vec<Bullet> = Vec::new();
     let mut enemies: Vec<Enemy> = Vec::new();
     let mut next_tick = Instant::now();

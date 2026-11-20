@@ -89,9 +89,9 @@ impl Game {
             let enemy_hitbox = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
 
             let hit: bool = enemy_hitbox.overlaps(&player_hitbox);
-            if !self.player.i_frame && hit {
+            if self.player.i_frame != 1. && hit {
                 self.player.hp -= 1;
-                self.player.i_frame = true;
+                self.player.i_frame = 1.;
                 self.player.col = RED;
             }
             for p_bullet in &self.player_bullets {
@@ -109,9 +109,9 @@ impl Game {
         for bullet in &self.bullets {
             let bullet_hitbox = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
             let hit: bool = bullet_hitbox.overlaps(&player_hitbox);
-            if !self.player.i_frame && hit {
+            if self.player.i_frame != 1. && hit {
                 self.player.hp -= 1;
-                self.player.i_frame = true;
+                self.player.i_frame = 1.;
                 self.player.col = RED;
             }
         }

@@ -10,19 +10,19 @@ pub struct Player {
     pub pos: Vec2,
     pub r: f32,
     //slow: bool,
-    pub i_frame: bool,
+    pub i_frame: f32,
     pub col: Color,
     cooldown: f32,
     //pub bomb: Bomb,
 }
 
 impl Player {
-    pub fn new(hp: i8, pos: Vec2, r: f32, i_frame: bool, col: Color) -> Self {
+    pub fn new(hp: i8, pos: Vec2, r: f32, col: Color) -> Self {
         Self {
             hp,
             pos,
             r,
-            i_frame,
+            i_frame: 0.,
             col,
             cooldown: 0.,
             //bomb: Bomb::new(pos),
@@ -34,6 +34,8 @@ impl Player {
 
         self.pos += dir;
 
+        self.i_frame -= 0.1;
+
         self.pos = self.pos.clamp(
             vec2(BORDER * 2., 0. + BORDER),
             vec2(SW - CONTENTFIELD, SH - BORDER),
@@ -43,14 +45,13 @@ impl Player {
         if self.cooldown != 0. {
             self.cooldown -= 0.99;
         }
-        println!("{}", self.cooldown);
 
         self.draw();
     }
 
     pub fn damage(&mut self) {
         self.hp -= 1;
-        self.i_frame = true;
+        self.i_frame = 1.;
     }
 
     pub fn read_dir(&mut self, p_bullets: &mut Vec<Bullet>) -> Vec2 {
