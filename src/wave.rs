@@ -27,13 +27,16 @@ pub fn wave_1(
         enemies.push(enemy2);
     }
     if timer > 2. {
-        for enemy in enemies {
+        for enemy in &mut *enemies {
             //enemy.vel = Vec2::new(0., 0.);
             enemy.state = enemy::State::Hovering;
             enemy.attack(bullets);
         }
     }
-    if timer > 100. {
-        println!("what am i doing")
+    if timer > 8. {
+        for enemy in &mut *enemies {
+            enemy.state = enemy::State::Retreating;
+        }
+        //println!("what am i doing")
     }
 }

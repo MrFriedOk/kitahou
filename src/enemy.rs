@@ -3,6 +3,7 @@ pub use crate::*;
 pub enum State {
     Hovering,
     Moving,
+    Retreating,
 }
 
 pub struct Enemy {
@@ -32,6 +33,7 @@ impl Enemy {
         match self.state {
             State::Moving => self.pos += self.vel,
             State::Hovering => (),
+            State::Retreating => self.pos -= self.vel,
         }
 
         //let rotate: bool = if self.cooldown <= 0.5 { true } else { false };
