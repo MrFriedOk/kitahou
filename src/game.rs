@@ -89,6 +89,11 @@ impl Game {
             p_bullet.update()
         }
 
+        match &mut self.boss {
+            Some(boss) => boss.update(self.player.pos, &mut self.bullets),
+            None => (),
+        }
+
         self.out_of_bounds();
 
         self.draw();

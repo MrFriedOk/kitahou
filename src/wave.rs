@@ -11,7 +11,7 @@ pub fn wave_1(
     if previous_time < 0. && timer >= 0. {
         enemies.clear();
         let new_boss: Enemy = Enemy::new(
-            Vec2::new(HC, -10.),
+            Vec2::new(HC, 100.),
             30.,
             Vec2::new(0., 10.),
             0.,
