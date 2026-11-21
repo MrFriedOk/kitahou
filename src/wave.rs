@@ -14,6 +14,7 @@ pub fn wave_1(
             Vec2::new(0., 2.),
             0.,
             false,
+            enemy::AttackType::Circle,
         );
         let enemy2: Enemy = Enemy::new(
             Vec2::new(HC - 300., -10.),
@@ -21,6 +22,7 @@ pub fn wave_1(
             Vec2::new(0., 2.),
             0.,
             false,
+            enemy::AttackType::Circle,
         );
 
         enemies.push(enemy1);
@@ -30,7 +32,7 @@ pub fn wave_1(
         for enemy in &mut *enemies {
             //enemy.vel = Vec2::new(0., 0.);
             enemy.state = enemy::State::Hovering;
-            enemy.attack(bullets);
+            //enemy.attack(bullets);
         }
     }
     if timer > 8. {
