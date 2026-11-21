@@ -1,11 +1,13 @@
 pub use crate::*;
 
+#[derive(Debug)]
 pub enum State {
     Hovering,
     Moving,
     Retreating,
 }
 
+#[derive(Debug)]
 pub enum AttackType {
     Circle,
     Flower,
@@ -14,11 +16,13 @@ pub enum AttackType {
     Fan,
 }
 
+#[derive(Debug)]
 pub enum Kind {
     Boss,
     Enemy,
 }
 
+#[derive(Debug)]
 pub struct Enemy {
     pub pos: Vec2,
     pub r: f32,
