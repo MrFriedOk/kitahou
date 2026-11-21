@@ -19,6 +19,7 @@ pub struct Game {
     player_bullets: Vec<Bullet>,
     boss: Option<Enemy>,
     timer: f32,
+    previous_time: f32,
     //wave: Option<Wave>,
 }
 
@@ -32,6 +33,7 @@ impl Game {
             player_bullets: Vec::new(),
             boss: None,
             timer: 0.,
+            previous_time: 0.,
             //wave: Some(Wave),
         }
     }
@@ -46,6 +48,7 @@ impl Game {
                 &mut self.enemies,
                 &mut self.bullets,
                 &mut self.boss,
+                self.previous_time,
             )
         }
 
@@ -90,6 +93,7 @@ impl Game {
 
         self.draw();
 
+        self.previous_time = self.timer;
         self.timer += TICK;
     }
 

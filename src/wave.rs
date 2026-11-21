@@ -5,6 +5,7 @@ pub fn wave_1(
     enemies: &mut Vec<Enemy>,
     bullets: &mut Vec<Bullet>,
     boss: &mut Option<Enemy>,
+    previous_time: f32,
 ) {
     if timer == 0. {
         //initial
@@ -28,20 +29,20 @@ pub fn wave_1(
         enemies.push(enemy1);
         enemies.push(enemy2);
     }
-    if timer > 2. {
+    if previous_time < 2. && timer > 2. {
         for enemy in &mut *enemies {
             //enemy.vel = Vec2::new(0., 0.);
             enemy.state = enemy::State::Hovering;
             //enemy.attack(bullets);
         }
     }
-    if timer > 8. {
+    if previous_time < 8. && timer >= 8. {
         for enemy in &mut *enemies {
             enemy.state = enemy::State::Retreating;
         }
         //println!("what am i doing")
     }
-    if timer == 9. {
+    if previous_time < 10. && timer >= 10. {
         let enemy: Enemy = Enemy::new(
             Vec2::new(HC, -10.),
             15.,
@@ -51,8 +52,5 @@ pub fn wave_1(
             enemy::AttackType::Fan,
         );
         enemies.push(enemy);
-    }
-    if timer > 10. {
-        println!("hi")
     }
 }
