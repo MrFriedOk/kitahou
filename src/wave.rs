@@ -65,7 +65,7 @@ pub fn wave_1(
         //retain only the fan enemies ig?
         enemies.retain(|e| matches!(e.attack_type, AttackType::Fan));
         for enemy in &mut *enemies {
-            enemy.state = enemy::State::Hovering;
+            enemy.state = enemy::State::Retreating;
         }
     }
 }
