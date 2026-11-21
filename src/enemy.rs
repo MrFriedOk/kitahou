@@ -63,7 +63,7 @@ impl Enemy {
     pub fn update(&mut self, player_pos: Vec2, bullets: &mut Vec<Bullet>) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower()
 
-        self.p += 0.05;
+        self.p += 0.01;
 
         match self.state {
             State::Moving => self.pos += self.vel,
@@ -87,16 +87,14 @@ impl Enemy {
     }
 
     fn movement(&mut self) {
+        if self.pos.x > HC - 100. && self.pos.x < HC + 100. && self.p <= 1. {
+            // move left or right
+            //self.pos = self.pos.lerp(Vec2::new(6., 5.), 0.5);
+            self.pos = self.pos.lerp(Vec2::new(self.pos.x, 3.), self.p);
+        }
         self.pos = self
             .pos
             .clamp(Vec2::new(-20., -20.), Vec2::new(SW + 20., 300.));
-        if self.pos.x > HC - 100. && self.pos.x < HC + 100. {
-            // move left or right
-            //self.pos = self.pos.lerp(Vec2::new(6., 5.), 0.5);
-            self.pos = self
-                .pos
-                .lerp(Vec2::new(self.pos.x, self.pos.y + 8.), self.p);
-        }
     }
 
     pub fn attack(&mut self, bullets: &mut Vec<Bullet>, player_pos: Vec2) {
