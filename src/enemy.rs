@@ -84,7 +84,7 @@ impl Enemy {
                     Pattern::new(10).fan(self.pos, bullets, player_pos);
                     self.cooldown = 1.;
                 } else {
-                    self.cooldown -= 0.01;
+                    self.cooldown -= 0.1;
                 }
             }
         }

@@ -57,7 +57,7 @@ impl Pattern {
                 Vec2::new(angle.cos(), angle.sin()),
                 BulletKind::Homing,
                 player_pos,
-                RED,
+                DARKPURPLE,
             ));
         }
     }
