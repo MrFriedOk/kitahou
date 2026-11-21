@@ -86,7 +86,12 @@ impl Enemy {
         draw_circle(self.pos.x, self.pos.y, self.r, RED);
     }
 
-    fn movement(&mut self) {}
+    fn movement(&mut self) {
+        if self.pos.x > HC - 100. && self.pos.x < HC + 100. {
+            // move left or right
+            //self.pos = self.pos.lerp(Vec2::new(6., 5.), 0.5);
+        }
+    }
 
     pub fn attack(&mut self, bullets: &mut Vec<Bullet>, player_pos: Vec2) {
         match self.attack_type {
