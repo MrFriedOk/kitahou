@@ -41,11 +41,11 @@ pub fn wave_1(
         }
         //println!("what am i doing")
     }
-    if f32::round(timer) == 9. {
+    if timer == 9. {
         let enemy: Enemy = Enemy::new(
             Vec2::new(HC, -10.),
             15.,
-            Vec2::new(0., -3.),
+            Vec2::new(0., -1.),
             0.,
             false,
             enemy::AttackType::Fan,
