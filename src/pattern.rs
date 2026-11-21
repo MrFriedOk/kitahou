@@ -3,19 +3,11 @@ pub use crate::*;
 
 pub struct Pattern {
     count: i32,
-    spread: f32,
-    distance: f32,
-    spiral: f32,
 }
 
 impl Pattern {
-    pub fn new(count: i32, spread: f32, distance: f32, spiral: f32) -> Self {
-        Self {
-            count,
-            spread,
-            distance,
-            spiral,
-        }
+    pub fn new(count: i32) -> Self {
+        Self { count }
     }
 
     pub fn circle(&self, enemy_pos: Vec2, bullets: &mut Vec<Bullet>, rotation: bool) {
@@ -42,7 +34,9 @@ impl Pattern {
         }
     }
 
-    pub fn flower(&self, pos: Vec2, bullets: &mut Vec<Bullet>, dt: f32) {
+    pub fn flower(&self, pos: Vec2, bullets: &mut Vec<Bullet>) {
         todo!()
     }
+
+    pub fn fan(&self, enemy_pos: Vec2, bullets: &mut Vec<Bullet>) {}
 }

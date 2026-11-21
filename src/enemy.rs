@@ -68,7 +68,7 @@ impl Enemy {
         match self.attack_type {
             AttackType::Circle => {
                 if self.cooldown <= 0. {
-                    Pattern::new(10, 0., 0., 0.).circle(self.pos, bullets, self.rotate);
+                    Pattern::new(10).circle(self.pos, bullets, self.rotate);
 
                     self.cooldown += 1.;
                     self.rotate = !self.rotate;
