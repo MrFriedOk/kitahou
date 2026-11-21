@@ -1,3 +1,4 @@
+use crate::enemy::AttackType;
 pub use crate::*;
 
 pub fn wave_1(
@@ -42,15 +43,29 @@ pub fn wave_1(
         }
         //println!("what am i doing")
     }
-    if previous_time < 10. && timer >= 10. {
+    if previous_time < 9. && timer >= 9. {
         let enemy: Enemy = Enemy::new(
             Vec2::new(HC, -10.),
             15.,
-            Vec2::new(0., -1.),
+            Vec2::new(0., 6.),
             0.,
             false,
             enemy::AttackType::Fan,
         );
         enemies.push(enemy);
+    }
+    if previous_time < 10. && timer >= 10. {
+        //retain only the fan enemies ig?
+        enemies.retain(|e| matches!(e.attack_type, AttackType::Fan));
+        for enemy in &mut *enemies {
+            enemy.state = enemy::State::Hovering;
+        }
+    }
+    if previous_time < 11. && timer >= 11. {
+        //retain only the fan enemies ig?
+        enemies.retain(|e| matches!(e.attack_type, AttackType::Fan));
+        for enemy in &mut *enemies {
+            enemy.state = enemy::State::Hovering;
+        }
     }
 }
