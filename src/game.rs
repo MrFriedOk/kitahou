@@ -105,6 +105,11 @@ impl Game {
     fn collision_check(&mut self) {
         let player_hitbox: Circle =
             Circle::new(self.player.pos.x, self.player.pos.y, self.player.r);
+        
+        if self.boss.is_some() {
+            let boss_hitbox: Circle = Circle::new()
+        }
+
         match self.bomb {
             Some(ref bomb) => {
                 if bomb.r > SH {
@@ -139,6 +144,8 @@ impl Game {
                 self.player.damage();
             }
         }
+
+
     }
     fn out_of_bounds(&mut self) {
         self.bullets
