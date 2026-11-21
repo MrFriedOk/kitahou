@@ -105,9 +105,12 @@ impl Game {
     fn collision_check(&mut self) {
         let player_hitbox: Circle =
             Circle::new(self.player.pos.x, self.player.pos.y, self.player.r);
-        
-        if self.boss.is_some() {
-            let boss_hitbox: Circle = Circle::new()
+
+        if let Some(enemy) = &self.boss {
+            let boss_hitbox: Circle = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
+            if boss_hitbox.overlaps(&player_hitbox) && self.player.i_frame == 0. {
+                self.player.damage();
+            }
         }
 
         match self.bomb {
@@ -144,8 +147,6 @@ impl Game {
                 self.player.damage();
             }
         }
-
-
     }
     fn out_of_bounds(&mut self) {
         self.bullets
