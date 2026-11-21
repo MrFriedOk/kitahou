@@ -30,6 +30,7 @@ pub struct Enemy {
     pub attack_type: AttackType,
     pub kind: Kind,
     pub hp: i32,
+    p: f32,
 }
 
 impl Enemy {
@@ -55,16 +56,23 @@ impl Enemy {
                 Kind::Boss => 10000,
                 Kind::Enemy => 10,
             },
+            p: 0.,
         }
     }
 
     pub fn update(&mut self, player_pos: Vec2, bullets: &mut Vec<Bullet>) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower()
 
+        self.p += 0.01;
+
         match self.state {
             State::Moving => self.pos += self.vel,
             State::Hovering => self.attack(bullets, player_pos),
             State::Retreating => self.pos -= self.vel,
+        }
+
+        if let Kind::Boss = self.kind {
+            self.movement();
         }
 
         //let rotate: bool = if self.cooldown <= 0.5 { true } else { false };
@@ -77,6 +85,8 @@ impl Enemy {
     pub fn draw(&self) {
         draw_circle(self.pos.x, self.pos.y, self.r, RED);
     }
+
+    fn movement(&mut self) {}
 
     pub fn attack(&mut self, bullets: &mut Vec<Bullet>, player_pos: Vec2) {
         match self.attack_type {
