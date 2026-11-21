@@ -113,14 +113,12 @@ impl Game {
             }
         }
 
-        match self.bomb {
-            Some(ref bomb) => {
-                if bomb.r > SH {
-                    self.bomb = None
-                }
+        if let Some(bomb) = &mut self.bomb {
+            if bomb.r > SH {
+                self.bomb = None
             }
-            None => (),
         }
+
         for enemy in &mut self.enemies {
             let enemy_hitbox = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
 

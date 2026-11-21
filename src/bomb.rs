@@ -17,6 +17,6 @@ impl Bomb {
 
     fn draw(&self) {
         // will not be needed unless debugging
-        //draw_circle(self.pos.x, self.pos.y, self.r)
+        draw_circle(self.pos.x, self.pos.y, self.r, RED)
     }
 }
