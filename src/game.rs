@@ -84,13 +84,13 @@ impl Game {
             bullet.update();
         }
 
+        if let Some(boss) = &mut self.boss {
+            boss.update(self.player.pos, &mut self.bullets)
+        }
+
         for p_bullet in &mut self.player_bullets {
             p_bullet.pos += p_bullet.vel;
             p_bullet.update()
-        }
-
-        if let Some(boss) = &mut self.boss {
-            boss.update(self.player.pos, &mut self.bullets)
         }
 
         self.out_of_bounds();
@@ -133,7 +133,7 @@ impl Game {
                 //Enemy in Vec<Enemy>)
                 let hit: bool = p_bullet_hitbox.overlaps(&enemy_hitbox);
 
-                //self.enemies.retain(|enemy|)
+                self.enemies.retain(|enemy| !hit)
                 //self.enemies.retain(|e|)
             }
         }
