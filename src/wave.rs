@@ -8,12 +8,12 @@ pub fn wave_1(
     boss: &mut Option<Enemy>,
     previous_time: f32,
 ) {
-    if previous_time < 0. && timer >= 0. {
+    if timer == 0. {
         enemies.clear();
         let new_boss: Enemy = Enemy::new(
-            Vec2::new(HC, 100.),
+            Vec2::new(HC, -10.),
             30.,
-            Vec2::new(0., 10.),
+            Vec2::new(0., 7.),
             0.,
             false,
             AttackType::Fan,

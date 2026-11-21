@@ -90,7 +90,7 @@ impl Game {
         }
 
         match &mut self.boss {
-            Some(boss) => println!("{:?}", boss), //boss.update(self.player.pos, &mut self.bullets),
+            Some(boss) => boss.update(self.player.pos, &mut self.bullets),
             None => (),
         }
 
