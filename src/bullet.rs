@@ -33,10 +33,10 @@ impl Bullet {
     pub fn move_bullet(&mut self, target: Vec2) {
         match self.kind {
             BulletKind::Straight => self.pos += self.vel,
-            BulletKind::Homing => {
-                let angle: f32 = (target - self.pos).to_angle();
-                self.pos += Vec2::from_angle(angle)
-            }
+            BulletKind::Homing => self.pos += self.vel, //{
+            // let angle: f32 = (target - self.pos).to_angle();
+            //self.pos += Vec2::from_angle(angle) * 3.
+            //}
             BulletKind::Accelerating => (),
         }
     }

@@ -54,7 +54,7 @@ impl Pattern {
             bullets.push(Bullet::new(
                 enemy_pos,
                 15.,
-                Vec2::new(angle.cos(), angle.sin()),
+                Vec2::from_angle(angle) * 3., //Vec2::new(angle.cos(), angle.sin()),
                 BulletKind::Homing,
                 player_pos,
                 RED,
