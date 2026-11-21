@@ -44,12 +44,12 @@ impl Enemy {
         }
     }
 
-    pub fn update(&mut self, player: Vec2, bullets: &mut Vec<Bullet>) {
+    pub fn update(&mut self, player_pos: Vec2, bullets: &mut Vec<Bullet>) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower()
 
         match self.state {
             State::Moving => self.pos += self.vel,
-            State::Hovering => self.attack(bullets),
+            State::Hovering => self.attack(bullets, player_pos),
             State::Retreating => self.pos -= self.vel,
         }
 
@@ -64,13 +64,13 @@ impl Enemy {
         draw_circle(self.pos.x, self.pos.y, self.r, RED);
     }
 
-    pub fn attack(&mut self, bullets: &mut Vec<Bullet>) {
+    pub fn attack(&mut self, bullets: &mut Vec<Bullet>, player_pos: Vec2) {
         match self.attack_type {
             AttackType::Circle => {
                 if self.cooldown <= 0. {
-                    Pattern::new(10).circle(self.pos, bullets, self.rotate);
+                    Pattern::new(12).circle(self.pos, bullets, self.rotate);
 
-                    self.cooldown += 1.;
+                    self.cooldown = 1.;
                     self.rotate = !self.rotate;
                 } else {
                     self.cooldown -= 0.02;
@@ -79,7 +79,14 @@ impl Enemy {
             AttackType::Flower => (),
             AttackType::Straight => (),
             AttackType::Homing => (),
-            AttackType::Fan => (),
+            AttackType::Fan => {
+                if self.cooldown <= 0. {
+                    Pattern::new(10).fan(self.pos, bullets, player_pos);
+                    self.cooldown = 1.;
+                } else {
+                    self.cooldown -= 0.01;
+                }
+            }
         }
     }
 }
