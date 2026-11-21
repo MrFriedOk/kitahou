@@ -89,9 +89,8 @@ impl Game {
             p_bullet.update()
         }
 
-        match &mut self.boss {
-            Some(boss) => boss.update(self.player.pos, &mut self.bullets),
-            None => (),
+        if let Some(boss) = &mut self.boss {
+            boss.update(self.player.pos, &mut self.bullets)
         }
 
         self.out_of_bounds();
@@ -113,10 +112,10 @@ impl Game {
             }
         }
 
-        if let Some(bomb) = &mut self.bomb {
-            if bomb.r > SH {
-                self.bomb = None
-            }
+        if let Some(bomb) = &mut self.bomb
+            && bomb.r > SH
+        {
+            self.bomb = None
         }
 
         for enemy in &mut self.enemies {
