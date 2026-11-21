@@ -2,7 +2,7 @@ pub use crate::*;
 
 pub enum BulletKind {
     Straight,
-    Accelerating { accel: f32 },
+    Accelerating,
     Homing, //{ rate: f32 },
 }
 
@@ -31,7 +31,11 @@ impl Bullet {
     }
 
     pub fn move_bullet(&mut self, target: Vec2) {
-        self.pos += self.vel;
+        match self.kind {
+            BulletKind::Straight => self.pos += self.vel,
+            BulletKind::Homing => (),
+            BulletKind::Accelerating => (),
+        }
     }
 
     pub fn draw(&self) {
