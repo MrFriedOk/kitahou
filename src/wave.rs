@@ -13,7 +13,7 @@ pub fn wave_1(
         let new_boss: Enemy = Enemy::new(
             Vec2::new(HC, -10.),
             30.,
-            Vec2::new(0., 5.), //.lerp(Vec2::new(0., 8.), 5.),
+            Vec2::new(0., 1.), //.lerp(Vec2::new(0., 8.), 5.),
             0.,
             false,
             AttackType::Fan,

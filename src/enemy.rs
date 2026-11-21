@@ -90,7 +90,7 @@ impl Enemy {
         if self.pos.x > HC - 100. && self.pos.x < HC + 100. && self.p <= 1. {
             // move left or right
             //self.pos = self.pos.lerp(Vec2::new(6., 5.), 0.5);
-            self.pos = self.pos.lerp(Vec2::new(self.pos.x, 3.), self.p);
+            self.pos = self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
         }
         self.pos = self
             .pos
