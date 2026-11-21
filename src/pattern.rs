@@ -38,5 +38,12 @@ impl Pattern {
         todo!()
     }
 
-    pub fn fan(&self, enemy_pos: Vec2, bullets: &mut Vec<Bullet>) {}
+    pub fn fan(&self, enemy_pos: Vec2, bullets: &mut Vec<Bullet>, player_pos: Vec2) {
+        //i already did all the math in desmos. rust has an arctan function. what is the 2nd point
+        //tho? it's the player, because a fan should aim at the player. maybe home, idk yet.
+        //player's pos muse be passed in with this function.
+        for c in 0..self.count {
+            let i: f32 = c as f32;
+        }
+    }
 }
