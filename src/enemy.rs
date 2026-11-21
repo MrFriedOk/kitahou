@@ -14,6 +14,11 @@ pub enum AttackType {
     Fan,
 }
 
+pub enum Kind {
+    Boss,
+    Enemy,
+}
+
 pub struct Enemy {
     pub pos: Vec2,
     pub r: f32,
@@ -22,6 +27,7 @@ pub struct Enemy {
     rotate: bool,
     pub state: State,
     pub attack_type: AttackType,
+    pub kind: Kind,
 }
 
 impl Enemy {
@@ -32,6 +38,7 @@ impl Enemy {
         cooldown: f32,
         rotate: bool,
         attack_type: AttackType,
+        kind: Kind,
     ) -> Self {
         Self {
             pos,
@@ -41,6 +48,7 @@ impl Enemy {
             rotate,
             state: State::Moving,
             attack_type,
+            kind,
         }
     }
 
@@ -68,12 +76,12 @@ impl Enemy {
         match self.attack_type {
             AttackType::Circle => {
                 if self.cooldown <= 0. {
-                    Pattern::new(12).circle(self.pos, bullets, self.rotate);
+                    Pattern::new(20).circle(self.pos, bullets, self.rotate);
 
                     self.cooldown = 1.;
                     self.rotate = !self.rotate;
                 } else {
-                    self.cooldown -= 0.02;
+                    self.cooldown -= 0.03;
                 }
             }
             AttackType::Flower => (),
@@ -81,10 +89,10 @@ impl Enemy {
             AttackType::Homing => (),
             AttackType::Fan => {
                 if self.cooldown <= 0. {
-                    Pattern::new(10).fan(self.pos, bullets, player_pos);
+                    Pattern::new(14).fan(self.pos, bullets, player_pos);
                     self.cooldown = 1.;
                 } else {
-                    self.cooldown -= 0.1;
+                    self.cooldown -= 0.06;
                 }
             }
         }

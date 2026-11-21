@@ -17,6 +17,7 @@ pub fn wave_1(
             0.,
             false,
             enemy::AttackType::Circle,
+            enemy::Kind::Enemy,
         );
         let enemy2: Enemy = Enemy::new(
             Vec2::new(HC - 300., -10.),
@@ -25,6 +26,7 @@ pub fn wave_1(
             0.,
             false,
             enemy::AttackType::Circle,
+            enemy::Kind::Enemy,
         );
 
         enemies.push(enemy1);
@@ -51,6 +53,7 @@ pub fn wave_1(
             0.,
             false,
             enemy::AttackType::Fan,
+            enemy::Kind::Enemy,
         );
         enemies.push(enemy);
     }
@@ -67,5 +70,17 @@ pub fn wave_1(
         for enemy in &mut *enemies {
             enemy.state = enemy::State::Retreating;
         }
+    }
+    if previous_time < 13. && timer >= 13. {
+        enemies.clear();
+        let boss: Enemy = Enemy::new(
+            Vec2::new(HC, -10.),
+            30.,
+            Vec2::new(0., 10.),
+            0.,
+            false,
+            AttackType::Fan,
+            enemy::Kind::Boss,
+        );
     }
 }
