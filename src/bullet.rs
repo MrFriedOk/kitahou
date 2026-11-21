@@ -3,7 +3,7 @@ pub use crate::*;
 pub enum BulletKind {
     Straight,
     Accelerating { accel: f32 },
-    Homing { rate: f32 },
+    Homing, //{ rate: f32 },
 }
 
 pub struct Bullet {

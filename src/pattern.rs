@@ -44,6 +44,21 @@ impl Pattern {
         //player's pos muse be passed in with this function.
         for c in 0..self.count {
             let i: f32 = c as f32;
+
+            let rotation: f32 = f32::atan(
+                (enemy_pos.x.powi(2) - player_pos.x.powi(2))
+                    / (enemy_pos.y.powi(2) - player_pos.y.powi(2)),
+            );
+
+            let angle: f32 = rotation + i * (-std::f32::consts::PI / self.count as f32);
+            bullets.push(Bullet::new(
+                enemy_pos,
+                15.,
+                Vec2::new(angle.cos(), angle.sin()),
+                BulletKind::Homing,
+                player_pos,
+                RED,
+            ));
         }
     }
 }
