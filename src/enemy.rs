@@ -14,6 +14,7 @@ pub enum AttackType {
     Fan,
 }
 
+#[derive(Clone)]
 pub enum Kind {
     Boss,
     Enemy,
@@ -49,7 +50,7 @@ impl Enemy {
             rotate,
             state: State::Moving,
             attack_type,
-            kind,
+            kind: kind.clone(),
             hp: match kind {
                 Kind::Boss => 10000,
                 Kind::Enemy => 10,
