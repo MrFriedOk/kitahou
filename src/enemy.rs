@@ -62,6 +62,7 @@ impl Enemy {
 
     pub fn update(&mut self, player_pos: Vec2, bullets: &mut Vec<Bullet>) -> Option<Vec<Enemy>> {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower()
+        self.cooldown = self.cooldown.clamp(0., 1.);
 
         if self.p <= 1. {
             self.p += 0.01;
@@ -74,12 +75,16 @@ impl Enemy {
         }
 
         if let Kind::Boss = self.kind {
+            //self.cooldown -= 0.8;
             let mut new: Vec<Enemy> = Vec::new();
             if let Some(enemies) = self.movement(bullets) {
-                self.cooldown += 1.;
                 if self.cooldown <= 0. {
                     new.extend(enemies);
-                };
+
+                    self.cooldown += 1.;
+                } else {
+                    self.cooldown -= 0.05
+                }
                 return Some(new);
             }
         }
