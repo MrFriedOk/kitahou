@@ -116,6 +116,9 @@ impl Game {
                 enemy.damage();
                 !hit
             });
+            if enemy.hp <= 0 {
+                self.boss = None;
+            }
         }
 
         if let Some(bomb) = &mut self.bomb
@@ -138,6 +141,7 @@ impl Game {
                 !hit
             });
         }
+
         for bullet in &self.bullets {
             let bullet_hitbox = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
             let hit: bool = bullet_hitbox.overlaps(&player_hitbox);
@@ -145,6 +149,10 @@ impl Game {
                 self.player.damage();
             };
         }
+
+        //hp checks
+
+        self.enemies.retain(|enemy| enemy.hp > 0);
     }
     fn out_of_bounds(&mut self) {
         self.bullets
