@@ -193,6 +193,7 @@ impl Game {
                     ItemType::Point { value: _ } => self.player.points += (multiplier / 2.) as i32,
                     ItemType::Bomb => self.player.bombs += 1,
                     ItemType::Life => self.player.hp += 1,
+                    ItemType::Power { value } => self.player.power += value as i32,
                 }
                 false
             } else {
