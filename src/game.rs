@@ -5,7 +5,6 @@
 //pub use crate::bullet::Bullet;
 //pub use crate::player::Player;
 
-use crate::bullet::BulletKind;
 pub use crate::*;
 
 //pub use crate::config::*;
