@@ -8,8 +8,10 @@ pub enum ItemType {
 
 pub struct Item {
     vel: Vec2,
-    pos: Vec2,
-    kind: ItemType,
+    pub pos: Vec2,
+    pub kind: ItemType,
+    pub width: f32,
+    pub height: f32,
 }
 
 impl Item {
@@ -18,6 +20,8 @@ impl Item {
             vel: Vec2::new(0., 1.),
             pos,
             kind,
+            width: 15.,
+            height: 15.,
         }
     }
     pub fn update(&mut self) {
@@ -26,9 +30,13 @@ impl Item {
     }
     fn draw(&self) {
         match self.kind {
-            ItemType::Point => draw_rectangle(self.pos.x, self.pos.y, 15., 15., DARKBLUE),
-            ItemType::Bomb => draw_rectangle(self.pos.x, self.pos.y, 15., 15., RED),
-            ItemType::Life => draw_rectangle(self.pos.x, self.pos.y, 15., 15., GREEN),
+            ItemType::Point => {
+                draw_rectangle(self.pos.x, self.pos.y, self.width, self.height, DARKBLUE)
+            }
+            ItemType::Bomb => draw_rectangle(self.pos.x, self.pos.y, self.width, self.height, RED),
+            ItemType::Life => {
+                draw_rectangle(self.pos.x, self.pos.y, self.width, self.height, GREEN)
+            }
         }
     }
 }
