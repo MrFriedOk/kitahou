@@ -171,15 +171,16 @@ impl Game {
         self.draw_hp();
 
         if let Some(enemy) = &self.boss {
+            let percent: f32 = (enemy.hp / 100000) as f32;
             draw_arc(
                 enemy.pos.x,
                 enemy.pos.y,
                 255,
                 enemy.r + 20.,
                 90.,
-                5.,
-                360. * (enemy.hp / 100000) as f32,
-                DARKGRAY,
+                15.,
+                360. * percent,
+                DARKPURPLE,
             )
         }
 
