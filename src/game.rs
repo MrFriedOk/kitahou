@@ -106,13 +106,14 @@ impl Game {
             Circle::new(self.player.pos.x, self.player.pos.y, self.player.r);
 
         if let Some(enemy) = &self.boss {
-            let boss_hitbox: Circle = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
+            let boss_hitbox: Circle = Circle::new(*&enemy.pos.x, *&enemy.pos.y, *&enemy.r);
             if boss_hitbox.overlaps(&player_hitbox) && self.player.i_frame == 0. {
                 self.player.damage();
             };
             self.player_bullets.retain(|bullet| {
                 let p_bullet_hitbox: Circle = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
                 let hit: bool = p_bullet_hitbox.overlaps(&boss_hitbox);
+                enemy.damage();
                 !hit
             });
         }
@@ -133,6 +134,7 @@ impl Game {
             self.player_bullets.retain(|bullet| {
                 let p_bullet_hitbox: Circle = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
                 let hit: bool = p_bullet_hitbox.overlaps(&enemy_hitbox);
+                enemy.damage();
                 !hit
             });
         }

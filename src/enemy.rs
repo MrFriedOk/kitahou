@@ -53,7 +53,7 @@ impl Enemy {
             attack_type,
             kind: kind.clone(),
             hp: match kind {
-                Kind::Boss => 10000,
+                Kind::Boss => 100000,
                 Kind::Enemy => 10,
             },
             p: 0.,
@@ -123,5 +123,9 @@ impl Enemy {
                 }
             }
         }
+    }
+
+    pub fn damage(&mut self) {
+        self.hp -= 5;
     }
 }
