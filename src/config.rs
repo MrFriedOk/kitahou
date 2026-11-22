@@ -13,11 +13,11 @@ pub const GRIDW: f32 = 40.;
 pub const GRIDH: f32 = 40.;
 
 pub const CONTENTFIELD: f32 = GRIDW * 14.;
-pub const CONTENTFIELDHC: f32 = (CONTENTFIELD + (CONTENTFIELD / 2.));
+pub const CONTENTFIELDHC: f32 = CONTENTFIELD + (CONTENTFIELD / 2.);
 
 pub const BORDER: f32 = GRIDH;
 
-pub const HC: f32 = (SW - CONTENTFIELD - BORDER * 10.); //horizontal center ok ngl i totally brute
+pub const HC: f32 = SW - CONTENTFIELD - BORDER * 10.; //horizontal center ok ngl i totally brute
 //forced "10". if i had actually used a gride system, it'd be easier but that's totally ok.
 pub const VC: f32 = SH / 2.0;
 
