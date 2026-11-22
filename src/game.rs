@@ -103,6 +103,10 @@ impl Game {
             p_bullet.update()
         }
 
+        for item in self.items.iter_mut() {
+            item.update();
+        }
+
         self.out_of_bounds();
 
         self.draw();

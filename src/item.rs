@@ -24,5 +24,7 @@ impl Item {
         self.pos += self.vel;
         self.draw();
     }
-    fn draw(&self) {}
+    fn draw(&self) {
+        draw_rectangle(self.pos.x, self.pos.y, 20., 40., DARKBLUE);
+    }
 }
