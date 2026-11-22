@@ -85,6 +85,7 @@ impl Enemy {
                 } else {
                     self.cooldown -= 0.05
                 }
+                self.draw();
                 return Some(new);
             }
         }
