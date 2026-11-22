@@ -86,6 +86,7 @@ impl Game {
         }
 
         if let Some(boss) = &mut self.boss {
+            let mut new: Vec<Enemy> = Vec::new();
             boss.update(self.player.pos, &mut self.bullets)
         }
 

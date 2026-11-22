@@ -88,7 +88,7 @@ impl Enemy {
         draw_circle(self.pos.x, self.pos.y, self.r, RED);
     }
 
-    fn movement(&mut self, bullets: &mut Vec<Bullet>) {
+    fn movement(&mut self, bullets: &mut Vec<Bullet>) -> Option<Vec<Enemy>> {
         if self.pos.x > HC - 100. && self.pos.x < HC + 100. && self.p <= 1. {
             // move left or right
             //self.pos = self.pos.lerp(Vec2::new(6., 5.), 0.5);
@@ -97,6 +97,8 @@ impl Enemy {
         self.pos = self
             .pos
             .clamp(Vec2::new(-20., -20.), Vec2::new(SW + 20., 300.));
+
+        None
     }
 
     pub fn attack(&mut self, bullets: &mut Vec<Bullet>, player_pos: Vec2) {
