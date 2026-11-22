@@ -90,6 +90,7 @@ impl Player {
                     },
                 ))
             }
+            println!("{:?}", new);
             return Some(new);
         }
         if self.level == 2 {

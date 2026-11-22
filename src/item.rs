@@ -1,11 +1,13 @@
 pub use crate::*;
 
+#[derive(Debug)]
 pub enum ItemType {
     Point { value: f32 },
     Bomb,
     Life,
 }
 
+#[derive(Debug)]
 pub struct Item {
     vel: Vec2,
     pub pos: Vec2,
