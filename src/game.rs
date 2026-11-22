@@ -185,6 +185,8 @@ impl Game {
             if hit {
                 match item.kind {
                     ItemType::Point => self.player.points += 100,
+                    ItemType::Bomb => self.player.bombs += 1,
+                    ItemType::Life => self.player.hp += 1,
                 }
                 false
             } else {
