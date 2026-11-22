@@ -74,7 +74,12 @@ impl Enemy {
         }
 
         if let Kind::Boss = self.kind {
-            self.movement(bullets);
+            let mut new: Vec<Enemy> = Vec::new();
+            if let Some(enemies) = self.movement(bullets) {
+                for enemy in enemies {
+                    new.extend()
+                }
+            }
         }
 
         //let rotate: bool = if self.cooldown <= 0.5 { true } else { false };
