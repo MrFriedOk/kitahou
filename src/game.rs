@@ -105,8 +105,8 @@ impl Game {
         let player_hitbox: Circle =
             Circle::new(self.player.pos.x, self.player.pos.y, self.player.r);
 
-        if let Some(enemy) = &self.boss {
-            let boss_hitbox: Circle = Circle::new(*&enemy.pos.x, *&enemy.pos.y, *&enemy.r);
+        if let Some(enemy) = &mut self.boss {
+            let boss_hitbox: Circle = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
             if boss_hitbox.overlaps(&player_hitbox) && self.player.i_frame == 0. {
                 self.player.damage();
             };
