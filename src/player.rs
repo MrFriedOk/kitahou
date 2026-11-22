@@ -77,9 +77,9 @@ impl Player {
         self.hp -= 1;
         self.i_frame = 1.;
         self.points = 0;
-        if self.level == 1 {
-            let mut new: Vec<Item> = Vec::new();
 
+        let mut new: Vec<Item> = Vec::new();
+        if self.level == 1 {
             for i in 0..4 {
                 let x: f32 = self.pos.x - 20. + (i * 4) as f32;
                 let y: f32 = self.pos.y + 20.;
@@ -90,12 +90,9 @@ impl Player {
                     },
                 ))
             }
-            println!("{:?}", new);
-            return Some(new);
+            //println!("{:?}", new);
         }
         if self.level == 2 {
-            let mut new: Vec<Item> = Vec::new();
-
             for i in 0..5 {
                 let x: f32 = self.pos.x - 20. + (i * 4) as f32;
                 let y: f32 = self.pos.y + 20.;
@@ -106,11 +103,8 @@ impl Player {
                     },
                 ))
             }
-            return Some(new);
         }
         if self.level == 3 {
-            let mut new: Vec<Item> = Vec::new();
-
             for i in 0..5 {
                 let x: f32 = self.pos.x - 20. + (i * 4) as f32;
                 let y: f32 = self.pos.y + 20.;
@@ -127,9 +121,8 @@ impl Player {
                     value: self.points as f32,
                 },
             ));
-            return Some(new);
         }
-        None
+        Some(new)
     }
 
     pub fn read_dir(&mut self, p_bullets: &mut Vec<Bullet>) -> Vec2 {

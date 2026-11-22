@@ -149,7 +149,7 @@ impl Game {
             let hit: bool = enemy_hitbox.overlaps(&player_hitbox);
             if self.player.i_frame == 0. && hit {
                 if let Some(items) = self.player.damage() {
-                    self.items.extend(items);
+                    self.items.extend(&items);
                     println!("{:?}", items.clone());
                 };
             }
