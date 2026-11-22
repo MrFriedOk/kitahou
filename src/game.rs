@@ -56,9 +56,8 @@ impl Game {
         self.player.update(&mut self.player_bullets);
 
         //now i need to do a match, check if (borrow bomb) bomb
-        match &mut self.bomb {
-            Some(bomb) => bomb.update(),
-            None => (),
+        if let Some(bomb) = &mut self.bomb {
+            bomb.update();
         }
 
         if is_key_down(KeyCode::X) && self.bomb.is_none() && self.player.bombs > 0 {
@@ -75,10 +74,12 @@ impl Game {
             self.player.bombs -= 1;
         }
 
+        //let mut new_enemies: Vec = Vec::new();
         for enemy in self.enemies.iter_mut() {
             enemy.update(self.player.pos, &mut self.bullets);
         }
 
+        //let mut new_bullets: Vec = Vec::new();
         for bullet in self.bullets.iter_mut() {
             bullet.pos += bullet.vel;
             bullet.update();
