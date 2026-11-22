@@ -53,8 +53,8 @@ impl Enemy {
             attack_type,
             kind: kind.clone(),
             hp: match kind {
-                Kind::Boss => 100000,
-                Kind::Enemy => 10,
+                Kind::Boss => BOSS_HP,
+                Kind::Enemy => ENEMY_HP,
             },
             p: 0.,
         }
