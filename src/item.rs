@@ -25,6 +25,10 @@ impl Item {
         self.draw();
     }
     fn draw(&self) {
-        draw_rectangle(self.pos.x, self.pos.y, 20., 40., DARKBLUE);
+        match self.kind {
+            ItemType::Point => draw_rectangle(self.pos.x, self.pos.y, 15., 15., DARKBLUE),
+            ItemType::Bomb => draw_rectangle(self.pos.x, self.pos.y, 15., 15., RED),
+            ItemType::Life => draw_rectangle(self.pos.x, self.pos.y, 15., 15., GREEN),
+        }
     }
 }
