@@ -2,6 +2,7 @@
 
 //pub use crate::config::*;
 
+use crate::game::ItemType;
 pub use crate::*;
 
 pub struct Player {
@@ -76,7 +77,20 @@ impl Player {
         self.hp -= 1;
         self.i_frame = 1.;
         self.points = 0;
-        if self.level == 1 {}
+        if self.level == 1 && self.hp == 0 {
+            let mut new: Vec<Item> = Vec::new();
+
+            for i in 0..4 {
+                let x: f32 = self.pos.x - 20. + (i * 4) as f32;
+                let y: f32 = self.pos.y + 20.;
+                new.push(Item::new(
+                    Vec2::new(x, y),
+                    ItemType::Point {
+                        value: (self.points / 4) as f32,
+                    },
+                ))
+            }
+        }
         None
     }
 
