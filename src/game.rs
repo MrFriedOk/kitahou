@@ -179,12 +179,13 @@ impl Game {
             }
         });
 
+        let multiplier: f32 = 10. * (&self.player.pos.y / SH);
         self.items.retain(|item| {
             let item_hitbox: Rect = Rect::new(item.pos.x, item.pos.y, item.width, item.height);
             let hit: bool = player_hitbox.overlaps_rect(&item_hitbox);
             if hit {
                 match item.kind {
-                    ItemType::Point => self.player.points += 100,
+                    ItemType::Point => self.player.points += (100. * multiplier) as i32,
                     ItemType::Bomb => self.player.bombs += 1,
                     ItemType::Life => self.player.hp += 1,
                 }
