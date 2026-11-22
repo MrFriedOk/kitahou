@@ -76,9 +76,8 @@ impl Enemy {
         if let Kind::Boss = self.kind {
             let mut new: Vec<Enemy> = Vec::new();
             if let Some(enemies) = self.movement(bullets) {
-                for enemy in enemies {
-                    new.extend()
-                }
+                new.extend(enemies);
+                return Some(new);
             }
         }
 
@@ -100,6 +99,15 @@ impl Enemy {
             // move left or right
             //self.pos = self.pos.lerp(Vec2::new(6., 5.), 0.5);
             self.pos = self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
+            return Some(Vec::from(Enemy::new(
+                self.pos,
+                15.,
+                Vec2::new(0., 2.),
+                0.,
+                false,
+                AttackType::Circle,
+                Kind::Enemy,
+            )));
         }
         self.pos = self
             .pos
