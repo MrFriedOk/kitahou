@@ -122,7 +122,7 @@ impl Game {
         if let Some(enemy) = &mut self.boss {
             let boss_hitbox: Circle = Circle::new(enemy.pos.x, enemy.pos.y, enemy.r);
             if boss_hitbox.overlaps(&player_hitbox) && self.player.i_frame == 0. {
-                self.player.damage();
+                self.items.extend(self.player.damage());
             };
             self.player_bullets.retain(|bullet| {
                 let p_bullet_hitbox: Circle = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
@@ -152,7 +152,7 @@ impl Game {
                 //    self.items.extend(items.clone());
                 //    println!("{:?}", items);
                 //};
-                //self.items.extend(self.player.damage());
+                self.items.extend(self.player.damage());
             }
             self.player_bullets.retain(|bullet| {
                 let p_bullet_hitbox: Circle = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
