@@ -130,6 +130,11 @@ impl Game {
             if self.player.i_frame == 0. && hit {
                 self.player.damage();
             }
+            self.player_bullets.retain(|bullet| {
+                let p_bullet_hitbox: Circle = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
+                let hit: bool = p_bullet_hitbox.overlaps(&enemy_hitbox);
+                !hit
+            });
         }
         for bullet in &self.bullets {
             let bullet_hitbox = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
@@ -137,10 +142,6 @@ impl Game {
             if self.player.i_frame == 0. && hit {
                 self.player.damage();
             };
-            self.player_bullets.retain(|bullet| {
-                let p_bullet_hitbox: Circle = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
-                let hit: bool = p_bullet_hitbox.overlaps(enemy);
-            });
         }
     }
     fn out_of_bounds(&mut self) {
