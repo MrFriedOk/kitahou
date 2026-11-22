@@ -120,6 +120,12 @@ impl Player {
                     },
                 ))
             }
+            new.push(Item::new(
+                Vec2::new(self.pos.x, self.pos.y + 20.),
+                ItemType::Point {
+                    value: self.points as f32,
+                },
+            ));
             return Some(new);
         }
         None
