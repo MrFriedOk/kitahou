@@ -76,7 +76,10 @@ impl Enemy {
         if let Kind::Boss = self.kind {
             let mut new: Vec<Enemy> = Vec::new();
             if let Some(enemies) = self.movement(bullets) {
-                new.extend(enemies);
+                self.cooldown += 1.;
+                if self.cooldown <= 0. {
+                    new.extend(enemies);
+                };
                 return Some(new);
             }
         }
