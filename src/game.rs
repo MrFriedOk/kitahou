@@ -227,9 +227,12 @@ impl Game {
 
         draw_fps();
     }
+
     fn draw_points(&self) {
-        draw_text("hi", CONTENTFIELDHC, 10., 48, WHITE)
+        let text: String = self.player.points.to_string();
+        draw_text(text, CONTENTFIELDHC, 50., 48., WHITE);
     }
+
     fn draw_level(&self) {
         let r: f32 = 20.;
         let d: f32 = (r * 2.) + 5.;
