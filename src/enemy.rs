@@ -60,12 +60,7 @@ impl Enemy {
         }
     }
 
-    pub fn update(
-        &mut self,
-        player_pos: Vec2,
-        bullets: &mut Vec<Bullet>,
-        enemies: &mut Vec<Enemy>,
-    ) {
+    pub fn update(&mut self, player_pos: Vec2, bullets: &mut Vec<Bullet>) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower()
 
         if self.p <= 1. {

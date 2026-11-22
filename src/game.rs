@@ -75,20 +75,20 @@ impl Game {
             self.player.bombs -= 1;
         }
 
-        for enemy in &mut self.enemies {
-            enemy.update(self.player.pos, &mut self.bullets, self.enemies);
+        for enemy in self.enemies.iter_mut() {
+            enemy.update(self.player.pos, &mut self.bullets);
         }
 
-        for bullet in &mut self.bullets {
+        for bullet in self.bullets.iter_mut() {
             bullet.pos += bullet.vel;
             bullet.update();
         }
 
         if let Some(boss) = &mut self.boss {
-            boss.update(self.player.pos, &mut self.bullets, &mut self.enemies)
+            boss.update(self.player.pos, &mut self.bullets)
         }
 
-        for p_bullet in &mut self.player_bullets {
+        for p_bullet in self.player_bullets.iter_mut() {
             p_bullet.pos += p_bullet.vel;
             p_bullet.update()
         }
