@@ -150,6 +150,7 @@ impl Game {
             if self.player.i_frame == 0. && hit {
                 if let Some(items) = self.player.damage() {
                     self.items.extend(items);
+                    println!("{:?}", items.clone());
                 };
             }
             self.player_bullets.retain(|bullet| {
