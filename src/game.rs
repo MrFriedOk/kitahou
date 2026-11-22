@@ -52,6 +52,7 @@ impl Game {
                 &mut self.bullets,
                 &mut self.boss,
                 self.previous_time,
+                &mut self.items,
             )
         }
 

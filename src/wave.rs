@@ -7,6 +7,7 @@ pub fn wave_1(
     bullets: &mut Vec<Bullet>,
     boss: &mut Option<Enemy>,
     previous_time: f32,
+    items: &mut Vec<Item>,
 ) {
     if timer == 0. {
         enemies.clear();
@@ -21,4 +22,5 @@ pub fn wave_1(
         );
         *boss = Some(new_boss);
     }
+    if previous_time < 1. && timer >= 5. {}
 }
