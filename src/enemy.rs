@@ -60,7 +60,7 @@ impl Enemy {
         }
     }
 
-    pub fn update(&mut self, player_pos: Vec2, bullets: &mut Vec<Bullet>) {
+    pub fn update(&mut self, player_pos: Vec2, bullets: &mut Vec<Bullet>) -> Option<Vec<Enemy>> {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower()
 
         if self.p <= 1. {
@@ -82,6 +82,8 @@ impl Enemy {
         //self.attack()
 
         self.draw();
+
+        None
     }
 
     pub fn draw(&self) {
