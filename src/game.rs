@@ -182,6 +182,14 @@ impl Game {
         self.items.retain(|item| {
             let item_hitbox: Rect = Rect::new(item.pos.x, item.pos.y, item.width, item.height);
             let hit: bool = player_hitbox.overlaps_rect(&item_hitbox);
+            if hit {
+                match item.kind {
+                    ItemType::Point => self.player.points += 100,
+                }
+                false
+            } else {
+                true
+            }
         })
     }
     fn out_of_bounds(&mut self) {
