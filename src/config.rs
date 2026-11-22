@@ -9,6 +9,8 @@ pub const SW: f32 = 1440.0;
 
 //pub const PH: f32
 
+//pub const PLAY_MIDDLE
+
 pub const GRIDW: f32 = 40.;
 pub const GRIDH: f32 = 40.;
 
