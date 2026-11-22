@@ -1,6 +1,8 @@
 //pub use macroquad::prelude::*;
 pub use crate::*;
 
+pub const BOSS_HP: i32 = 10000;
+
 pub const SH: f32 = 1080.0;
 pub const SW: f32 = 1440.0;
 

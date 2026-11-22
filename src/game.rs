@@ -113,7 +113,9 @@ impl Game {
             self.player_bullets.retain(|bullet| {
                 let p_bullet_hitbox: Circle = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);
                 let hit: bool = p_bullet_hitbox.overlaps(&boss_hitbox);
-                enemy.damage();
+                if hit {
+                    enemy.damage()
+                };
                 !hit
             });
             if enemy.hp <= 0 {
@@ -171,11 +173,11 @@ impl Game {
         self.draw_hp();
 
         if let Some(enemy) = &self.boss {
-            let percent: f32 = (enemy.hp / 100000) as f32;
+            let percent: f32 = (enemy.hp as f32 / 100000 as f32) as f32;
             draw_arc(
                 enemy.pos.x,
                 enemy.pos.y,
-                255,
+                64,
                 enemy.r + 20.,
                 90.,
                 15.,
