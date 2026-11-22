@@ -178,6 +178,10 @@ impl Game {
                 true
             }
         });
+
+        self.items.retain(|item| {
+            let item_hitbox: Rect = Rect::new(item.pos.x,item.pos.y,item.)
+        })
     }
     fn out_of_bounds(&mut self) {
         self.bullets
