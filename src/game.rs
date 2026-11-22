@@ -148,7 +148,9 @@ impl Game {
 
             let hit: bool = enemy_hitbox.overlaps(&player_hitbox);
             if self.player.i_frame == 0. && hit {
-                self.player.damage();
+                if let Some(items) = self.player.damage() {
+                    self.items.extend(items);
+                };
             }
             self.player_bullets.retain(|bullet| {
                 let p_bullet_hitbox: Circle = Circle::new(bullet.pos.x, bullet.pos.y, bullet.r);

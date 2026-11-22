@@ -72,10 +72,12 @@ impl Player {
         self.draw();
     }
 
-    pub fn damage(&mut self) {
+    pub fn damage(&mut self) -> Option<Vec<Item>> {
         self.hp -= 1;
         self.i_frame = 1.;
         self.points = 0;
+        if self.level == 1 {}
+        None
     }
 
     pub fn read_dir(&mut self, p_bullets: &mut Vec<Bullet>) -> Vec2 {
