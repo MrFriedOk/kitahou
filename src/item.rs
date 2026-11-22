@@ -1,7 +1,7 @@
 pub use crate::*;
 
 pub enum ItemType {
-    Point,
+    Point { value: f32 },
     Bomb,
     Life,
 }
@@ -30,7 +30,7 @@ impl Item {
     }
     fn draw(&self) {
         match self.kind {
-            ItemType::Point => {
+            ItemType::Point { value: _ } => {
                 draw_rectangle(self.pos.x, self.pos.y, self.width, self.height, DARKBLUE)
             }
             ItemType::Bomb => draw_rectangle(self.pos.x, self.pos.y, self.width, self.height, RED),

@@ -172,20 +172,21 @@ impl Game {
 
         self.enemies.retain(|enemy| {
             if enemy.hp <= 0 {
-                self.items.push(Item::new(enemy.pos, ItemType::Point));
+                self.items
+                    .push(Item::new(enemy.pos, ItemType::Point { value: 1. }));
                 false
             } else {
                 true
             }
         });
 
-        let multiplier: f32 = (SH - self.player.pos.y);
+        let multiplier: f32 = (SH - self.player.pos.y).powi(2);
         self.items.retain(|item| {
             let item_hitbox: Rect = Rect::new(item.pos.x, item.pos.y, item.width, item.height);
             let hit: bool = player_hitbox.overlaps_rect(&item_hitbox);
             if hit {
                 match item.kind {
-                    ItemType::Point => self.player.points += (20. * multiplier) as i32,
+                    ItemType::Point { value: _ } => self.player.points += (multiplier / 2.) as i32,
                     ItemType::Bomb => self.player.bombs += 1,
                     ItemType::Life => self.player.hp += 1,
                 }
