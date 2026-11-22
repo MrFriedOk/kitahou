@@ -180,7 +180,7 @@ impl Game {
             }
         });
 
-        let multiplier: f32 = (SH - self.player.pos.y).powi(2);
+        let multiplier: f32 = (SH - self.player.pos.y).powf(1.2);
         self.items.retain(|item| {
             let item_hitbox: Rect = Rect::new(item.pos.x, item.pos.y, item.width, item.height);
             let hit: bool = player_hitbox.overlaps_rect(&item_hitbox);
