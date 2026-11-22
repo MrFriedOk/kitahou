@@ -40,7 +40,7 @@ impl Item {
             ItemType::Life => {
                 draw_rectangle(self.pos.x, self.pos.y, self.width, self.height, GREEN)
             }
-            ItemType::Power => draw_rectangle(
+            ItemType::Power { value: _ } => draw_rectangle(
                 self.pos.x,
                 self.pos.y,
                 self.width + 5.,

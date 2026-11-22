@@ -17,6 +17,7 @@ pub struct Player {
     pub level: i8,
     pub points: i32,
     pub bombs: i8,
+    pub power: i32,
 }
 
 impl Player {
@@ -31,6 +32,7 @@ impl Player {
             level: 1,
             points: 0,
             bombs: 1,
+            power: 0,
         }
     }
 
@@ -177,13 +179,13 @@ impl Player {
     }
 
     fn level_check(&mut self) {
-        if self.points < 1000 {
+        if self.power < 1000 {
             self.level = 1
         }
-        if self.points >= 10000 {
+        if self.power >= 10000 {
             self.level = 2
         }
-        if self.points >= 50000 {
+        if self.power >= 50000 {
             self.level = 3
         }
     }
