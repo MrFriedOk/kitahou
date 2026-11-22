@@ -209,6 +209,7 @@ impl Game {
         self.draw_level();
         self.draw_bomb();
         self.draw_hp();
+        self.draw_points();
 
         if let Some(enemy) = &self.boss {
             let percent: f32 = enemy.hp as f32 / BOSS_HP as f32;
@@ -225,6 +226,9 @@ impl Game {
         }
 
         draw_fps();
+    }
+    fn draw_points(&self) {
+        draw_text("hi", CONTENTFIELDHC, 10., 48, WHITE)
     }
     fn draw_level(&self) {
         let r: f32 = 20.;
