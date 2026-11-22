@@ -60,7 +60,12 @@ impl Enemy {
         }
     }
 
-    pub fn update(&mut self, player_pos: Vec2, bullets: &mut Vec<Bullet>) {
+    pub fn update(
+        &mut self,
+        player_pos: Vec2,
+        bullets: &mut Vec<Bullet>,
+        enemies: &mut Vec<Enemy>,
+    ) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower()
 
         if self.p <= 1. {
@@ -74,7 +79,7 @@ impl Enemy {
         }
 
         if let Kind::Boss = self.kind {
-            self.movement();
+            self.movement(bullets);
         }
 
         //let rotate: bool = if self.cooldown <= 0.5 { true } else { false };
@@ -88,7 +93,7 @@ impl Enemy {
         draw_circle(self.pos.x, self.pos.y, self.r, RED);
     }
 
-    fn movement(&mut self) {
+    fn movement(&mut self, bullets: &mut Vec<Bullet>) {
         if self.pos.x > HC - 100. && self.pos.x < HC + 100. && self.p <= 1. {
             // move left or right
             //self.pos = self.pos.lerp(Vec2::new(6., 5.), 0.5);

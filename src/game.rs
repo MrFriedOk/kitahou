@@ -76,7 +76,7 @@ impl Game {
         }
 
         for enemy in &mut self.enemies {
-            enemy.update(self.player.pos, &mut self.bullets);
+            enemy.update(self.player.pos, &mut self.bullets, self.enemies);
         }
 
         for bullet in &mut self.bullets {
@@ -85,7 +85,7 @@ impl Game {
         }
 
         if let Some(boss) = &mut self.boss {
-            boss.update(self.player.pos, &mut self.bullets)
+            boss.update(self.player.pos, &mut self.bullets, &mut self.enemies)
         }
 
         for p_bullet in &mut self.player_bullets {
