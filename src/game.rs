@@ -162,12 +162,8 @@ impl Game {
 
         //hp checks
 
-        for enemy in self.enemies {
-            if enemy.hp <= 0 {
-                enemy.destroy(&mut self.enemies);
-            }
-        }
-        //self.enemies.retain(|enemy| enemy.hp > 0);
+        self.enemies
+            .retain(|enemy| if enemy.hp <= 0 { false } else { true });
     }
     fn out_of_bounds(&mut self) {
         self.bullets
