@@ -3,12 +3,12 @@
 pub use macroquad::prelude::*;
 use std::time::{Duration, Instant};
 
-//pub mod bullet;
 pub mod bomb;
 pub mod bullet;
 pub mod config;
 pub mod enemy;
 pub mod game;
+pub mod item;
 pub mod pattern;
 pub mod player;
 pub mod wave;
@@ -18,6 +18,7 @@ pub use bomb::Bomb;
 pub use bullet::Bullet;
 pub use enemy::Enemy;
 pub use game::Game;
+pub use item::Item;
 pub use pattern::Pattern;
 pub use player::Player;
 
