@@ -1,4 +1,5 @@
 use crate::enemy::AttackType;
+use crate::item::ItemType;
 pub use crate::*;
 
 pub fn wave_1(
@@ -22,5 +23,10 @@ pub fn wave_1(
         );
         *boss = Some(new_boss);
     }
-    if previous_time < 1. && timer >= 5. {}
+    if previous_time < 1. && timer >= 1. {
+        items.extend(vec![Item::new(
+            Vec2::new(-200., -20.),
+            ItemType::Power { value: 500. },
+        )])
+    }
 }
