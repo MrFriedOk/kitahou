@@ -5,6 +5,8 @@
 //pub use crate::bullet::Bullet;
 //pub use crate::player::Player;
 
+pub use item::ItemType;
+
 pub use crate::*;
 
 //pub use crate::config::*;
@@ -19,6 +21,7 @@ pub struct Game {
     boss: Option<Enemy>,
     timer: f32,
     previous_time: f32,
+    items: Vec<Item>,
     //wave: Option<Wave>,
 }
 
@@ -33,6 +36,7 @@ impl Game {
             boss: None,
             timer: 0.,
             previous_time: 0.,
+            items: Vec::new(),
             //wave: Some(Wave),
         }
     }
@@ -162,8 +166,14 @@ impl Game {
 
         //hp checks
 
-        self.enemies
-            .retain(|enemy| if enemy.hp <= 0 { false } else { true });
+        self.enemies.retain(|enemy| {
+            if enemy.hp <= 0 {
+                self.items.push(Item::new(enemy.pos, ItemType::Point));
+                false
+            } else {
+                true
+            }
+        });
     }
     fn out_of_bounds(&mut self) {
         self.bullets
