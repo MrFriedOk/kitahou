@@ -20,4 +20,9 @@ impl Item {
             kind,
         }
     }
+    pub fn update(&mut self) {
+        self.pos += self.vel;
+        self.draw();
+    }
+    fn draw(&self) {}
 }
