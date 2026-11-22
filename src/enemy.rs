@@ -63,7 +63,9 @@ impl Enemy {
     pub fn update(&mut self, player_pos: Vec2, bullets: &mut Vec<Bullet>) {
         //self.pos += Pattern::new(12., 5., 1., 1., 5.).flower()
 
-        self.p += 0.01;
+        if self.p <= 1. {
+            self.p += 0.01;
+        }
 
         match self.state {
             State::Moving => self.pos += self.vel,

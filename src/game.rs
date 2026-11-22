@@ -110,6 +110,15 @@ impl Game {
             if boss_hitbox.overlaps(&player_hitbox) && self.player.i_frame == 0. {
                 self.player.damage();
             }
+            for p_bullet in &mut self.player_bullets {
+                //let p_bullet_hitbox: Circle = Circle::new(p_bullet.pos.x,p_bullet.pos.y,p_bullet.r);
+                //let hit: bool = p_bullet_hitbox.overlaps(boss_hitbox);
+                self.player_bullets.retain(|bullet|
+                    let p_bullet_hitbox: Circle = Circle::new()
+                    let hit: bool = 
+
+                )
+            }
         }
 
         if let Some(bomb) = &mut self.bomb
