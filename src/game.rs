@@ -170,9 +170,17 @@ impl Game {
         self.draw_bomb();
         self.draw_hp();
 
-        if self.boss.is_some() {
-            //let text: AsRef<str> = ("boss hp {}", 2);
-            //draw_text(text, CONTENTFIELDHC + 48., 100., 48., WHITE);
+        if let Some(enemy) = &self.boss {
+            draw_arc(
+                enemy.pos.x,
+                enemy.pos.y,
+                255,
+                enemy.r + 20.,
+                90.,
+                5.,
+                360. * (enemy.hp / 100000) as f32,
+                DARKGRAY,
+            )
         }
 
         draw_fps();
