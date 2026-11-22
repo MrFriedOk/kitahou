@@ -96,23 +96,23 @@ impl Enemy {
 
     fn movement(&mut self, bullets: &mut Vec<Bullet>) -> Option<Vec<Enemy>> {
         if self.pos.x > HC - 100. && self.pos.x < HC + 100. && self.p <= 1. {
-            let mut new: Vec = Vec::new();
+            let mut new: Vec<Enemy> = Vec::new();
             // move left or right
             //self.pos = self.pos.lerp(Vec2::new(6., 5.), 0.5);
             self.pos = self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
             let new_enemy: Enemy = Enemy::new(
                 self.pos,
                 15.,
-                Vec2::new(0., 2.),
+                Vec2::new(1., 0.),
                 0.,
                 false,
                 AttackType::Circle,
                 Kind::Enemy,
             );
 
-            new.extend(new_enemy);
+            new.push(new_enemy);
 
-            return Some();
+            return Some(new);
         }
         self.pos = self
             .pos
