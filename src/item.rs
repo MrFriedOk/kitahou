@@ -5,6 +5,7 @@ pub enum ItemType {
     Point { value: f32 },
     Bomb,
     Life,
+    Power { value: f32 },
 }
 
 #[derive(Debug, Clone)]
@@ -39,6 +40,13 @@ impl Item {
             ItemType::Life => {
                 draw_rectangle(self.pos.x, self.pos.y, self.width, self.height, GREEN)
             }
+            ItemType::Power => draw_rectangle(
+                self.pos.x,
+                self.pos.y,
+                self.width + 5.,
+                self.height + 5.,
+                RED,
+            ),
         }
     }
 }
