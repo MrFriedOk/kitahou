@@ -159,4 +159,6 @@ impl Enemy {
     pub fn damage(&mut self) {
         self.hp -= 5;
     }
+
+    pub fn destroy(&self, enemies: &mut Vec<Enemy>) {}
 }
