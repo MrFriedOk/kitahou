@@ -87,8 +87,8 @@ impl Player {
                 let y: f32 = self.pos.y + 20.;
                 new.push(Item::new(
                     Vec2::new(x, y),
-                    ItemType::Point {
-                        value: (self.points / 4) as f32,
+                    ItemType::Power {
+                        value: (self.points / 3) as f32,
                     },
                 ))
             }
@@ -101,7 +101,7 @@ impl Player {
                 new.push(Item::new(
                     Vec2::new(x, y),
                     ItemType::Power {
-                        value: (self.power / 5) as f32,
+                        value: (self.power / 4) as f32,
                     },
                 ))
             }
@@ -113,7 +113,7 @@ impl Player {
                 new.push(Item::new(
                     Vec2::new(x, y),
                     ItemType::Power {
-                        value: (self.power / 6) as f32,
+                        value: (self.power / 5) as f32,
                     },
                 ))
             }
