@@ -108,11 +108,11 @@ impl Enemy {
     }
 
     fn movement(&mut self, bullets: &mut Vec<Bullet>, player_pos: Vec2) -> Option<Vec<Enemy>> {
+        println!("{}", self.pos);
+        println!("{}", self.target);
         let dihfference: Vec2 = self.target - self.pos;
 
         println!("{}", dihfference.length());
-        println!("{}", self.pos);
-        println!("{}", self.target);
 
         //self.cooldown -= 0.03;
 
