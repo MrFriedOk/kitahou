@@ -38,7 +38,7 @@ pub fn wave_1(
     if previous_time < 5. && timer >= 5. {
         if let Some(boss) = boss {
             boss.speed = 0.02;
-            boss.target = Vec2::new(BORDER * 2. + 110., BOSS_Y_MIN + 50.)
+            boss.target = Vec2::new(BOSS_X_MIN + 50., BOSS_Y_MIN + 50.)
         }
     }
 }
