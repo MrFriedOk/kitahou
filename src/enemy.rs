@@ -110,14 +110,15 @@ impl Enemy {
     fn movement(&mut self, bullets: &mut Vec<Bullet>, player_pos: Vec2) -> Option<Vec<Enemy>> {
         println!("{}", self.pos);
         println!("{}", self.target);
-        let dihfference: Vec2 = self.target - self.pos;
+        let dihfference: Vec2 = (self.target - self.pos);
 
         println!("{}", dihfference.length());
 
         //self.cooldown -= 0.03;
 
-        self.pos += dihfference * self.speed; //self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
+        self.pos += dihfference * 0.04; // * self.speed; //self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
 
+        //self.pos += self.vel;
         //return Some(new);
         self.pos = self.pos.clamp(
             Vec2::new(BOSS_X_MIN, BOSS_Y_MIN - 40.),
