@@ -4,6 +4,12 @@ pub use crate::*;
 pub const BOSS_HP: i32 = 10000;
 pub const ENEMY_HP: i32 = 5;
 
+pub const BOSS_X_MAX: f32 = SW - (CONTENTFIELD + 110.);
+pub const BOSS_X_MIN: f32 = BORDER * 2. + 110.;
+
+pub const BOSS_Y_MAX: f32 = SH - (BORDER + 90.);
+pub const BOSS_Y_MIN: f32 = BORDER + 110.;
+
 pub const SH: f32 = 1080.0;
 pub const SW: f32 = 1440.0;
 
