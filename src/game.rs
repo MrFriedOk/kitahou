@@ -45,7 +45,7 @@ impl Game {
         //println!("{}", self.timer.round());
         //let mut bomb: Bomb = Bomb;
 
-        if self.timer < 300. && self.boss.is_none() {
+        if self.timer < 300. {
             wave::wave_1(
                 self.timer,
                 &mut self.enemies,

@@ -23,7 +23,7 @@ pub fn wave_1(
         );
         *boss = Some(new_boss);
     }
-    if previous_time < 1. && timer <= 1. {
+    if previous_time < 1. && timer >= 1. {
         items.extend(vec![
             Item::new(
                 Vec2::new(HC - 200., -20.),
@@ -35,7 +35,7 @@ pub fn wave_1(
         //    boss.attack(bullets,)
         //}
     }
-    if previous_time < 6. && timer >= 6. {
+    if previous_time < 2. && timer >= 2. {
         if let Some(boss) = boss {
             boss.target = Vec2::new(BORDER + 110., 10.)
         }
