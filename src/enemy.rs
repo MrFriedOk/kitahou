@@ -114,9 +114,13 @@ impl Enemy {
 
         //return Some(new);
         self.pos = self.pos.clamp(
-            Vec2::new(BOSS_X_MIN, BOSS_Y_MIN),
-            Vec2::new(BOSS_X_MAX, BOSS_X_MIN),
+            Vec2::new(BOSS_X_MIN, BOSS_Y_MIN - 40.),
+            Vec2::new(BOSS_X_MAX, BOSS_X_MAX),
         );
+
+        if dihfference && self.cooldown <= 0. {
+            self.attack(bullets, Vec2::ZERO);
+        };
 
         None
     }
