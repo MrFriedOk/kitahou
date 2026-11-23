@@ -124,11 +124,13 @@ impl Enemy {
             return Some(new);
         }
         if self.pos.y >= 300. {
-            self.pos.x += self.vel.x
+            self.vel = Vec2::new(2., 0.);
+            self.pos += self.vel
         }
-        self.pos = self
-            .pos
-            .clamp(Vec2::new(-20., -20.), Vec2::new(SW + 20., 300.));
+        self.pos = self.pos.clamp(
+            Vec2::new(BORDER + 100., -20.),
+            Vec2::new(SW - (CONTENTFIELD + 100.), 300.),
+        );
 
         None
     }
