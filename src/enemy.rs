@@ -81,7 +81,7 @@ impl Enemy {
         if let Kind::Boss = self.kind {
             //self.cooldown -= 0.8;
             let mut new: Vec<Enemy> = Vec::new();
-            if let Some(enemies) = self.movement(bullets) {
+            if let Some(enemies) = self.movement(bullets, player_pos) {
                 if self.cooldown <= 0. {
                     new.extend(enemies);
 
@@ -107,7 +107,7 @@ impl Enemy {
         draw_circle(self.pos.x, self.pos.y, self.r, RED);
     }
 
-    fn movement(&mut self, bullets: &mut Vec<Bullet>) -> Option<Vec<Enemy>> {
+    fn movement(&mut self, bullets: &mut Vec<Bullet>, player_pos: Vec2) -> Option<Vec<Enemy>> {
         let dihfference: Vec2 = self.target - self.pos;
 
         self.pos += dihfference * self.speed; //self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
@@ -118,8 +118,8 @@ impl Enemy {
             Vec2::new(BOSS_X_MAX, BOSS_X_MAX),
         );
 
-        if dihfference.length() < 2. && self.cooldown <= 0. {
-            self.attack(bullets, Vec2::ZERO);
+        if dihfference.length() < 2. {
+            self.attack(bullets, player_pos);
         };
 
         None
