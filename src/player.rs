@@ -170,7 +170,15 @@ impl Player {
                 p_bullets.push(Bullet::new(
                     Vec2::new(self.pos.x, self.pos.y),
                     7.,
-                    Vec2::from_angle(-(std::f32::consts::PI / 4.) * 20.),
+                    Vec2::from_angle(-std::f32::consts::PI / 2.) * 20.,
+                    bullet::BulletKind::Straight,
+                    Vec2::ZERO,
+                    GREEN,
+                ));
+                p_bullets.push(Bullet::new(
+                    Vec2::new(self.pos.x, self.pos.y),
+                    7.,
+                    Vec2::from_angle(std::f32::consts::PI / 2.) * 20.,
                     bullet::BulletKind::Straight,
                     Vec2::ZERO,
                     GREEN,
