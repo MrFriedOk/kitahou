@@ -32,6 +32,7 @@ pub struct Enemy {
     pub hp: i32,
     p: f32, //my naming conventions can not be explained
     pub target: Vec2,
+    pub speed: f32,
 }
 
 impl Enemy {
@@ -59,6 +60,7 @@ impl Enemy {
             },
             p: 0.,
             target: Vec2::new(HC, 300.),
+            speed: 0.04,
         }
     }
 
@@ -108,7 +110,7 @@ impl Enemy {
     fn movement(&mut self, bullets: &mut Vec<Bullet>) -> Option<Vec<Enemy>> {
         let dihfference: Vec2 = self.target - self.pos;
 
-        self.pos += dihfference * 0.04; //self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
+        self.pos += dihfference * self.speed; //self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
 
         //return Some(new);
         self.pos = self.pos.clamp(
