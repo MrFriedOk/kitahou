@@ -18,7 +18,9 @@ Super simple, not much going on. Shares keybinds with Touhou,
 Zero AI generated code in this repo, but an LLM was used to explain some Rust concepts to me, as I have never had real experience with Rust beyond `rustlings` (genuinely amazing exercises). Once I started to get the hang of macroquad, I was able to do things on my own. Also had help with some math, but all of that was done in desmos, not tracked obviously. When I was happy with stuff in desmos, I put the equation in code according to my own knowledge and the extensive tools Rust has.
 
 # License
-This project is covered under (wait not it's not hold on)
+See [license](./LICENSE)
+
+**Not affiliated with or endorsed by *Team Shanghai Alice* or the *Touhou Project***
 
 # References
 - [Macroquad docs](https://macroquad.rs/docs/)
