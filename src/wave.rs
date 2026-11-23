@@ -35,4 +35,9 @@ pub fn wave_1(
         //    boss.attack(bullets,)
         //}
     }
+    if previous_time < 6. && timer >= 6. {
+        if let Some(boss) = boss {
+            boss.target = Vec2::new(BORDER + 110., 10.)
+        }
+    }
 }
