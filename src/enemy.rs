@@ -118,7 +118,7 @@ impl Enemy {
             Vec2::new(BOSS_X_MAX, BOSS_X_MAX),
         );
 
-        if dihfference && self.cooldown <= 0. {
+        if dihfference.length() < 2. && self.cooldown <= 0. {
             self.attack(bullets, Vec2::ZERO);
         };
 
