@@ -110,6 +110,8 @@ impl Enemy {
     fn movement(&mut self, bullets: &mut Vec<Bullet>, player_pos: Vec2) -> Option<Vec<Enemy>> {
         let dihfference: Vec2 = self.target - self.pos;
 
+        //self.cooldown -= 0.03;
+
         self.pos += dihfference * self.speed; //self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
 
         //return Some(new);
@@ -119,6 +121,7 @@ impl Enemy {
         );
 
         if dihfference.length() < 2. {
+            println!("{}", self.cooldown);
             self.attack(bullets, player_pos);
         };
 
