@@ -25,7 +25,10 @@ pub fn wave_1(
     }
     if previous_time < 1. && timer <= 1. {
         items.extend(vec![
-            Item::new(Vec2::new(HC - 200., -20.), ItemType::Power { value: 500. }),
+            Item::new(
+                Vec2::new(HC - 200., -20.),
+                ItemType::Power { value: 100000. },
+            ),
             Item::new(Vec2::new(HC + 200., -20.), ItemType::Power { value: 500. }),
         ]);
     }

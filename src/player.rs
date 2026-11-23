@@ -166,6 +166,16 @@ impl Player {
                 Vec2::ZERO,
                 GREEN,
             ));
+            if self.level == 3 {
+                p_bullets.push(Bullet::new(
+                    Vec2::new(self.pos.x, self.pos.y),
+                    7.,
+                    Vec2::from_angle(-(std::f32::consts::PI / 4.) * 20.),
+                    bullet::BulletKind::Straight,
+                    Vec2::ZERO,
+                    GREEN,
+                ))
+            }
             self.cooldown += 1. //* tick
         }
 
