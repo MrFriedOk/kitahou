@@ -31,5 +31,8 @@ pub fn wave_1(
             ),
             Item::new(Vec2::new(HC + 200., -20.), ItemType::Power { value: 500. }),
         ]);
+        //if let Some(boss) = boss {
+        //    boss.attack(bullets,)
+        //}
     }
 }

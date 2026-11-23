@@ -30,7 +30,7 @@ pub struct Enemy {
     pub attack_type: AttackType,
     pub kind: Kind,
     pub hp: i32,
-    p: f32,
+    p: f32, //my naming conventions can not be explained
 }
 
 impl Enemy {
@@ -109,19 +109,22 @@ impl Enemy {
             // move left or right
             //self.pos = self.pos.lerp(Vec2::new(6., 5.), 0.5);
             self.pos = self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
-            let new_enemy: Enemy = Enemy::new(
-                self.pos,
-                15.,
-                Vec2::new(1., 0.),
-                0.,
-                false,
-                AttackType::Circle,
-                Kind::Enemy,
-            );
+            //let new_enemy: Enemy = Enemy::new(
+            //    self.pos,
+            //    15.,
+            //    Vec2::new(1., 0.),
+            //    0.,
+            //    false,
+            //    AttackType::Circle,
+            //    Kind::Enemy,
+            //);
 
-            new.push(new_enemy);
+            //new.push(new_enemy);
 
             return Some(new);
+        }
+        if self.pos.y >= 300. {
+            self.pos.x += self.vel.x
         }
         self.pos = self
             .pos
