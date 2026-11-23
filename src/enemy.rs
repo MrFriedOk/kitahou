@@ -114,8 +114,8 @@ impl Enemy {
 
         //return Some(new);
         self.pos = self.pos.clamp(
-            Vec2::new(BORDER + 110., -20.),
-            Vec2::new(SW - (CONTENTFIELD + 110.), 300.),
+            Vec2::new(BORDER * 2. + 110., BORDER + 110.),
+            Vec2::new(SW - (CONTENTFIELD + 110.), SH - (BORDER + 90.)),
         );
 
         None
