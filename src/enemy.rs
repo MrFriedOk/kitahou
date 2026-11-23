@@ -31,6 +31,7 @@ pub struct Enemy {
     pub kind: Kind,
     pub hp: i32,
     p: f32, //my naming conventions can not be explained
+    pub target: Vec2,
 }
 
 impl Enemy {
@@ -57,6 +58,7 @@ impl Enemy {
                 Kind::Enemy => ENEMY_HP,
             },
             p: 0.,
+            target: Vec2::new(HC, 300.),
         }
     }
 
@@ -104,32 +106,14 @@ impl Enemy {
     }
 
     fn movement(&mut self, bullets: &mut Vec<Bullet>) -> Option<Vec<Enemy>> {
-        if self.pos.x > HC - 100. && self.pos.x < HC + 100. && self.p <= 1. {
-            let mut new: Vec<Enemy> = Vec::new();
-            // move left or right
-            //self.pos = self.pos.lerp(Vec2::new(6., 5.), 0.5);
-            self.pos = self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
-            //let new_enemy: Enemy = Enemy::new(
-            //    self.pos,
-            //    15.,
-            //    Vec2::new(1., 0.),
-            //    0.,
-            //    false,
-            //    AttackType::Circle,
-            //    Kind::Enemy,
-            //);
+        let dihfference: Vec2 = self.target - self.pos;
 
-            //new.push(new_enemy);
+        self.pos += dihfference * 0.04; //self.pos.lerp(Vec2::new(self.pos.x, 300.), self.p);
 
-            return Some(new);
-        }
-        if self.pos.y >= 300. {
-            self.vel = Vec2::new(2., 0.);
-            self.pos += self.vel
-        }
+        //return Some(new);
         self.pos = self.pos.clamp(
-            Vec2::new(BORDER + 100., -20.),
-            Vec2::new(SW - (CONTENTFIELD + 100.), 300.),
+            Vec2::new(BORDER + 110., -20.),
+            Vec2::new(SW - (CONTENTFIELD + 110.), 300.),
         );
 
         None
